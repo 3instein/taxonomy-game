@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class Click extends Component {
     public $count = 0;
+    protected $listeners = ['increment' => 'increment'];
 
     public function increment() {
         $this->count++;
