@@ -1,4 +1,19 @@
-.score, .score::after, .score::before {
+.canvas {
+  background-color: #5c6b28;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.canvas #dna {
+  position: fixed;
+}
+
+.canvas #dna img {
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+/* .score, .score::after, .score::before {
   -webkit-user-select: none;
   -webkit-user-drag: none;
   cursor: default;
@@ -28,7 +43,7 @@
   -webkit-user-drag: none;
   cursor: default;
 }
-
+*/
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
