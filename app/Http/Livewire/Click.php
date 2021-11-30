@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
 class Click extends Component {
-    public $dna;
 
     public function increment() {
        $userSave = UserSave::where('user_id', auth()->user()->id)->first();
