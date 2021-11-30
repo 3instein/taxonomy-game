@@ -1,6 +1,50 @@
+.score, .score::after, .score::before {
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  cursor: default;
+}
+
 .circle {
-  background-color: gray;
+  border: 2rem solid blue;
+  border-radius: 50%;
+  border-top: 2rem solid red;
+  border-bottom: 2rem solid red;
   height: 30rem;
   width: 30rem;
-  border-radius: 50%;
+  -webkit-animation: spin 75s linear infinite;
+  animation: spin 75s linear infinite;
+}
+
+#object-follow {
+  position: fixed;
+  padding: 25px;
+  background-color: green;
+}
+
+#object-follow #popup-text {
+  position: inherit;
+  visibility: hidden;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  cursor: default;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
