@@ -11,7 +11,7 @@ class Click extends Component {
     public function increment() {
        $userSave = UserSave::where('user_id', auth()->user()->id)->first();
        $userSave->update([
-           'dna' => $userSave->dna + 1
+           'evo' => $userSave->evo + 1
        ]);
     }
 

@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 
         UserSave::create([
             'user_id' => 1,
-            'dna' => 0
+            'evo' => 0
         ]);
     }
 }
