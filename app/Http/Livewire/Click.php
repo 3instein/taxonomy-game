@@ -2,13 +2,18 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\UserSave;
+use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
 class Click extends Component {
-    public $count = 0;
+    public $dna;
 
     public function increment() {
-        $this->count++;
+       $userSave = UserSave::where('user_id', auth()->user()->id)->first();
+       $userSave->update([
+           'dna' => $userSave->dna + 1
+       ]);
     }
 
     public function render() {

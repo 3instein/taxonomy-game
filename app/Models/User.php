@@ -40,6 +40,6 @@ class User extends Authenticatable {
     ];
 
     public function userSave() {
-        return $this->hasOne(Save::class);
+        return $this->hasOne(UserSave::class);
     }
 }
