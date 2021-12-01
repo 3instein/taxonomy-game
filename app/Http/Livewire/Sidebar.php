@@ -4,8 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class Click extends Component {
+class Sidebar extends Component {
     public function render() {
-        return view('livewire.click');
+        return view('livewire.sidebar');
     }
 }

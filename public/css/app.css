@@ -1,3 +1,15 @@
+/* ready to use class */
+.sidebar-active {
+  font-weight: bold;
+}
+
+/* sidebar */
+.sidebar {
+  min-width: 400px;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
 .canvas {
   background-color: #5c6b28;
   min-width: 100vw;
@@ -28,20 +40,6 @@
   width: 30rem;
   -webkit-animation: spin 75s linear infinite;
   animation: spin 75s linear infinite;
-}
-
-#object-follow {
-  position: fixed;
-  padding: 25px;
-  background-color: green;
-}
-
-#object-follow #popup-text {
-  position: inherit;
-  visibility: hidden;
-  -webkit-user-select: none;
-  -webkit-user-drag: none;
-  cursor: default;
 }
 
 @-webkit-keyframes spin {

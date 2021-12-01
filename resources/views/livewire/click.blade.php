@@ -8,6 +8,5 @@
     <div id="dna">
         <img src="{{ asset('assets/dna.png') }}">
     </div>
-    <h1 class="score">{{ auth()->user()->userSave->evo }}</h1>
-    <div wire:click="increment" class="circle"></div>
+    <div wire:click="$emit('addEvo')" class="circle"></div>
 </div>
