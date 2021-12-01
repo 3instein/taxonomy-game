@@ -13,7 +13,7 @@
   height: 4.5rem;
 }
 
-/* .score, .score::after, .score::before {
+.score, .score::after, .score::before {
   -webkit-user-select: none;
   -webkit-user-drag: none;
   cursor: default;
@@ -43,7 +43,7 @@
   -webkit-user-drag: none;
   cursor: default;
 }
-*/
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);

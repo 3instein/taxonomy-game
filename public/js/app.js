@@ -19,17 +19,32 @@
 (function () {
   const refreshRate = 1000 / 60;
   const maxXPosition = window.screen.width;
-  const dna = document.getElementById('dna');
-  let speedX = 10;
-  let positionX = 0;
+  const maxYPosition = window.screen.height;
+  const dnas = document.querySelectorAll('#dna');
+  console.log();
 
   window.setInterval(() => {
-    positionX = positionX + speedX;
-    if (positionX >= maxXPosition - 60) {
-      speedX = -10;
-    } else if (positionX <= 0) {
-      speedX = 10
+    for (const dna of dnas) {
+      let positionX = dna.getBoundingClientRect().left;
+      let positionY = dna.getBoundingClientRect().top;
+      let speedX = 1;
+      let speedY = 2;
+      positionX = positionX + speedX;
+      positionY = positionY + speedY;
+      if (positionX >= maxXPosition - 60) {
+        speedX = -1;
+      } else if (positionX <= 0) {
+        speedX = 1
+      }
+
+      if (positionY >= maxYPosition - 40) {
+        speedY = -2;
+      } else if (positionY <= 0) {
+        speedY = 2;
+      }
+
+      dna.style.left = positionX + 'px';
+      dna.style.top = positionY + 'px';
     }
-    dna.style.left = positionX + 'px';
   }, refreshRate);
 })();
