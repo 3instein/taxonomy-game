@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Family;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class FamilyController extends Controller
 {
@@ -35,7 +36,12 @@ class FamilyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'order_id' => ['exists:orders'],
+            'name' => ['string', 'unique:families']
+        ]);
+
+        Family::create($request->all());
     }
 
     /**
@@ -69,7 +75,11 @@ class FamilyController extends Controller
      */
     public function update(Request $request, Family $family)
     {
-        //
+        $request->validate([
+            'name' => ['string', Rule::unique('families')->ignore($family->name, 'name')],
+        ]);
+
+        $family->update($request->all());
     }
 
     /**
@@ -80,6 +90,6 @@ class FamilyController extends Controller
      */
     public function destroy(Family $family)
     {
-        //
+        $family->delete();
     }
 }

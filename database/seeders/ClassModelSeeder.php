@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ClassModel;
 use Illuminate\Database\Seeder;
 
 class ClassModelSeeder extends Seeder
@@ -13,6 +14,9 @@ class ClassModelSeeder extends Seeder
      */
     public function run()
     {
-        //
+        ClassModel::create([
+            'phylum_id' => 1,
+            'name' => 'Mamalia'
+        ]);
     }
 }

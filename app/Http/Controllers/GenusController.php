@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Genus;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class GenusController extends Controller
 {
@@ -35,7 +36,12 @@ class GenusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'family_id' => ['exists:family'],
+            'name' => ['string', 'unique:genera']
+        ]);
+
+        Genus::create($request->all());
     }
 
     /**
@@ -69,7 +75,11 @@ class GenusController extends Controller
      */
     public function update(Request $request, Genus $genus)
     {
-        //
+        $request->validate([
+            'name' => ['string', Rule::unique('genera')->ignore($genus->name, 'name')],
+        ]);
+
+        $genus->update($request->all());
     }
 
     /**
@@ -80,6 +90,6 @@ class GenusController extends Controller
      */
     public function destroy(Genus $genus)
     {
-        //
+        $genus->delete();
     }
 }

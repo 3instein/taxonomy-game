@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kingdom;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class KingdomController extends Controller
 {
@@ -35,7 +36,12 @@ class KingdomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'domain_id' => ['exists:domains'],
+            'name' => ['string', 'unique:kingdoms']
+        ]);
+
+        Kingdom::create($request->all());
     }
 
     /**
@@ -69,7 +75,11 @@ class KingdomController extends Controller
      */
     public function update(Request $request, Kingdom $kingdom)
     {
-        //
+        $request->validate([
+            'name' => ['string', Rule::unique('kingdoms')->ignore($kingdom->name, 'name')],
+        ]);
+
+        $kingdom->update($request->all());
     }
 
     /**
@@ -80,6 +90,6 @@ class KingdomController extends Controller
      */
     public function destroy(Kingdom $kingdom)
     {
-        //
+        $kingdom->delete();
     }
 }

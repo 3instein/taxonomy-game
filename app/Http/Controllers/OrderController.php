@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class OrderController extends Controller
 {
@@ -35,7 +36,12 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'class_id' => ['exists:classes'],
+            'name' => ['string', 'unique:orders']
+        ]);
+
+        Order::create($request->all());
     }
 
     /**
@@ -69,7 +75,11 @@ class OrderController extends Controller
      */
     public function update(Request $request, Order $order)
     {
-        //
+        $request->validate([
+            'name' => ['string', Rule::unique('orders')->ignore($order->name, 'name')],
+        ]);
+
+        $order->update($request->all());
     }
 
     /**
@@ -80,6 +90,6 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
     }
 }

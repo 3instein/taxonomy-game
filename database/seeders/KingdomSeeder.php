@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kingdom;
 use Illuminate\Database\Seeder;
 
 class KingdomSeeder extends Seeder
@@ -13,6 +14,9 @@ class KingdomSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Kingdom::create([
+            'domain_id' => 1,
+            'name' => 'Animalia'
+        ]);
     }
 }

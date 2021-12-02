@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Family;
 use Illuminate\Database\Seeder;
 
 class FamilySeeder extends Seeder
@@ -13,6 +14,9 @@ class FamilySeeder extends Seeder
      */
     public function run()
     {
-        //
+        Family::create([
+            'order_id' => 1,
+            'name' => 'Hominidae'
+        ]);
     }
 }

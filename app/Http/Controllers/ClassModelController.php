@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ClassModel;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class ClassModelController extends Controller
 {
@@ -35,7 +36,12 @@ class ClassModelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'phylum_id' => ['exists:phyla'],
+            'name' => ['string', 'unique:classes']
+        ]);
+
+        ClassModel::create($request->all());
     }
 
     /**
@@ -69,7 +75,11 @@ class ClassModelController extends Controller
      */
     public function update(Request $request, ClassModel $classModel)
     {
-        //
+        $request->validate([
+            'name' => ['string', Rule::unique('classes')->ignore($classModel->name, 'name')],
+        ]);
+
+        $classModel->update($request->all());
     }
 
     /**
@@ -80,6 +90,6 @@ class ClassModelController extends Controller
      */
     public function destroy(ClassModel $classModel)
     {
-        //
+        $classModel->delete();
     }
 }
