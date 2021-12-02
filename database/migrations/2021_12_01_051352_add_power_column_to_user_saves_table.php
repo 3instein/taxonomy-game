@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDnaColumnToUserSavesTable extends Migration {
+class AddPowerColumnToUserSavesTable extends Migration {
     /**
      * Run the migrations.
      *
@@ -12,7 +12,7 @@ class AddDnaColumnToUserSavesTable extends Migration {
      */
     public function up() {
         Schema::table('user_saves', function (Blueprint $table) {
-            $table->unsignedBigInteger('dna')->after('user_id');
+            $table->unsignedBigInteger('power')->default(1)->after('user_id');
         });
     }
 
@@ -23,7 +23,7 @@ class AddDnaColumnToUserSavesTable extends Migration {
      */
     public function down() {
         Schema::table('user_saves', function (Blueprint $table) {
-            $table->dropColumn('dna');
+            $table->dropColumn('power');
         });
     }
 }

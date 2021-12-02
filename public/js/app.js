@@ -17,11 +17,12 @@
 //   popup.style.visibility = 'visible';
 // });
 (function () {
+
+  // dna animation
   const refreshRate = 1000 / 60;
   const maxXPosition = window.screen.width;
   const maxYPosition = window.screen.height;
   const dnas = document.querySelectorAll('#dna');
-  console.log();
 
   window.setInterval(() => {
     for (const dna of dnas) {
@@ -47,4 +48,6 @@
       dna.style.top = positionY + 'px';
     }
   }, refreshRate);
+
+  // sidebar page changing
 })();
