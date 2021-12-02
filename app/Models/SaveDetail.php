@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class SaveDetail extends Model {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function userSave() {
         return $this->belongsTo(UserSave::class);
     }

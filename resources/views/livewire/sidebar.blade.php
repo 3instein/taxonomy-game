@@ -15,27 +15,8 @@
                         <p class="card-text">With supporting text below as a natural lead-in to additional content.
                         </p>
                     </div>
-                    <span wire:click="$emit('upgradePower')" class="btn btn-primary align-self-baseline">Upgrade Power</span>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body d-flex">
-                    <div>
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                        </p>
-                    </div>
-                    <a href="#" class="btn btn-primary align-self-baseline">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body d-flex">
-                    <div>
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                        </p>
-                    </div>
-                    <a href="#" class="btn btn-primary align-self-baseline">Go somewhere</a>
+                    <span wire:click="$emit('upgradePower')" class="btn btn-primary align-self-baseline">Upgrade
+                        Power</span>
                 </div>
             </div>
         </div>
@@ -46,13 +27,14 @@
             <div class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
+                        <img src="{{ asset('assets/dna.png') }}" class="img-fluid rounded-start" alt="...">
                     </div>
                     <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural
-                                lead-in to additional content. This content is a little bit longer.</p>
+                        <div class="card-body d-flex justify-content-between">
+                            <div>
+                                <h5 class="card-title">DNA</h5>
+                            </div>
+                            <span wire:click="$emit('unlockCreature')" class="btn btn-primary align-self-baseline">Unlock</span>
                         </div>
                     </div>
                 </div>

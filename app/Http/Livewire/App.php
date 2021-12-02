@@ -2,13 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\SaveDetail;
 use App\Models\UserSave;
 use Livewire\Component;
 
 class App extends Component {
     protected $listeners = [
         'addEvo' => 'click',
-        'upgradePower' => 'upgradePower'
+        'upgradePower' => 'upgradePower',
+        'unlockCreature' => 'unlockCreature'
     ];
 
     public function click() {
@@ -28,6 +30,15 @@ class App extends Component {
                 'evo' => $evo - $userSave->power
             ]);
         }
+    }
+
+    public function unlockCreature() {
+        $userSave = UserSave::where('user_id', auth()->user()->id)->first();
+
+        SaveDetail::create([
+            'save_id' => $userSave->id,
+            'species_id' => 1
+        ]);
     }
 
     public function render() {
