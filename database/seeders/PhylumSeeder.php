@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Phylum;
 use Illuminate\Database\Seeder;
 
 class PhylumSeeder extends Seeder
@@ -13,6 +14,9 @@ class PhylumSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Phylum::create([
+            'kingdom_id' => 1,
+            'name' => 'Chordata'
+        ]);
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Species;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class SpeciesController extends Controller
 {
@@ -35,7 +36,12 @@ class SpeciesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'genus_id' => ['exists:genera'],
+            'name' => ['string', 'unique:species']
+        ]);
+
+        Species::create($request->all());
     }
 
     /**
@@ -69,7 +75,11 @@ class SpeciesController extends Controller
      */
     public function update(Request $request, Species $species)
     {
-        //
+        $request->validate([
+            'name' => ['string', Rule::unique('species')->ignore($species->name, 'name')],
+        ]);
+
+        $species->update($request->all());
     }
 
     /**
@@ -80,6 +90,6 @@ class SpeciesController extends Controller
      */
     public function destroy(Species $species)
     {
-        //
+        $species->delete();
     }
 }

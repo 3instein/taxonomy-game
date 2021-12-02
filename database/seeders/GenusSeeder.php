@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Genus;
 use Illuminate\Database\Seeder;
 
 class GenusSeeder extends Seeder
@@ -13,6 +14,9 @@ class GenusSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Genus::create([
+            'family_id' => 1,
+            'name' => 'Homo'
+        ]);
     }
 }

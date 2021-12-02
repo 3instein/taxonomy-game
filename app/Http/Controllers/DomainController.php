@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Domain;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class DomainController extends Controller
 {
@@ -24,7 +25,7 @@ class DomainController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.creatures.create');
     }
 
     /**
@@ -35,7 +36,11 @@ class DomainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['string', 'unique:domains']
+        ]);
+
+        Domain::create($request->all());
     }
 
     /**
@@ -57,7 +62,9 @@ class DomainController extends Controller
      */
     public function edit(Domain $domain)
     {
-        //
+        return view('admin.creatures.edit', [
+            'domain' => $domain
+        ]);
     }
 
     /**
@@ -69,7 +76,11 @@ class DomainController extends Controller
      */
     public function update(Request $request, Domain $domain)
     {
-        //
+        $request->validate([
+            'name' => ['string', Rule::unique('domains')->ignore($domain->name, 'name')],
+        ]);
+
+        $domain->update($request->all());
     }
 
     /**
@@ -80,6 +91,6 @@ class DomainController extends Controller
      */
     public function destroy(Domain $domain)
     {
-        //
+        $domain->delete();
     }
 }

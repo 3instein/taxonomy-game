@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\DomainController;
 use App\Http\Livewire\App;
+use App\Models\Domain;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +21,9 @@ Route::get('/', App::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::prefix('admin')->group(function () {
+});
+Route::resource('domains', DomainController::class);
 
 require __DIR__.'/auth.php';

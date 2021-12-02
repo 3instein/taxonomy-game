@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Phylum extends Model {
     use HasFactory;
+    
+    protected $table = 'Phyla';
 
     protected $guarded = ['id'];
 

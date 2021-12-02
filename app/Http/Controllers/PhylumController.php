@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Phylum;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PhylumController extends Controller
 {
@@ -35,7 +36,12 @@ class PhylumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'kingdom_id' => ['exists:kingdoms'],
+            'name' => ['string', 'unique:phyla']
+        ]);
+
+        Phylum::create($request->all());
     }
 
     /**
@@ -69,7 +75,11 @@ class PhylumController extends Controller
      */
     public function update(Request $request, Phylum $phylum)
     {
-        //
+        $request->validate([
+            'name' => ['string', Rule::unique('phyla')->ignore($phylum->name, 'name')],
+        ]);
+
+        $phylum->update($request->all());
     }
 
     /**
@@ -80,6 +90,6 @@ class PhylumController extends Controller
      */
     public function destroy(Phylum $phylum)
     {
-        //
+        $phylum->delete();
     }
 }
