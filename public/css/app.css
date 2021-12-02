@@ -10,6 +10,10 @@
   background-color: #fff;
 }
 
+.sidebar .sidebar-link:hover {
+  cursor: pointer;
+}
+
 .canvas {
   background-color: #5c6b28;
   min-width: 100vw;
