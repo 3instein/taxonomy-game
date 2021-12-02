@@ -50,4 +50,26 @@
   }, refreshRate);
 
   // sidebar page changing
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+  for (let i = 0; i < sidebarLinks.length; i++) {
+    sidebarLinks[i].addEventListener('click', function () {
+      if (!sidebarLinks[i].classList.contains('sidebar-active')) {
+        for (let j = 0; j < sidebarLinks.length; j++) {
+          if (sidebarLinks[j].classList.contains('sidebar-active')) {
+            sidebarLinks[j].classList.remove('sidebar-active');
+          }
+        }
+        if (sidebarLinks[i].innerHTML == 'Creatures') {
+          document.querySelector('.creatures-wrapper').classList.remove('d-none');
+          document.querySelector('.upgrades-wrapper').classList.add('d-none');
+        } else if (sidebarLinks[i].innerHTML == 'Upgrades') {
+          document.querySelector('.creatures-wrapper').classList.add('d-none');
+          document.querySelector('.upgrades-wrapper').classList.remove('d-none');
+        }
+        sidebarLinks[i].classList.add('sidebar-active');
+      } else {
+        sidebarLinks[i].classList.remove('sidebar-active');
+      }
+    });
+  }
 })();

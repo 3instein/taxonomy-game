@@ -22,7 +22,7 @@
         </div>
 
         {{-- creatures --}}
-        <div class="creatures-wrapper">
+        <div class="creatures-wrapper d-none">
             <h5 class="card-header">Creatures</h5>
             <div class="card mb-3">
                 <div class="row g-0">
