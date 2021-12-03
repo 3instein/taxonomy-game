@@ -5,15 +5,13 @@ namespace Database\Seeders;
 use App\Models\Domain;
 use Illuminate\Database\Seeder;
 
-class DomainSeeder extends Seeder
-{
+class DomainSeeder extends Seeder {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         Domain::create([
             'name' => 'Eukarya'
         ]);
