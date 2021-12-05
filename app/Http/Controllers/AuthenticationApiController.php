@@ -67,6 +67,7 @@ class AuthenticationApiController extends Controller {
         ]);
 
         return response()->json(([
+            'user' => $user,
             'token' => $user->createToken('tokens')->plainTextToken,
             'status_code' => 201
         ]), 201);
