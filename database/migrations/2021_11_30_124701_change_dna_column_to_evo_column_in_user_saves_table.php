@@ -15,7 +15,7 @@ class ChangeDnaColumnToEvoColumnInUserSavesTable extends Migration
     {
         Schema::table('user_saves', function (Blueprint $table) {
             $table->dropColumn('dna');
-            $table->unsignedBigInteger('evo')->after('user_id');
+            $table->unsignedBigInteger('evo')->after('student_id');
         });
     }
 
@@ -27,7 +27,7 @@ class ChangeDnaColumnToEvoColumnInUserSavesTable extends Migration
     public function down()
     {
         Schema::table('user_saves', function (Blueprint $table) {
-            $table->unsignedBigInteger('dna')->after('user_id');
+            $table->unsignedBigInteger('dna')->after('student_id');
             $table->dropColumn('evo');
         });
     }

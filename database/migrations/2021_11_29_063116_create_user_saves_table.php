@@ -13,7 +13,7 @@ class CreateUserSavesTable extends Migration {
     public function up() {
         Schema::create('user_saves', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')
+            $table->foreignId('student_id')
                 ->constrained()
                 ->cascadeOnDelete();
             $table->timestamps();

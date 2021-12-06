@@ -12,7 +12,7 @@ class AddPowerColumnToUserSavesTable extends Migration {
      */
     public function up() {
         Schema::table('user_saves', function (Blueprint $table) {
-            $table->unsignedBigInteger('power')->default(1)->after('user_id');
+            $table->unsignedBigInteger('power')->default(1)->after('student_id');
         });
     }
 
