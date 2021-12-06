@@ -22,11 +22,14 @@ class UserSeeder extends Seeder
             'username' => 'admin',
             'email' => 'admin@taxon.com',
             'email_verified_at' => now(),
+            'school' => 'taxon',
+            'city' => 'taxon',
+            'birthyear' => '2002',
             'password' => bcrypt('root'),
         ]);
 
         UserSave::create([
-            'user_id' => 1,
+            'student_id' => 1,
             'evo' => 0
         ]);
     }

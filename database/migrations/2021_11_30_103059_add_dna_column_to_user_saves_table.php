@@ -12,7 +12,7 @@ class AddDnaColumnToUserSavesTable extends Migration {
      */
     public function up() {
         Schema::table('user_saves', function (Blueprint $table) {
-            $table->unsignedBigInteger('dna')->after('user_id');
+            $table->unsignedBigInteger('dna')->after('student_id');
         });
     }
 
