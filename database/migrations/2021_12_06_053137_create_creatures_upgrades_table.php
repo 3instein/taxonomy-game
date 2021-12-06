@@ -22,6 +22,7 @@ class CreateCreaturesUpgradesTable extends Migration
             $table->string('description');
             $table->unsignedBigInteger('price');
             $table->foreignId('prerequisite_id')
+                ->nullable()
                 ->references('id')
                 ->on('creatures_upgrades')
                 ->constrained()

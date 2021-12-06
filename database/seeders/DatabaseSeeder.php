@@ -24,7 +24,8 @@ class DatabaseSeeder extends Seeder
             OrderSeeder::class,
             FamilySeeder::class,
             GenusSeeder::class,
-            SpeciesSeeder::class
+            SpeciesSeeder::class,
+            CreaturesUpgradesSeeder::class,
         ]);
     }
 }
