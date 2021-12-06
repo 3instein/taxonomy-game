@@ -19,6 +19,7 @@ class CreateUpgradesTable extends Migration
             $table->string('description');
             $table->unsignedBigInteger('price');
             $table->foreignId('prerequisite_id')
+                ->nullable()
                 ->references('id')
                 ->on('upgrades')
                 ->constrained()

@@ -42,6 +42,6 @@ class User extends Authenticatable {
     ];
 
     public function userSave() {
-        return $this->hasOne(UserSave::class);
+        return $this->hasOne(UserSave::class, 'student_id');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\SaveCreature;
 use App\Models\SaveDetail;
 use App\Models\UserSave;
 use Livewire\Component;
@@ -14,14 +15,14 @@ class App extends Component {
     ];
 
     public function click() {
-        $userSave = UserSave::where('user_id', auth()->user()->id)->first();
+        $userSave = UserSave::where('student_id', auth()->user()->id)->first();
         $userSave->update([
             'evo' => $userSave->evo + $userSave->power
         ]);
     }
 
     public function upgradePower() {
-        $userSave = UserSave::where('user_id', auth()->user()->id)->first();
+        $userSave = UserSave::where('student_id', auth()->user()->id)->first();
         $evo = $userSave->evo;
 
         if ($evo > $userSave->power) {
@@ -32,12 +33,12 @@ class App extends Component {
         }
     }
 
-    public function unlockCreature() {
-        $userSave = UserSave::where('user_id', auth()->user()->id)->first();
+    public function unlockCreature($species_id) {
+        $userSave = UserSave::where('student_id', auth()->user()->id)->first();
 
-        SaveDetail::create([
+        SaveCreature::create([
             'save_id' => $userSave->id,
-            'species_id' => 1
+            'species_id' => $species_id
         ]);
     }
 
