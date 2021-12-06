@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -53,4 +53,48 @@
             </div>
         </form>
     </x-auth-card>
-</x-guest-layout>
+</x-guest-layout> --}}
+<x-app-layout>
+    <div class="container-fluid bg-gray">
+        <div class="row height-100">
+            <div class="col-md-3 mx-auto my-auto">
+                <h1 class="fw-bold text-center login-brand text-primary">Taxon</h1>
+                <h2 class="text-center fw-bold">Masuk ke akun anda</h2>
+                <h6 class="text-center">atau <a class="text-decoration-none" href="{{ route('register') }}">daftar
+                        sekarang</a></h6>
+                <form class="card p-5 border-0 shadow-sm mt-4 login-form" method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" name="email"
+                            class="form-control shadow-none @error('email') is-invalid @enderror" id="email"
+                            aria-describedby="emailHelp" value="{{ old('email') }}">
+                        @error('email')
+                            <div class="text-start invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password"
+                            class="form-control shadow-none @error('password') is-invalid @enderror" id="password">
+                        @error('password')
+                            <div class="text-start invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input shadow-none" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Ingat saya</label>
+                        </div>
+                        <a class="text-decoration-none" href="">Lupa password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary py-2 shadow-none">Masuk</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
