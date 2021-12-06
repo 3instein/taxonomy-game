@@ -1,21 +1,3 @@
-// const object = document.getElementById('object-follow');
-// const popup = document.getElementById('popup-text');
-
-// document.addEventListener('mousemove', function (e) {
-//   object.style.cssText = `
-//     left: ${e.clientX - 25}px;
-//     top: ${e.clientY - 25}px;
-//   `;
-
-//   popup.style.cssText = `
-//     left: ${e.clientX - 5}px;
-//     top: ${e.clientY - 45}px;
-//   `;
-// });
-
-// document.addEventListener('click', function () {
-//   popup.style.visibility = 'visible';
-// });
 (function () {
 
   // dna animation
@@ -69,6 +51,25 @@
         sidebarLinks[i].classList.add('sidebar-active');
       } else {
         sidebarLinks[i].classList.remove('sidebar-active');
+      }
+    });
+
+    // collapse sidebar
+    let isOpen = false;
+    const opener = document.querySelector('.open-sidebar');
+    const sideBar = document.querySelector('.sidebar');
+    const canvas = document.querySelector('.canvas');
+    opener.addEventListener('click', function () {
+      if (!isOpen) {
+        sideBar.style.width = '400px';
+        opener.style.left = 'calc(400px - 64px)';
+        canvas.style.marginLeft = '400px';
+        isOpen = true;
+      } else {
+        sideBar.style.width = '0';
+        opener.style.left = 'calc(0% - 64px)';
+        canvas.style.marginLeft = '0';
+        isOpen = false;
       }
     });
   }

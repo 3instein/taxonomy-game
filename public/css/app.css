@@ -17,15 +17,50 @@
   background-color: var(--gray);
 }
 
-/* sidebar */
+/* sidebar width 400px*/
 .sidebar {
-  min-width: 400px;
-  min-height: 100vh;
-  background-color: #fff;
+  width: 0;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.1s;
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 .sidebar .sidebar-link:hover {
   cursor: pointer;
+}
+
+.open-sidebar {
+  position: absolute;
+  top: 50%;
+  left: calc(0% - 64px);
+  z-index: 1;
+  width: 176px;
+  height: 0;
+  border-bottom: 50px solid rgba(255, 255, 255, 0.75);
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-radius: 60px 60px 0 0;
+  transform: rotate(90deg);
+  transition: 0.1s;
+}
+
+.open-sidebar::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #000;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: calc(50px - 36px);
 }
 
 /* click canvas */
@@ -33,6 +68,7 @@
   background-color: #5c6b28;
   min-width: 100vw;
   min-height: 100vh;
+  transition: .1s;
 }
 
 .canvas #dna {

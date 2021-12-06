@@ -1,4 +1,4 @@
-<div class="position-absolute start-0 sidebar">
+<div class="sidebar">
     <div class="d-flex align-items-center justify-content-evenly py-2 border-bottom">
         <span class="sidebar-link sidebar-active">Upgrades</span>
         <span class="sidebar-link">Creatures</span>
@@ -34,7 +34,8 @@
                             <div>
                                 <h5 class="card-title">DNA</h5>
                             </div>
-                            <span wire:click="$emit('unlockCreature')" class="btn btn-primary align-self-baseline">Unlock</span>
+                            <span wire:click="$emit('unlockCreature')"
+                                class="btn btn-primary align-self-baseline">Unlock</span>
                         </div>
                     </div>
                 </div>

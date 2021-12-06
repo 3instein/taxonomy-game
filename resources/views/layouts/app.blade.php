@@ -27,7 +27,7 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        <main class="position-relative app">
+        <main class="app">
             {{ $slot }}
         </main>
     </div>
