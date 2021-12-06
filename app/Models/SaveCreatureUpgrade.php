@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Species extends Model {
+class SaveCreatureUpgrade extends Model {
     use HasFactory;
 
-    protected $guarded = ['id'];
-
-    public function genus() {
-        return $this->belongsTo(Genus::class);
-    }
+    protected $table = 'save_creatures_upgrades';
 
     public function creatureUpgrades() {
-        return $this->hasMany(CreatureUpgrade::class);
+        return $this->belongsTo(CreatureUpgrade::class);
     }
 
     public function saveCreature() {

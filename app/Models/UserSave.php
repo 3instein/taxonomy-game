@@ -12,11 +12,15 @@ class UserSave extends Model {
         'id'
     ];
 
-    public function user() {
+    public function student() {
         return $this->belongsTo(User::class);
     }
 
-    public function saveDetails() {
-        return $this->hasMany(SaveDetail::class);
+    public function saveCreatures() {
+        return $this->hasMany(SaveCreature::class);
+    }
+
+    public function saveUpgrades() {
+        return $this->hasMany(SaveUpgrade::class);
     }
 }

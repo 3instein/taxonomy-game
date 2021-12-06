@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SaveDetail extends Model {
+class SaveUpgrade extends Model {
     use HasFactory;
 
-    protected $guarded = [];
-
+    protected $table = 'save_upgrades';
+    
     public function userSave() {
         return $this->belongsTo(UserSave::class);
     }
 
-    public function species() {
-        return $this->belongsTo(Species::class);
+    public function upgrade() {
+        return $this->belongsTo(Upgrade::class);
     }
 }
