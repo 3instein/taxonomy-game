@@ -19,7 +19,7 @@ class CreatureUpgrade extends Model {
         return $this->belongsTo(self::class);
     }
 
-    public function saveCreatureUpgrade() {
-        return $this->hasOne(SaveCreatureUpgrade::class);
+    public function saveCreatures() {
+        return $this->belongsToMany(SaveCreature::class);
     }
 }

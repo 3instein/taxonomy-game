@@ -11,8 +11,8 @@ class SaveCreature extends Model {
     protected $table = 'save_creatures';
     protected $guarded = ['id'];
 
-    public function saveCreatureUpgrade() {
-        return $this->belongsTo(SaveCreatureUpgrade::class);
+    public function creatureUpgrades() {
+        return $this->belongsToMany(CreatureUpgrade::class);
     }
 
     public function species() {
