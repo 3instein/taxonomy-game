@@ -14,52 +14,62 @@ class SpeciesSeeder extends Seeder {
     public function run() {
         Species::create([
             'genus_id' => 1,
-            'name' => 'Homo Sapiens'
+            'name' => 'Homo Sapiens',
+            'price' => 100
         ]);
 
         Species::create([
             'genus_id' => 2,
-            'name' => 'Felis Catus'
+            'name' => 'Felis Catus',
+            'price' => 100
         ]);
 
         Species::create([
             'genus_id' => 3,
-            'name' => 'Canis Familiaris'
+            'name' => 'Canis Familiaris',
+            'price' => 100
         ]);
 
         Species::create([
             'genus_id' => 4,
-            'name' => 'Lumbricus Rubellus'
+            'name' => 'Lumbricus Rubellus',
+            'price' => 100
         ]);
 
         Species::create([
             'genus_id' => 5,
-            'name' => 'Orcinus Orca'
+            'name' => 'Orcinus Orca',
+            'price' => 100
         ]);
 
         Species::create([
             'genus_id' => 6,
-            'name' => 'Rosa Hybrida'
+            'name' => 'Rosa Hybrida',
+            'price' => 100
         ]);
 
         Species::create([
             'genus_id' => 7,
-            'name' => 'Bambusa Vulgaris'
+            'name' => 'Bambusa Vulgaris',
+            'price' => 100
         ]);
 
         Species::create([
             'genus_id' => 8,
-            'name' => 'Helianthus Annuus'
+            'name' => 'Helianthus Annuus',
+            'price' => 100
         ]);
 
         Species::create([
             'genus_id' => 9,
-            'name' => 'Nymphaea Alba'
+            'name' => 'Nymphaea Alba',
+            'price' => 100
         ]);
 
         Species::create([
             'genus_id' => 10,
-            'name' => 'Bauhinia Purpurea'
+            'name' => 'Bauhinia Purpurea',
+            'price' => 100
         ]);
     }
 }

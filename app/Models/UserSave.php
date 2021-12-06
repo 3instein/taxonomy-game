@@ -16,11 +16,11 @@ class UserSave extends Model {
         return $this->belongsTo(User::class);
     }
 
-    public function saveCreatures() {
-        return $this->hasMany(SaveCreature::class);
+    public function creatures() {
+        return $this->hasMany(SaveCreature::class, 'save_id');
     }
 
-    public function saveUpgrades() {
-        return $this->hasMany(SaveUpgrade::class);
+    public function upgrades() {
+        return $this->hasMany(SaveUpgrade::class, 'upgrade_id');
     }
 }
