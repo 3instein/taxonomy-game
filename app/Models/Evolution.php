@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Upgrade extends Model {
+class Evolution extends Model {
     use HasFactory;
 
-    protected $table = 'upgrades';
+    protected $table = 'evolutions';
     protected $guarded = ['id'];
 
     public function preresquisiteEvolution() {
@@ -16,6 +16,6 @@ class Upgrade extends Model {
     }
 
     public function userCreatureEvolutions() {
-        return $this->belongsToMany('App\Student', 'students');
+        return $this->belongsToMany(User::class, 'students');
     }
 }
