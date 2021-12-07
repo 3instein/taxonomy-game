@@ -15,7 +15,7 @@ class CreatureEvolution extends Model {
         return $this->hasOne(Species::class);
     }
 
-    public function prerequisiteCreature() {
+    public function prerequisiteEvolution() {
         return $this->belongsTo(self::class);
     }
 
