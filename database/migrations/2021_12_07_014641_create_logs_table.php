@@ -4,18 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserSavesTable extends Migration {
+class CreateLogsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up() {
-        Schema::create('user_saves', function (Blueprint $table) {
+        Schema::create('logs', function (Blueprint $table) {
             $table->id();
+            $table->string('table');
             $table->foreignId('student_id')
                 ->constrained()
                 ->cascadeOnDelete();
+            $table->string('description');
+            $table->string('route');
+            $table->string('ip');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateUserSavesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('user_saves');
+        Schema::dropIfExists('logs');
     }
 }

@@ -41,7 +41,16 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
-    public function userSave() {
-        return $this->hasOne(UserSave::class, 'student_id');
+    
+    public function userCreatures() {
+        return $this->hasMany(UserCreature::class);
+    }
+
+    public function userEvolutions() {
+        return $this->belongsToMany(Evolution::class, 'evolutions');
+    }
+
+    public function logs() {
+        return $this->hasMany(Log::class);
     }
 }

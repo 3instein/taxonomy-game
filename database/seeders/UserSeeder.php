@@ -6,15 +6,13 @@ use App\Models\User;
 use App\Models\UserSave;
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
-{
+class UserSeeder extends Seeder {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
 
         //Admin Account
         User::create([
@@ -26,11 +24,6 @@ class UserSeeder extends Seeder
             'city' => 'taxon',
             'birthyear' => '2002',
             'password' => bcrypt('root'),
-        ]);
-
-        UserSave::create([
-            'student_id' => 1,
-            'evo' => 0
         ]);
     }
 }
