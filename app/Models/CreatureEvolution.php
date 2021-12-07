@@ -20,6 +20,6 @@ class CreatureEvolution extends Model {
     }
 
     public function creatureEvolutions() {
-        return $this->belongsToMany('App\UserCreature', 'user_creatures');
+        return $this->belongsToMany(UserCreature::class, 'user_creatures');
     }
 }

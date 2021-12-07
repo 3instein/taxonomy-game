@@ -12,7 +12,7 @@ class UserCreature extends Model {
         'id'
     ];
 
-    public function student() {
+    public function user() {
         return $this->belongsTo(User::class);
     }
 
@@ -21,6 +21,6 @@ class UserCreature extends Model {
     }
 
     public function userCreaturesEvolutions() {
-        return $this->belongsToMany('App\CreatureEvolution', 'creatures_evolutions');
+        return $this->belongsToMany(CreatureEvolution::class, 'creatures_evolutions');
     }
 }
