@@ -4,22 +4,22 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSaveUpgradesTable extends Migration
-{
+class CreateUserCreaturesEvolutionsTable extends Migration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('save_upgrades', function (Blueprint $table) {
-            $table->foreignId('save_id')
+    public function up() {
+        Schema::create('user_creatures_evolutions', function (Blueprint $table) {
+            $table->foreignId('user_creature_id')
                 ->references('id')
-                ->on('user_saves')
+                ->on('user_creatures')
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->foreignId('upgrade')
+            $table->foreignId('creature_evolution_id')
+                ->references('id')
+                ->on('creatures_evolutions')
                 ->constrained()
                 ->cascadeOnDelete();
             $table->timestamps();
@@ -31,8 +31,7 @@ class CreateSaveUpgradesTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::dropIfExists('save_upgrades');
+    public function down() {
+        Schema::dropIfExists('user_creatures_evolutions');
     }
 }

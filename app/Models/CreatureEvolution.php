@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CreatureUpgrade extends Model {
+class CreatureEvolution extends Model {
     use HasFactory;
 
-    protected $table = 'creatures_upgrades';
+    protected $table = 'creatures_evolutions';
     protected $guarded = ['id'];
 
-    public function species() {
+    public function creatureSpecies() {
         return $this->hasOne(Species::class);
     }
 
-    public function prerequisite() {
+    public function prerequisiteCreature() {
         return $this->belongsTo(self::class);
     }
 
-    public function saveCreatures() {
-        return $this->belongsToMany(SaveCreature::class);
+    public function creatureEvolutions() {
+        return $this->belongsToMany('App\UserCreature', 'user_creatures');
     }
 }

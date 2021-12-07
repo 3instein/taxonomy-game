@@ -11,11 +11,11 @@ class Upgrade extends Model {
     protected $table = 'upgrades';
     protected $guarded = ['id'];
 
-    public function saveUpgrades() {
-        return $this->hasMany(SaveUpgrade::class);
+    public function preresquisiteEvolution() {
+        return $this->belongsTo(self::class);
     }
 
-    public function preresquisite() {
-        return $this->belongsTo(self::class);
+    public function userCreatureEvolutions() {
+        return $this->belongsToMany('App\Student', 'students');
     }
 }

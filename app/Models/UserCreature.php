@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserSave extends Model {
+class UserCreature extends Model {
     use HasFactory;
 
     protected $guarded = [
@@ -16,11 +16,11 @@ class UserSave extends Model {
         return $this->belongsTo(User::class);
     }
 
-    public function creatures() {
-        return $this->hasMany(SaveCreature::class, 'save_id');
+    public function userSpecies() {
+        return $this->hasOne(Species::class);
     }
 
-    public function upgrades() {
-        return $this->hasMany(SaveUpgrade::class, 'upgrade_id');
+    public function userCreaturesEvolutions() {
+        return $this->belongsToMany('App\CreatureEvolution', 'creatures_evolutions');
     }
 }

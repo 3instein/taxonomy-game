@@ -14,8 +14,8 @@ class Species extends Model {
         return $this->belongsTo(Genus::class);
     }
 
-    public function creatureUpgrades() {
-        return $this->hasMany(CreatureUpgrade::class);
+    public function creatureEvolutions() {
+        return $this->hasMany(CreatureEvolution::class);
     }
 
     public function saveCreature() {
