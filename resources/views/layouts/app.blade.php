@@ -27,7 +27,7 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
-        <main class="app">
+        <main class="app {{ request()->is('/') ? 'overflow-hidden' : '' }}">
             {{ $slot }}
         </main>
     </div>
