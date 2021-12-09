@@ -1,5 +1,8 @@
 <div>
-    {{-- <h1 class="score">{{ auth()->user()->userSave->evo }}</h1> --}}
+    <div class="score text-center py-2 position-fixed start-50 translate-middle-x rounded">
+        <h1>{{ auth()->user()->evo }}</h1>
+        <p class="mb-0">{{ auth()->user()->power }} Click Power</p>
+    </div>
     <livewire:sidebar />
     <livewire:click />
     {{-- <form action="{{ route('logout') }}" method="POST">

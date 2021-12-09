@@ -3,7 +3,7 @@
         <span class="sidebar-link sidebar-active">Upgrades</span>
         <span class="sidebar-link">Creatures</span>
     </div>
-    <div class="wrapper" style="max-width: 400px;">
+    <div class="wrapper overflow-auto" style="max-width: 400px;">
 
         {{-- upgrade --}}
         <div class="upgrades-wrapper">
@@ -24,22 +24,24 @@
         {{-- creatures --}}
         <div class="creatures-wrapper d-none">
             <h5 class="card-header">Creatures</h5>
-            <div class="card mb-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="{{ asset('assets/dna.png') }}" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body d-flex justify-content-between">
-                            <div>
-                                <h5 class="card-title">DNA</h5>
+            @foreach ($specieses as $species)
+                <div class="card">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="{{ asset('assets/dna.png') }}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body d-flex justify-content-between">
+                                <div>
+                                    <h5 class="card-title">{{ $species->name }}</h5>
+                                </div>
+                                <span wire:click="$emit('unlockCreature')"
+                                    class="btn btn-primary align-self-baseline">Unlock for {{ $species->price }}</span>
                             </div>
-                            <span wire:click="$emit('unlockCreature')"
-                                class="btn btn-primary align-self-baseline">Unlock</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

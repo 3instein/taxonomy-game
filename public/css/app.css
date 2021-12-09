@@ -28,6 +28,12 @@
   overflow-x: hidden;
   transition: 0.1s;
   background-color: rgba(255, 255, 255, 0.75);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
 
 .sidebar .sidebar-link:hover {
@@ -84,6 +90,13 @@
   -webkit-user-select: none;
   -webkit-user-drag: none;
   cursor: default;
+}
+
+.score {
+  transition: .1s;
+  margin-top: 24px;
+  width: 400px;
+  background-color: rgba(0, 0, 0, .5);
 }
 
 .circle {

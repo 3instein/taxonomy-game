@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\SaveCreature;
-use App\Models\SaveDetail;
+use App\Models\User;
 use App\Models\UserSave;
 use Livewire\Component;
 
@@ -15,9 +15,9 @@ class App extends Component {
     ];
 
     public function click() {
-        $userSave = UserSave::where('student_id', auth()->user()->id)->first();
-        $userSave->update([
-            'evo' => $userSave->evo + $userSave->power
+        $user = User::whereId(auth()->user()->id)->first();
+        $user->update([
+            'evo' => $user->evo + $user->power
         ]);
     }
 
