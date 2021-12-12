@@ -24,7 +24,7 @@
         {{-- creatures --}}
         <div class="creatures-wrapper d-none">
             <h5 class="card-header">Creatures</h5>
-            @foreach ($specieses as $species)
+            @foreach ($species as $creature)
                 <div class="card">
                     <div class="row g-0">
                         <div class="col-md-4">
@@ -33,10 +33,10 @@
                         <div class="col-md-8">
                             <div class="card-body d-flex justify-content-between">
                                 <div>
-                                    <h5 class="card-title">{{ $species->name }}</h5>
+                                    <h5 class="card-title">{{ $creature->name }}</h5>
                                 </div>
                                 <span wire:click="$emit('unlockCreature')"
-                                    class="btn btn-primary align-self-baseline">Unlock for {{ $species->price }}</span>
+                                    class="btn btn-primary align-self-baseline">Unlock for {{ $creature->price }}</span>
                             </div>
                         </div>
                     </div>
