@@ -13,10 +13,9 @@ class EvolutionSeeder extends Seeder {
      */
     public function run() {
         Evolution::create([
-            'name' => 'Jerapah Leher Pendek',
-            'description' => 'Jerapah ini lehernya pendek',
-            'price' => 99,
-            'prerequisite_id' => 1
+            'name' => 'Kromosom',
+            'description' => 'Kromosom adalah molekul DNA yang mengandung materi genetik. Kromosom mempertahankan urutan genom yang memungkinkan sifat-sifat di turunkan dari induk ke anakan.',
+            'price' => 1
         ]);
     }
 }

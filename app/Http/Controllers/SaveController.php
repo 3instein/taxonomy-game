@@ -16,15 +16,15 @@ class SaveController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $creatures = UserCreature::where('student_id', $user->id)->with(['userCreaturesEvolutions'])->get(['species_id', 'amount']);
-        // $evolutions = Evolution::where('student_id', $user->id)->get();
+        $creatures = UserCreature::where('student_id', $user->id)->with(['userCreaturesEvolutions'])->get();
+        $evolutions = $user->userEvolutions;
 
         $save = [
             'id' => $user->id,
             'power' => $user->power,
             'evo' => $user->evo,
             'creatures' => $creatures,
-            // 'evolutions' => $evolutions
+            'evolutions' => $evolutions
         ];
         return response()->json($save);
 

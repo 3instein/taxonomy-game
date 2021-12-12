@@ -14,10 +14,9 @@ class CreatureEvolutionSeeder extends Seeder {
     public function run() {
         CreatureEvolution::create([
             'species_id' => 1,
-            'name' => 'Manusia',
-            'description' => 'Manusia adalah spesies dominan di bumi. Mereka adalah produk dari miliyaran tahun evolusi, manusia merupakan "binatang" pertama yang menciptakan kultur budaya, komunitas sosial dan teknologi.',
-            'price' => 1,
-            'prerequisite_id' => 1,
+            'name' => 'Jaringan',
+            'description' => 'Jaringan adalah kumpulan sel yang menjadi satu untuk melakukan fungsi spesifik organ terbentuk dari kumpulan jaringan.',
+            'price' => 1
         ]);
     }
 }

@@ -47,7 +47,7 @@ class User extends Authenticatable {
     }
 
     public function userEvolutions() {
-        return $this->belongsToMany(Evolution::class, 'evolutions');
+        return $this->belongsToMany(Evolution::class, 'user_evolutions', 'student_id');
     }
 
     public function logs() {

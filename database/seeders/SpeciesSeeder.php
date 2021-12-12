@@ -12,11 +12,11 @@ class SpeciesSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        Species::create([
-            'genus_id' => 1,
-            'name' => 'Homo Sapiens',
-            'price' => 100
-        ]);
+        // Species::create([
+        //     'genus_id' => 1,
+        //     'name' => 'Homo Sapiens',
+        //     'price' => 100
+        // ]);
 
         // Species::create([
         //     'genus_id' => 2,
