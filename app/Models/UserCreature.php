@@ -16,11 +16,11 @@ class UserCreature extends Model {
         return $this->belongsTo(User::class);
     }
 
-    public function userSpecies() {
+    public function species() {
         return $this->hasOne(Species::class);
     }
 
     public function userCreaturesEvolutions() {
-        return $this->belongsToMany(CreatureEvolution::class, 'creatures_evolutions');
+        return $this->belongsToMany(CreatureEvolution::class, 'user_creatures_evolutions');
     }
 }

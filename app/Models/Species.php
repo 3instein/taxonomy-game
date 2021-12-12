@@ -18,7 +18,7 @@ class Species extends Model {
         return $this->hasMany(CreatureEvolution::class);
     }
 
-    public function saveCreature() {
-        return $this->belongsTo(SaveCreature::class);
+    public function creature() {
+        return $this->belongsTo(UserCreature::class);
     }
 }

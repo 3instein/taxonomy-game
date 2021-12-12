@@ -8,14 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Evolution extends Model {
     use HasFactory;
 
-    protected $table = 'evolutions';
+    protected $table = 'user_evolutions';
     protected $guarded = ['id'];
 
-    public function preresquisiteEvolution() {
+    public function prerequisite() {
         return $this->belongsTo(self::class);
     }
 
-    public function userCreatureEvolutions() {
+    public function users() {
         return $this->belongsToMany(User::class, 'students');
     }
 }

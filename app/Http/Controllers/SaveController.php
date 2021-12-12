@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Evolution;
 use App\Models\UserCreature;
 use Illuminate\Http\Request;
 
@@ -15,13 +16,15 @@ class SaveController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $creatures = UserCreature::where('student_id', $user->id)->get(['species_id', 'amount']);
+        $creatures = UserCreature::where('student_id', $user->id)->with(['userCreaturesEvolutions'])->get(['species_id', 'amount']);
+        $evolutions = Evolution::where('student_id', $user->id)->get();
 
         $save = [
             'id' => $user->id,
             'power' => $user->power,
             'evo' => $user->evo,
-            'creatures' => $creatures
+            'creatures' => $creatures,
+            'evolutions' => $evolutions
         ];
         return response()->json($save);
 
