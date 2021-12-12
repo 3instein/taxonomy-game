@@ -12,7 +12,7 @@ use Illuminate\Validation\Rules\Password;
 class AuthenticationApiController extends Controller {
     public function login(Request $request) {
         $validator = Validator::make($request->all(), [
-            'email' => ['required', 'exists:users,email', 'max:255'],
+            'email' => ['required', 'exists:students,email', 'max:255'],
             'password' => ['required']
         ]);
 
@@ -47,8 +47,8 @@ class AuthenticationApiController extends Controller {
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'unique:users', 'max:40'],
-            'email' => ['required', 'email:dns', 'unique:users', 'max:255'],
+            'username' => ['required', 'unique:students', 'max:40'],
+            'email' => ['required', 'email:dns', 'unique:students', 'max:255'],
             'password' => ['required', Password::defaults()]
         ]);
 
