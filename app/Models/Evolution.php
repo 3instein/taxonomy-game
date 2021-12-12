@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Evolution extends Model {
     use HasFactory;
 
-    protected $table = 'user_evolutions';
+    protected $table = 'evolutions';
     protected $guarded = ['id'];
 
     public function prerequisite() {
