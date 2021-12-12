@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder {
             FamilySeeder::class,
             GenusSeeder::class,
             SpeciesSeeder::class,
+            EvolutionSeeder::class,
+            UserCreatureSeeder::class
         ]);
     }
 }

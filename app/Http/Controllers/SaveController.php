@@ -17,14 +17,14 @@ class SaveController extends Controller
     {
         $user = auth()->user();
         $creatures = UserCreature::where('student_id', $user->id)->with(['userCreaturesEvolutions'])->get(['species_id', 'amount']);
-        $evolutions = Evolution::where('student_id', $user->id)->get();
+        // $evolutions = Evolution::where('student_id', $user->id)->get();
 
         $save = [
             'id' => $user->id,
             'power' => $user->power,
             'evo' => $user->evo,
             'creatures' => $creatures,
-            'evolutions' => $evolutions
+            // 'evolutions' => $evolutions
         ];
         return response()->json($save);
 
