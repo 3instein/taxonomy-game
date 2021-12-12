@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CreatureController;
 use App\Http\Controllers\DomainController;
 use App\Http\Livewire\App;
 use App\Models\Domain;
@@ -25,5 +26,6 @@ Route::get('/dashboard', function () {
 Route::prefix('admin')->group(function () {
 });
 Route::resource('domains', DomainController::class);
+Route::resource('creatures', CreatureController::class);
 
 require __DIR__.'/auth.php';
