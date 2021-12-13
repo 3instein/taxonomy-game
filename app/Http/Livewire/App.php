@@ -11,7 +11,6 @@ use Livewire\Component;
 class App extends Component {
     
     public $evo = 0, $power, $user;
-    public $species_id;
 
     protected $listeners = [
         'addEvo' => 'click',
