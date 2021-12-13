@@ -17,6 +17,10 @@
   background-color: var(--gray);
 }
 
+.text-gray {
+  color: var(--gray);
+}
+
 /* sidebar width 400px*/
 .sidebar {
   width: 0;
@@ -40,6 +44,16 @@
   cursor: pointer;
 }
 
+.sidebar .creatures-wrapper .card {
+  overflow-x: hidden;
+}
+
+.sidebar .creatures-wrapper .creature-icon {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+}
+
 .open-sidebar {
   position: absolute;
   top: 50%;
@@ -47,7 +61,7 @@
   z-index: 1;
   width: 176px;
   height: 0;
-  border-bottom: 50px solid rgba(255, 255, 255, 0.75);
+  border-bottom: 50px solid rgba(255, 255, 255, 0.5);
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   border-radius: 60px 60px 0 0;
@@ -71,9 +85,9 @@
 
 /* click canvas */
 .canvas {
-  background-color: #5c6b28;
-  min-width: 100vw;
-  min-height: 100vh;
+  background-image: url('../assets/galaxy.jpg');
+  width: 100vw;
+  height: 100vh;
   transition: .1s;
 }
 
@@ -96,18 +110,16 @@
   transition: .1s;
   margin-top: 24px;
   width: 400px;
-  background-color: rgba(0, 0, 0, .5);
 }
 
 .circle {
-  border: 2rem solid blue;
-  border-radius: 50%;
-  border-top: 2rem solid red;
-  border-bottom: 2rem solid red;
+  background-image: url('../assets/earth.png');
+  background-repeat: no-repeat;;
+  background-size: contain;
   height: 30rem;
   width: 30rem;
-  -webkit-animation: spin 75s linear infinite;
-  animation: spin 75s linear infinite;
+  -webkit-animation: spin 240s linear infinite;
+  animation: spin 240s linear infinite;
 }
 
 /* login */

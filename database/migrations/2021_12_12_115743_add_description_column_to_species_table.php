@@ -12,8 +12,8 @@ class AddDescriptionColumnToSpeciesTable extends Migration {
      */
     public function up() {
         Schema::table('species', function (Blueprint $table) {
-            $table->text('description');
-            $table->string('image_path')->nullable();
+            $table->text('description')->after('price');
+            $table->string('image_path')->nullable()->after('description');
         });
     }
 
