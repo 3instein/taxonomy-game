@@ -19,6 +19,13 @@ class SpeciesSeeder extends Seeder {
             'price' => 1,
             'description' => 'Organisme multiseluler pertama di dunia. Bunga karang adalah organisme yang diam di tempat dan menyerap nutrisi menggunakan sebuah filter untuk menyaring makanan. Bunga karang terbentuk dari banyak sel eukariotik yang menjadi satu organisme.'
         ]);
+
+        Species::create([
+            'genus_id' => 2,
+            'name' => 'Mnemiopsis iedyi',
+            'price' => 1,
+            'description' => 'Ubur-ubur adalah organisme laut bertubuh lunak dengan tubuh berbentuk payung dengan tekstur mirip gelatin dilengkapi dengan tentakel. Mereka bisa berenang melalui air dengan mendenyutkan tubuh mereka.'
+        ]);
         // Species::create([
         //     'genus_id' => 1,
         //     'name' => 'Homo Sapiens',

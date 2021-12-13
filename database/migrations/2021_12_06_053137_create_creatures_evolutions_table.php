@@ -17,7 +17,7 @@ class CreateCreaturesEvolutionsTable extends Migration {
                 ->constrained()
                 ->cascadeOnDelete();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->unsignedBigInteger('price');
             $table->foreignId('prerequisite_id')
                 ->nullable()

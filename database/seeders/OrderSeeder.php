@@ -61,5 +61,10 @@ class OrderSeeder extends Seeder {
             'class_id' => 1,
             'name'=> 'Dictyoceratida' 
         ]);
+
+        Order::create([
+            'class_id' => 2,
+            'name'=> 'Lobata' 
+        ]);
     }
 }

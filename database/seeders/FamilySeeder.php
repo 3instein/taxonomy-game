@@ -66,5 +66,10 @@ class FamilySeeder extends Seeder {
             'order_id' => 1,
             'name' => 'Spongiidae'
         ]);
+
+        Family::create([
+            'order_id' => 2,
+            'name' => 'Bolinopsidae'
+        ]);
     }
 }

@@ -66,5 +66,10 @@ class GenusSeeder extends Seeder {
             'family_id' => 1,
             'name' => 'Spongia Linnaeus'
         ]);
+
+        Genus::create([
+            'family_id' => 2,
+            'name' => 'Mnemiopsis'
+        ]);
     }
 }
