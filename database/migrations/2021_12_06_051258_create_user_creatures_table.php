@@ -19,7 +19,7 @@ class CreateUserCreaturesTable extends Migration {
             $table->foreignId('species_id')
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->integer('amount');
+            $table->integer('amount')->default(1);
             $table->timestamps();
         });
     }

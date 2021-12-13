@@ -37,7 +37,7 @@
                                     <h5 class="card-title">{{ $creature->name }}</h5>
                                     <p class="mb-0">{{ substr($creature->description, 0, 30) }}...</p>
                                 </div>
-                                <span wire:click="$emit('unlockCreature')" class="btn btn-primary align-self-baseline">
+                                <span wire:click="$emit('unlockCreature', {{ $creature }})" class="btn btn-primary align-self-baseline">
                                     {{ $creature->price }} DNA</span>
                             </div>
                         </div>
