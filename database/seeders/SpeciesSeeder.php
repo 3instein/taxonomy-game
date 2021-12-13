@@ -12,6 +12,13 @@ class SpeciesSeeder extends Seeder {
      * @return void
      */
     public function run() {
+
+        Species::create([
+            'genus_id' => 1,
+            'name' => 'Sponge Sp',
+            'price' => 1,
+            'description' => 'Organisme multiseluler pertama di dunia. Bunga karang adalah organisme yang diam di tempat dan menyerap nutrisi menggunakan sebuah filter untuk menyaring makanan. Bunga karang terbentuk dari banyak sel eukariotik yang menjadi satu organisme.'
+        ]);
         // Species::create([
         //     'genus_id' => 1,
         //     'name' => 'Homo Sapiens',
