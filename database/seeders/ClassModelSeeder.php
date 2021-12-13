@@ -36,5 +36,10 @@ class ClassModelSeeder extends Seeder {
             'phylum_id' => 1,
             'name' => 'Porifera'
         ]);
+
+        ClassModel::create([
+            'phylum_id' => 2,
+            'name' => 'Tentaculata'
+        ]);
     }
 }

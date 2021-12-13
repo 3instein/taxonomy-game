@@ -36,5 +36,10 @@ class PhylumSeeder extends Seeder {
             'kingdom_id' => 1,
             'name' => 'Radiata'
         ]);
+
+        Phylum::create([
+            'kingdom_id' => 1,
+            'name' => 'Ctenophora'
+        ]);
     }
 }
