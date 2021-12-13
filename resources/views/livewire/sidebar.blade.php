@@ -25,18 +25,20 @@
         <div class="creatures-wrapper d-none">
             <h5 class="card-header">Creatures</h5>
             @foreach ($species as $creature)
-                <div class="card">
+                <div class="card ps-3 py-3">
                     <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="{{ asset('assets/dna.png') }}" class="img-fluid rounded-start" alt="...">
+                        <div class="col-md-2 d-flex align-items-center">
+                            <img src="{{ asset($creature->image_path) }}"
+                                class="img-fluid rounded creature-icon border">
                         </div>
-                        <div class="col-md-8">
-                            <div class="card-body d-flex justify-content-between">
-                                <div>
+                        <div class="col-md-10">
+                            <div class="card-body d-flex justify-content-between py-0">
+                                <div class="me-2">
                                     <h5 class="card-title">{{ $creature->name }}</h5>
+                                    <p class="mb-0">{{ substr($creature->description, 0, 30) }}...</p>
                                 </div>
-                                <span wire:click="$emit('unlockCreature')"
-                                    class="btn btn-primary align-self-baseline">Unlock for {{ $creature->price }}</span>
+                                <span wire:click="$emit('unlockCreature')" class="btn btn-primary align-self-baseline">
+                                    {{ $creature->price }} DNA</span>
                             </div>
                         </div>
                     </div>
