@@ -26,7 +26,8 @@ class SpeciesSeeder extends Seeder {
             'name' => 'Mnemiopsis iedyi',
             'price' => 1,
             'description' => 'Ubur-ubur adalah organisme laut bertubuh lunak dengan tubuh berbentuk payung dengan tekstur mirip gelatin dilengkapi dengan tentakel. Mereka bisa berenang melalui air dengan mendenyutkan tubuh mereka.',
-            'image_path' => 'http://taxonomy-game-web.test/assets/mnemiopsis-iedyi.jpg'
+            'image_path' => 'http://taxonomy-game-web.test/assets/mnemiopsis-iedyi.jpg',
+            'prerequisite_id' => 1
         ]);
         // Species::create([
         //     'genus_id' => 1,
