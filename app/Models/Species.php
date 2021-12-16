@@ -19,6 +19,6 @@ class Species extends Model {
     }
 
     public function creature() {
-        return $this->belongsTo(UserCreature::class);
+        return $this->hasMany(UserCreature::class);
     }
 }
