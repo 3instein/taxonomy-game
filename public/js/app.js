@@ -33,7 +33,6 @@
 
   // sidebar page changing
   const sidebarLinks = document.querySelectorAll('.sidebar-link');
-  let cardHeader = document.querySelectorAll('.card-header');
   for (let i = 0; i < sidebarLinks.length; i++) {
     sidebarLinks[i].addEventListener('click', function () {
       if (!sidebarLinks[i].classList.contains('sidebar-active')) {
@@ -77,4 +76,20 @@
       }
     });
   }
+
+  // channging environemnt button
+  const seaBtn = document.querySelector('.sea-btn');
+  const earthBtn = document.querySelector('.earth-btn')
+  const canvas = document.querySelector('.canvas');
+  seaBtn.addEventListener('click', function () {
+    canvas.style.backgroundImage = "url('../assets/ocean-floor.jpg')";
+    canvas.style.backgroundRepeat = 'no-repeat';
+    canvas.style.backgroundSize = '100% 100%';
+  });
+
+  earthBtn.addEventListener('click', function () {
+    canvas.style.backgroundImage = "url('../assets/galaxy.jpg')";
+    canvas.style.width = "100vw";
+    canvas.style.height = "100vh";
+  });
 })();
