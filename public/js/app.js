@@ -78,18 +78,21 @@
   }
 
   // channging environemnt button
+  const earth = document.querySelector('.circle');
   const seaBtn = document.querySelector('.sea-btn');
   const earthBtn = document.querySelector('.earth-btn')
   const canvas = document.querySelector('.canvas');
   seaBtn.addEventListener('click', function () {
-    canvas.style.backgroundImage = "url('../assets/ocean-floor.jpg')";
+    canvas.style.backgroundImage = "url('../assets/ocean-floor-1.jpg')";
     canvas.style.backgroundRepeat = 'no-repeat';
     canvas.style.backgroundSize = '100% 100%';
+    earth.style.display = 'none';
   });
 
   earthBtn.addEventListener('click', function () {
     canvas.style.backgroundImage = "url('../assets/galaxy.jpg')";
-    canvas.style.width = "100vw";
-    canvas.style.height = "100vh";
+    canvas.style.backgroundRepeat = 'repeat';
+    canvas.style.backgroundSize = 'auto';
+    earth.style.display = 'block';
   });
 })();
