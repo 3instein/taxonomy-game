@@ -11,10 +11,16 @@
     </form> --}}
 
     {{-- sea button --}}
-    <div class="sea-btn"></div>
-
+    
     {{-- earth button --}}
-    <div class="earth-btn"></div>
+    <div class="biome-btn d-flex flex-column align-items-center justify-content-evenly">
+        <div class="sea-btn">
+            <img class="sea-icon" src="{{ asset('assets/icons/water.png') }}" />
+        </div>
+        <div class="earth-btn">
+            <img class="earth-icon" src="{{ asset('assets/icons/earth.png') }}" />
+        </div>
+    </div>
 
     {{-- tree button --}}
     <div class="tree-btn">
