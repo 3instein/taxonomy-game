@@ -8,6 +8,9 @@
         {{-- upgrade --}}
         <div class="upgrades-wrapper">
             <h5 class="card-header">Upgrades</h5>
+            @foreach ($creatureEvolutions as $evo)
+                {{ $evo->name }}
+            @endforeach
             <div class="card">
                 <div class="card-body d-flex">
                     <div>

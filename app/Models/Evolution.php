@@ -15,7 +15,7 @@ class Evolution extends Model {
         return $this->belongsTo(self::class);
     }
 
-    public function users() {
-        return $this->belongsToMany(User::class, 'students');
+    public function userEvolutions() {
+        return $this->belongsToMany(User::class, 'user_evolutions', 'student_id', 'evolution_id');
     }
 }

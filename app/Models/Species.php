@@ -21,4 +21,8 @@ class Species extends Model {
     public function creature() {
         return $this->hasMany(UserCreature::class);
     }
+
+    public function prerequisite() {
+        return $this->belongsTo(self::class);
+    }
 }
