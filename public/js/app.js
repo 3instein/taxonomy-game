@@ -81,12 +81,15 @@
   const earth = document.querySelector('.circle');
   const seaBtn = document.querySelector('.sea-btn');
   const earthBtn = document.querySelector('.earth-btn')
+  const tree = document.querySelector('.tree-btn');
   const canvas = document.querySelector('.canvas');
+  const evolutionTree = document.querySelector('.evolution-trees');
   seaBtn.addEventListener('click', function () {
     canvas.style.backgroundImage = "url('../assets/ocean-floor-1.jpg')";
     canvas.style.backgroundRepeat = 'no-repeat';
     canvas.style.backgroundSize = '100% 100%';
     earth.style.display = 'none';
+    evolutionTree.classList.add('d-none');
   });
 
   earthBtn.addEventListener('click', function () {
@@ -94,5 +97,18 @@
     canvas.style.backgroundRepeat = 'repeat';
     canvas.style.backgroundSize = 'auto';
     earth.style.display = 'block';
+    evolutionTree.classList.add('d-none');
+  });
+
+  tree.addEventListener('click', function () {
+    canvas.style.background = 'rgb(92,107,40)';
+    canvas.style.background = 'radial-gradient(circle, rgba(92,107,40,1) 0%, rgba(0,0,0,1) 100%)';
+    earth.style.display = 'none';
+    evolutionTree.classList.remove('d-none');
+    evolutionTree.style.position = 'fixed';
+    evolutionTree.style.top = '0';
+    evolutionTree.style.left = '0';
+    evolutionTree.style.width = '100%';
+    evolutionTree.style.height = '100%';
   });
 })();

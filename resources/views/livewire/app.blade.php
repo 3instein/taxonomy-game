@@ -10,9 +10,7 @@
         <button type="submit">Logout</button>
     </form> --}}
 
-    {{-- sea button --}}
-    
-    {{-- earth button --}}
+    {{-- biome button --}}
     <div class="biome-btn d-flex flex-column align-items-center justify-content-evenly">
         <div class="sea-btn">
             <img class="sea-icon" src="{{ asset('assets/icons/water.png') }}" />
