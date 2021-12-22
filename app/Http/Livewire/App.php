@@ -2,14 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\SaveCreature;
 use App\Models\User;
 use App\Models\UserCreature;
-use App\Models\UserSave;
 use Livewire\Component;
 
 class App extends Component {
-    
+
     public $evo = 0, $power, $user;
 
     protected $listeners = [
