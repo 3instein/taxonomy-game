@@ -105,10 +105,36 @@
     canvas.style.background = 'radial-gradient(circle, rgba(92,107,40,1) 0%, rgba(0,0,0,1) 100%)';
     earth.style.display = 'none';
     evolutionTree.classList.remove('d-none');
-    evolutionTree.style.position = 'fixed';
-    evolutionTree.style.top = '0';
-    evolutionTree.style.left = '0';
     evolutionTree.style.width = '100%';
     evolutionTree.style.height = '100%';
+  });
+
+  const species = document.querySelectorAll('.species-canvas');
+  const branchDescription = document.querySelector('.branch-description');
+  let isExpanded = false;
+  for (let i = 0; i < species.length; i++) {
+    species[i].addEventListener('click', function () {
+      let creature = species[i].querySelector('#creature').value;
+      creature = JSON.parse(creature);
+      console.log(creature);
+      branchDescription.classList.remove('d-none');
+      branchDescription.querySelector('.creature-img').src = creature.image_path;
+      branchDescription.querySelector('.creature-name').innerHTML = creature.name;
+      branchDescription.querySelector('.creature-description').innerHTML = creature.description;
+    });
+  }
+
+  branchDescription.addEventListener('click', function () {
+    if (!isExpanded) {
+      branchDescription.style.height = '260px';
+      branchDescription.style.borderRadius = '50px';
+      document.querySelector('.inner-branch-description').classList.remove('d-none');
+      isExpanded = true;
+    } else {
+      branchDescription.style.height = '100px';
+      branchDescription.style.borderRadius = '25px';
+      document.querySelector('.inner-branch-description').classList.add('d-none');
+      isExpanded = false;
+    }
   });
 })();
