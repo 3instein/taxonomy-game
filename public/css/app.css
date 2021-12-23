@@ -128,9 +128,9 @@
   position: fixed;
   right: 1%;
   bottom: 14%;
-  width: 90px;
+  width: 75px;
   height: 150px;
-  border-radius: 15%;
+  border-radius: 25px;
   background-color: rgba(255, 255, 255, .25);
 }
 
@@ -151,9 +151,9 @@
   position: fixed;
   bottom: 2%;
   right: 1%;
-  width: 100px;
+  width: 90px;
   height: 120px;
-  border-radius: 15%;
+  border-radius: 25px;
   background-color: rgba(255, 255, 255, 0.25);
 }
 
@@ -277,6 +277,51 @@
 
 .login-form input, .login-form button {
   border-radius: .35rem;
+}
+
+/* evolution tree */
+.evolution-tree {
+  width: 60%;
+}
+
+.evolution-tree .species-canvas .species-branch {
+  width: 96px;
+  ;
+  height: 96px;
+  border-radius: 50%;
+}
+
+.branch-description {
+  /* expanded 
+  width: 455px;
+  height: 260px;
+  border-radius: 50px; */
+
+  /* collapsed */
+  width: 455px;
+  height: 100px;
+  position: fixed;
+  bottom: 2%;
+  right: 6.5%;
+  background-color: rgba(255, 255, 255, .25);
+  border-radius: 25px;
+}
+
+.branch-description .branch-img {
+  max-width: 72px;
+  max-height: 72px;
+  overflow: hidden;
+}
+
+.branch-description .branch-img .creature-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid var(--gray);
+}
+
+.branch-description .branch-img .creature-name {
+  font-weight: 600;
 }
 
 /* keyframe */
