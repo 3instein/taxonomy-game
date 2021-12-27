@@ -7,19 +7,19 @@
 
     {{-- evolution tree --}}
     <section class="evolution-trees d-none">
-        <div class="evolution-tree mx-auto position-relative">
+        <div class="evolution-tree mx-auto">
+            @foreach ($evolutions as $evolution)
+                <div class="evolution-canvas evolution-{{ $loop->iteration }}">
+                    <img class="evolution-branch" src="{{ $evolution->image_path }}" />
+                    <input type="hidden" id="evolution" value="{{ $evolution }}">
+                </div>
+            @endforeach
             @foreach ($species as $creature)
-                <div class="species-canvas">
+                <div class="species-canvas species-{{ $loop->iteration }}">
                     <img class="species-branch" src="{{ $creature->image_path }}" />
                     <input type="hidden" id="creature" value="{{ $creature }}">
                 </div>
             @endforeach
-            {{-- @foreach ($evolutions as $evolution)
-                <p class="text-white">{{ $evolution->name }}</p>
-            @endforeach
-            @foreach ($creatureEvolutions as $creatureEvolution)
-                <p class="text-white">{{ $creatureEvolution->name }}</p>
-            @endforeach --}}
         </div>
 
         <div class="branch-description d-flex flex-column d-none">

@@ -109,6 +109,7 @@
     evolutionTree.style.height = '100%';
   });
 
+  // evolution tree
   const species = document.querySelectorAll('.species-canvas');
   const branchDescription = document.querySelector('.branch-description');
   let isExpanded = false;
@@ -116,7 +117,6 @@
     species[i].addEventListener('click', function () {
       let creature = species[i].querySelector('#creature').value;
       creature = JSON.parse(creature);
-      console.log(creature);
       branchDescription.classList.remove('d-none');
       branchDescription.querySelector('.creature-img').src = creature.image_path;
       branchDescription.querySelector('.creature-name').innerHTML = creature.name;

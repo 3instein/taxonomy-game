@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --gray: #F9FAFB;
   --white: #fff;
@@ -284,11 +290,54 @@
   width: 60%;
 }
 
+.evolution-tree .species-canvas {
+  width: 96px;
+  height: 96px;
+}
+
+.evolution-tree .evolution-canvas {
+  width: 96px;
+  height: 96px;
+}
+
 .evolution-tree .species-canvas .species-branch {
   width: 96px;
-  ;
   height: 96px;
   border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+.evolution-tree .evolution-canvas .evolution-branch {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 2px solid var(--white);
+}
+
+.evolution-tree .species-1 {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -15%);
+}
+
+.evolution-tree .species-1::before {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: -20%;
+  transform: rotate(45deg);
+  width: 2px;
+  height: 144px;
+  background-color: var(--gray);
+  z-index: -1;
+}
+
+.evolution-tree .species-2 {
+  position: absolute;
+  top: 30%;
+  left: 43%;
+  transform: translate(-50%, -15%);
 }
 
 .branch-description {
