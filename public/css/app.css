@@ -286,32 +286,17 @@
 }
 
 /* evolution tree */
-.evolution-tree {
-  width: 60%;
-}
-
+/* species */
 .evolution-tree .species-canvas {
-  width: 96px;
-  height: 96px;
-}
-
-.evolution-tree .evolution-canvas {
-  width: 96px;
-  height: 96px;
+  width: 128px;
+  height: 128px;
 }
 
 .evolution-tree .species-canvas .species-branch {
-  width: 96px;
-  height: 96px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
-  border: 2px solid var(--white);
-}
-
-.evolution-tree .evolution-canvas .evolution-branch {
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
-  border: 2px solid var(--white);
+  border: 3px solid var(--white);
 }
 
 .evolution-tree .species-1 {
@@ -325,8 +310,20 @@
   content: '';
   position: absolute;
   top: 60%;
-  left: -20%;
+  left: 0%;
   transform: rotate(45deg);
+  width: 2px;
+  height: 144px;
+  background-color: var(--gray);
+  z-index: -1;
+}
+
+.evolution-tree .species-1::after {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 100%;
+  transform: rotate(-45deg);
   width: 2px;
   height: 144px;
   background-color: var(--gray);
@@ -335,11 +332,116 @@
 
 .evolution-tree .species-2 {
   position: absolute;
-  top: 30%;
+  top: 33%;
   left: 43%;
   transform: translate(-50%, -15%);
 }
 
+.evolution-tree .species-2::before {
+  content: '';
+  position: absolute;
+  bottom: -22%;
+  right: -24%;
+  transform: rotate(-55deg);
+  width: 2px;
+  height: 88px;
+  background-color: var(--gray);
+}
+
+.evolution-tree .species-2::after {
+  content: '';
+  position: absolute;
+  bottom: -22%;
+  left: -24%;
+  transform: rotate(55deg);
+  width: 2px;
+  height: 88px;
+  background-color: var(--gray);
+}
+
+/* creature evolution */
+.evolution-tree .creatureEvolution-canvas {
+  width: 80px;
+  height: 80px;
+}
+
+.evolution-tree .creatureEvolution-canvas .creatureEvolution-branch {
+  width: 80px;
+  height: 80px;
+  border-radius: 15%;
+  border: 1px solid var(--white);
+}
+
+.evolution-tree .creatureEvolution-1 {
+  position: absolute;
+  right: 40.2%;
+  top: 31.5%;
+}
+
+.evolution-tree .creatureEvolution-1::before {
+  content: '';
+  position: absolute;
+  left: 145%;
+  top: 66%;
+  transform: rotate(-60deg);
+  width: 2px;
+  height: 96px;
+  background-color: var(--gray);
+}
+
+.evolution-tree .creatureEvolution-2 {
+  position: absolute;
+  right: 32%;
+  top: 42%;
+}
+
+.evolution-tree .creatureEvolution-2::before {
+  content: '';
+  position: absolute;
+  right: -47%;
+  top: 55%;
+  transform: rotate(-80deg);
+  width: 2px;
+  height: 80px;
+  background-color: var(--gray);
+}
+
+.evolution-tree .creatureEvolution-3 {
+  position: absolute;
+  right: 32%;
+  top: 10%;
+}
+
+.evolution-tree .creatureEvolution-3::before {
+  content: '';
+  position: absolute;
+  left: -127%;
+  top: -40%;
+  transform: rotate(80deg);
+  width: 2px;
+  height: 212px;
+  background-color: var(--gray);
+}
+
+.evolution-tree .creatureEvolution-4 {
+  position: absolute;
+  right: 24%;
+  top: 47%;
+}
+
+.evolution-tree .creatureEvolution-5 {
+  position: absolute;
+  right: 47%;
+  top: 44%;
+}
+
+.evolution-tree .creatureEvolution-6 {
+  position: absolute;
+  left: 33%;
+  top: 44%;
+}
+
+/* creature description */
 .branch-description {
   /* expanded 
   width: 455px;
@@ -365,7 +467,7 @@
 .branch-description .branch-img .creature-img {
   width: 72px;
   height: 72px;
-  border-radius: 50%;
+  border-radius: 25%;
   border: 1px solid var(--gray);
 }
 

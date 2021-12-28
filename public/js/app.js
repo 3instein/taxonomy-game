@@ -111,6 +111,7 @@
 
   // evolution tree
   const species = document.querySelectorAll('.species-canvas');
+  const creatureEvolutions = document.querySelectorAll('.creatureEvolution-canvas');
   const branchDescription = document.querySelector('.branch-description');
   let isExpanded = false;
   for (let i = 0; i < species.length; i++) {
@@ -124,10 +125,21 @@
     });
   }
 
+  for (let i = 0; i < creatureEvolutions.length; i++) {
+    creatureEvolutions[i].addEventListener('click', function () {
+      let creatureEvolution = creatureEvolutions[i].querySelector('#creatureEvolution').value;
+      creatureEvolution = JSON.parse(creatureEvolution);
+      branchDescription.classList.remove('d-none');
+      branchDescription.querySelector('.creature-img').src = creatureEvolution.image_path;
+      branchDescription.querySelector('.creature-name').innerHTML = creatureEvolution.name;
+      branchDescription.querySelector('.creature-description').innerHTML = creatureEvolution.description;
+    });
+  }
+
   branchDescription.addEventListener('click', function () {
     if (!isExpanded) {
       branchDescription.style.height = '260px';
-      branchDescription.style.borderRadius = '50px';
+      branchDescription.style.borderRadius = '25px';
       document.querySelector('.inner-branch-description').classList.remove('d-none');
       isExpanded = true;
     } else {
