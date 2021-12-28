@@ -8,10 +8,10 @@
     {{-- evolution tree --}}
     <section class="evolution-trees d-none">
         <div class="evolution-tree mx-auto">
-            @foreach ($evolutions as $evolution)
-                <div class="evolution-canvas evolution-{{ $loop->iteration }}">
-                    <img class="evolution-branch" src="{{ $evolution->image_path }}" />
-                    <input type="hidden" id="evolution" value="{{ $evolution }}">
+            @foreach ($creatureEvolutions as $creatureEvolution)
+                <div class="creatureEvolution-canvas creatureEvolution-{{ $loop->iteration }}">
+                    <img class="creatureEvolution-branch" src="{{ $creatureEvolution->image_path }}" />
+                    <input type="hidden" id="creatureEvolution" value="{{ $creatureEvolution }}">
                 </div>
             @endforeach
             @foreach ($species as $creature)
