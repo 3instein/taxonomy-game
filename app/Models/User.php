@@ -50,6 +50,10 @@ class User extends Authenticatable {
         return $this->belongsToMany(Evolution::class, 'user_evolutions', 'student_id');
     }
 
+    public function stat(){
+        return $this->hasOne(UserStat::class, 'student_id');
+    }
+
     public function logs() {
         return $this->hasMany(Log::class);
     }
