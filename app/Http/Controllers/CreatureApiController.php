@@ -38,7 +38,6 @@ class CreatureApiController extends Controller {
      */
     public function show($id) {
         $species = Species::with([
-            'prerequisite',
             'genus:id,name,family_id',
             'genus.family:id,name,order_id',
             'genus.family.order:id,name,class_id',
