@@ -58,7 +58,7 @@
 .sidebar .creatures-wrapper .creature-icon {
   width: 72px;
   height: 72px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .open-sidebar {
