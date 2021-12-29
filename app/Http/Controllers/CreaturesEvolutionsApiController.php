@@ -33,7 +33,7 @@ class CreaturesEvolutionsApiController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-        $creaturesEvolutions = CreatureEvolution::with(['prerequisiteEvolution'])->find($id);
+        $creaturesEvolutions = CreatureEvolution::whereId($id)->first();
         return response()->json($creaturesEvolutions);
     }
 
