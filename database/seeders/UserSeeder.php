@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\UserSave;
+use App\Models\UserStat;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder {
@@ -24,6 +25,10 @@ class UserSeeder extends Seeder {
             'city' => 'taxon',
             'birthyear' => '2002',
             'password' => bcrypt('root'),
+        ]);
+
+        UserStat::create([
+            'student_id' => 1
         ]);
     }
 }

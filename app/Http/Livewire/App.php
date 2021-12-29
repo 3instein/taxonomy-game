@@ -4,11 +4,12 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use App\Models\UserCreature;
+use App\Models\UserStat;
 use Livewire\Component;
 
 class App extends Component {
 
-    public $evo = 0, $power, $user;
+    public $evo = 0, $power, $user, $stat;
 
     protected $listeners = [
         'addEvo' => 'click',
@@ -17,9 +18,7 @@ class App extends Component {
     ];
 
     public function click() {
-        $this->user->update([
-            'evo' => $this->user->evo + $this->user->power
-        ]);
+        $this->evo = 420;
     }
 
     public function upgradePower() {
@@ -43,8 +42,9 @@ class App extends Component {
 
     public function render() {
         $this->user = User::whereId(auth()->user()->id)->first();
-        $this->evo = $this->user->evo;
-        $this->power = $this->user->power;
+        $this->stat = UserStat::where('student_id', $this->user->id)->first();
+        $this->evo = $this->user->stat->evo;
+        $this->power = $this->user->stat->power;
         return view('livewire.app');
     }
 }
