@@ -12,15 +12,13 @@ use App\Models\Phylum;
 use App\Models\Species;
 use Illuminate\Http\Request;
 
-class CreatureController extends Controller
-{
+class CreatureController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         return view('admin.creatures.index');
     }
 
@@ -29,8 +27,7 @@ class CreatureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -40,8 +37,7 @@ class CreatureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $kingdom = [
             'domain_id' => 1,
             'name' => $request->kingdom
@@ -93,8 +89,7 @@ class CreatureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -104,8 +99,7 @@ class CreatureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -116,8 +110,7 @@ class CreatureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -127,8 +120,7 @@ class CreatureController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
 }
