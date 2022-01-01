@@ -31,7 +31,6 @@ Route::post('/register', [AuthenticationApiController::class, 'register']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('saves', SaveController::class);
-    Route::resource('user-stats', UserStatsApiController::class);
     Route::resource('evolutions', EvolutionsApiController::class);
     Route::resource('user-creatures', UserCreatureApiController::class);
     Route::resource('creatures', CreatureApiController::class);
