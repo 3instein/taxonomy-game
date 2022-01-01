@@ -6,6 +6,7 @@ use App\Http\Controllers\CreaturesEvolutionsApiController;
 use App\Http\Controllers\EvolutionsApiController;
 use App\Http\Controllers\SaveController;
 use App\Http\Controllers\UserCreatureApiController;
+use App\Http\Controllers\UserStatsApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,7 @@ Route::post('/register', [AuthenticationApiController::class, 'register']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('saves', SaveController::class);
+    Route::resource('user-stats', UserStatsApiController::class);
     Route::resource('evolutions', EvolutionsApiController::class);
     Route::resource('user-creatures', UserCreatureApiController::class);
     Route::resource('creatures', CreatureApiController::class);
