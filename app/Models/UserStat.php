@@ -13,6 +13,6 @@ class UserStat extends Model {
     protected $guarded = [''];
 
     public function user() {
-        return $this->belongsTo(User::class, 'student_id', 'student_id');
+        return $this->belongsTo(User::class, 'student_id', 'id');
     }
 }

@@ -35,7 +35,9 @@ class AuthenticationApiController extends Controller {
             ], 401);
         }
 
-        $user = User::where('email', $request->input('email'))->first();
+        $user = User::with('stat')
+            ->where('email', $request->input('email'))
+            ->first();
 
         return response()->json([
             'user' => $user,
