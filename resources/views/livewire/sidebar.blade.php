@@ -36,7 +36,8 @@
                         <div class="col-md-10">
                             <div class="card-body d-flex justify-content-between py-0">
                                 <div class="me-2">
-                                    <h5 class="card-title">{{ $creature->name }}</h5>
+                                    <h5 class="card-title">{{ $creature->common_name }}</h5>
+                                    <small>{{ $creature->name }}</small>
                                     <p class="mb-0">{{ substr($creature->description, 0, 30) }}...</p>
                                 </div>
                                 <span wire:click="$emit('unlockCreature', {{ $creature }})" class="btn btn-primary align-self-baseline">
