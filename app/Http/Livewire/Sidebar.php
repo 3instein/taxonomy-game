@@ -7,21 +7,17 @@ use Livewire\Component;
 use App\Models\Evolution;
 use App\Models\UserCreature;
 use App\Models\UserEvolution;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Builder;
 
-class Sidebar extends Component
-{
+class Sidebar extends Component {
 
     public $species, $evolutions, $userCreatures, $userEvolutions, $power;
 
-    public function mount($power)
-    {
+    public function mount($power) {
         $this->power = $power;
     }
 
-    public function render()
-    {
+    public function render() {
         $this->userCreatures = UserCreature::where('student_id', auth()->user()->id)->get();
 
         $this->species =
