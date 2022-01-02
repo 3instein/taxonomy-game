@@ -35,5 +35,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('user-creatures', UserCreatureApiController::class);
     Route::resource('creatures', CreatureApiController::class);
     Route::resource('creatures-evolutions', CreaturesEvolutionsApiController::class);
+    Route::get('upgrade-power', [UserStatsApiController::class, 'upgradePower']);
     Route::post('/logout', [AuthenticationApiController::class, 'logout']);
 });

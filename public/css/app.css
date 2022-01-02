@@ -20,6 +20,10 @@
   height: 100vh;
 }
 
+.width-100 {
+  width: 100%;
+}
+
 .bg-gray {
   background-color: var(--gray);
 }
@@ -290,6 +294,8 @@
 .evolution-tree .species-canvas {
   width: 128px;
   height: 128px;
+  border-radius: 50%;
+  background-color: var(--gray);
 }
 
 .evolution-tree .species-canvas .species-branch {
@@ -456,11 +462,14 @@
   right: 6.5%;
   background-color: rgba(255, 255, 255, .25);
   border-radius: 25px;
+  
 }
 
 .branch-description .branch-img {
   max-width: 72px;
   max-height: 72px;
+  border-radius: 25%;
+  background-color: var(--gray);
   overflow: hidden;
 }
 
@@ -473,6 +482,21 @@
 
 .branch-description .branch-img .creature-name {
   font-weight: 600;
+}
+
+/* sea biome */
+.Sponge {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  height: 144px;
+}
+
+.Mnemiopsis {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  height: 176px;
 }
 
 /* keyframe */

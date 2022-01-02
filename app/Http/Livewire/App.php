@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class App extends Component {
 
-    public $evo = 0, $power, $user, $stat;
+    public $evo = 0, $power, $userStat, $user;
 
     protected $listeners = [
         'addEvo' => 'click',
@@ -18,14 +18,16 @@ class App extends Component {
     ];
 
     public function click() {
-        $this->evo = 420;
+        $this->userStat->update([
+            'evo' => $this->evo + $this->power
+        ]);
     }
 
     public function upgradePower() {
-        if ($this->user->evo > $this->user->power) {
-            $this->user->update([
-                'power' => $this->user->power + 1,
-                'evo' => $this->evo - $this->user->power
+        if ($this->userStat->evo > $this->userStat->power) {
+            $this->userStat->update([
+                'power' => $this->userStat->power + 1,
+                'evo' => $this->evo - $this->userStat->power
             ]);
         }
     }
@@ -35,16 +37,17 @@ class App extends Component {
             'student_id' => $this->user->id,
             'species_id' => $species['id']
         ]);
+
         $this->user->update([
-            'evo' => $this->user->evo - $species['price']
+            'evo' => $this->userStat->evo - $species['price']
         ]);
     }
 
     public function render() {
         $this->user = User::whereId(auth()->user()->id)->first();
-        $this->stat = UserStat::where('student_id', $this->user->id)->first();
-        $this->evo = $this->user->stat->evo;
-        $this->power = $this->user->stat->power;
+        $this->userStat = UserStat::where('student_id', $this->user->id)->first();
+        $this->evo = $this->userStat->evo;
+        $this->power = $this->userStat->power;
         return view('livewire.app');
     }
 }
