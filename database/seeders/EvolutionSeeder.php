@@ -15,7 +15,7 @@ class EvolutionSeeder extends Seeder {
     public function run() {
         Evolution::create([
             'name' => 'Kromosom',
-            'description' => 'Kromosom adalah molekul DNA yang mengandung materi genetik. Kromosom mempertahankan urutan genom yang memungkinkan sifat-sifat di turunkan dari induk ke anakan.',
+            'description' => 'Kromosom adalah molekul DNA yang mengandung materi genetik. Kromosom mempertahankan urutan genom yang memungkinkan sifat-sifat diturunkan dari induk ke anakan.',
             'image_path' => 'http://taxonomy-game-web.test/assets/evolutions/kromosom.jpg',
             'price' => 1
         ]);
