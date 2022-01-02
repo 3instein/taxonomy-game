@@ -61,5 +61,13 @@ class CreatureEvolutionSeeder extends Seeder {
             'image_path' => 'http://taxonomy-game-web.test/assets/creatures-evolutions/knidosit.png',
             'price' => 1
         ]);
+        
+        CreatureEvolution::create([
+            'species_id' => 2,
+            'name' => 'Sistem Saraf',
+            'description' => 'Sistem saraf adalah jaringan sel yang mengirimkan stimuli melalui tubuh organisme dalam bentuk sinyal elektrik. Sistem saraf dikontrol oleh otak.',
+            'image_path' => '',
+            'price' => 1
+        ]);
     }
 }
