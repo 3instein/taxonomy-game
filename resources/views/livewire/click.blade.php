@@ -7,7 +7,7 @@
 
     {{-- sea biome --}}
     <div class="sea-biome d-none">
-        @forelse ($collection as $item)
+        @forelse ($userCreatures as $userCreature)
             <img class="{{ $userCreature->species->name }}" src="{{ $userCreature->species->image_path }}" />
         @empty
         @endforelse
