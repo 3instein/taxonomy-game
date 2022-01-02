@@ -16,6 +16,7 @@ class UserStatsApiController extends Controller {
         $userStat->update([
             'power' => $userStat->power + 1
         ]);
+
         return response()->json($userStat);
     }
 
@@ -23,10 +24,16 @@ class UserStatsApiController extends Controller {
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function store(Request $request) {
-        //
+    public function saveUserStat(Request $request) {
+        $userStat = UserStat::where('student_id', auth()->user()->id)->first();
+        $userStat->update([
+            'power' => $request->power,
+            'evo' => $request->evo,
+            'dna' => $request->dna,
+            'point' => $request->point
+        ]);
     }
 
     /**

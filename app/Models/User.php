@@ -43,7 +43,7 @@ class User extends Authenticatable {
 
     
     public function userCreatures() {
-        return $this->hasMany(UserCreature::class);
+        return $this->hasMany(UserCreature::class, 'student_id');
     }
 
     public function userEvolutions() {
