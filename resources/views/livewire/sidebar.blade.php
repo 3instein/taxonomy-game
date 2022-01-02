@@ -21,16 +21,17 @@
             </div>
             <h5 class="card-header">Evolutions</h5>
             @forelse ($evolutions as $evolution)
-            <div class="card">
-                <div class="card-body d-flex">
-                    <div>
-                        <h5 class="card-title">{{ $evolution->name }}</h5>
-                        <p class="card-text">{{ $evolution->description }}
-                        </p>
+                <div class="card">
+                    <div class="card-body d-flex">
+                        <div>
+                            <h5 class="card-title">{{ $evolution->name }}</h5>
+                            <p class="card-text">{{ $evolution->description }}
+                            </p>
+                        </div>
+                        <span wire:click="$emit('unlockEvolution', {{ $evolution }})"
+                            class="btn btn-primary align-self-baseline">{{ $evolution->price }} Evo</span>
                     </div>
-                    <span wire:click="$emit('upgradePower')" class="btn btn-primary align-self-baseline">{{ $evolution->price }} Evo</span>
                 </div>
-            </div>
             @empty
             @endforelse
         </div>
@@ -52,7 +53,8 @@
                                     <small>{{ $creature->name }}</small>
                                     <p class="mb-0">{{ substr($creature->description, 0, 30) }}...</p>
                                 </div>
-                                <span wire:click="$emit('unlockCreature', {{ $creature }})" class="btn btn-primary align-self-baseline">
+                                <span wire:click="$emit('unlockCreature', {{ $creature }})"
+                                    class="btn btn-primary align-self-baseline">
                                     {{ $creature->price }} Evo</span>
                             </div>
                         </div>

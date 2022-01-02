@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Evolution extends Model {
     use HasFactory;
 
-    protected $table = 'evolutions';
     protected $guarded = ['id'];
 
     public function prerequisite() {
@@ -16,7 +15,7 @@ class Evolution extends Model {
     }
 
     public function userEvolutions() {
-        return $this->belongsToMany(User::class, 'user_evolutions', 'student_id', 'evolution_id');
+        return $this->belongsToMany(User::class, 'user_evolutions', 'evolution_id', 'student_id');
     }
 
     public function creature(){

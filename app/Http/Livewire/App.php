@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\User;
 use App\Models\UserCreature;
+use App\Models\UserEvolution;
 use App\Models\UserStat;
 use Livewire\Component;
 
@@ -44,8 +45,15 @@ class App extends Component {
         ]);
     }
 
-    public function unlockEvolution($id){
-        
+    public function unlockEvolution($evolution){
+        UserEvolution::create([
+            'student_id' => $this->user->id,
+            'evolution_id' => $evolution['id']
+        ]);
+
+        $this->user->update([
+            'evo' => $this->userStat->evo - $evolution['price']
+        ]);
     }
 
     public function render() {

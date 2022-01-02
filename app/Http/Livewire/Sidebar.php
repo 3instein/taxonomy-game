@@ -2,31 +2,53 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\CreatureEvolution;
-use App\Models\Evolution;
 use App\Models\Species;
-use App\Models\UserCreature;
-use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
+use App\Models\Evolution;
+use App\Models\UserCreature;
+use App\Models\UserEvolution;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Builder;
 
-class Sidebar extends Component {
+class Sidebar extends Component
+{
 
-    public $species, $evolutions, $power;
+    public $species, $evolutions, $userCreatures, $userEvolutions, $power;
 
-    public function mount($power){
+    public function mount($power)
+    {
         $this->power = $power;
     }
 
-    public function render() {
+    public function render()
+    {
+        $this->userCreatures = UserCreature::where('student_id', auth()->user()->id)->get();
+
         $this->species =
-            Species::whereDoesntHave('creature', function (Builder $query) {
+            Species::whereDoesntHave('userCreatures', function (Builder $query) {
                 $query->where('student_id', auth()->user()->id);
-            })->get();
+            })
+            ->where(function ($query) {
+                $query->whereNull('prerequisite_id');
+                $query->orWhereIn('prerequisite_id', $this->userCreatures->pluck('species_id'));
+            })
+            ->get();
 
-        $this->evolutions = Evolution::whereDoesntHave('userEvolutions', function (Builder $query) {
-            $query->where('student_id', auth()->user()->id);
-        })->get();
+        $this->userEvolutions = UserEvolution::where('student_id', auth()->user()->id)->get();
 
+        $this->evolutions =
+            Evolution::whereDoesntHave('userEvolutions', function (Builder $query) {
+                $query->where('student_id', auth()->user()->id);
+            })
+            ->where(function ($query) {
+                $query->whereNull('prerequisite_id');
+                $query->orWhereIn('prerequisite_id', $this->userEvolutions->pluck('evolution_id'));
+            })
+            ->where(function ($query) {
+                $query->whereNull('species_id');
+                $query->orWhereIn('species_id', $this->userCreatures->pluck('species_id'));
+            })
+            ->get();
         return view('livewire.sidebar');
     }
 }

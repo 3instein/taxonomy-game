@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\CreatureEvolution;
-use App\Models\Evolution;
 use App\Models\Species;
-use App\Models\UserCreature;
 use Livewire\Component;
+use App\Models\Evolution;
+use App\Models\UserCreature;
+use App\Models\UserEvolution;
 use Illuminate\Database\Eloquent\Builder;
 
 class Click extends Component
@@ -16,10 +16,21 @@ class Click extends Component
 
     public function render()
     {
-        $this->species = Species::all();
-        $this->evolutions = Evolution::whereDoesntHave('creature')->get();
-        $this->creatureEvolutions = Evolution::has('creature')->get();
         $this->userCreatures = UserCreature::where('student_id', auth()->user()->id)->get();
+
+        $this->species = Species::all();
+
+        $this->userEvolutions = UserEvolution::where('student_id', auth()->user()->id)->get();
+
+        $this->creatureEvolutions =
+            Evolution::whereDoesntHave('userEvolutions', function (Builder $query) {
+                $query->where('student_id', auth()->user()->id);
+            })
+            ->where(function ($query) {
+                $query->whereNull('prerequisite_id');
+                $query->orWhereIn('prerequisite_id', $this->userEvolutions->pluck('evolution_id'));
+            })
+            ->get();
 
         return view('livewire.click');
     }

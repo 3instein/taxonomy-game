@@ -18,7 +18,7 @@ class Species extends Model {
         return $this->hasMany(CreatureEvolution::class);
     }
 
-    public function creature() {
+    public function userCreatures() {
         return $this->hasMany(UserCreature::class);
     }
 

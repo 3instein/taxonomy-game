@@ -17,10 +17,6 @@ class UserCreature extends Model {
     }
 
     public function species() {
-        return $this->hasOne(Species::class, 'id');
-    }
-
-    public function creatureEvolutions(){
-        return $this->hasMany(Evolution::class);
+        return $this->hasOne(Species::class, 'id', 'species_id');
     }
 }

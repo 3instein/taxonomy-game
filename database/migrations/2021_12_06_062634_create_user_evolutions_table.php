@@ -12,6 +12,7 @@ class CreateUserEvolutionsTable extends Migration {
      */
     public function up() {
         Schema::create('user_evolutions', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('student_id')
                 ->constrained()
                 ->cascadeOnDelete();
