@@ -11,7 +11,11 @@ use Livewire\Component;
 
 class Sidebar extends Component {
 
-    public $species, $evolutions, $userEvolutions, $creatureEvolutions;
+    public $species, $evolutions, $power;
+
+    public function mount($power){
+        $this->power = $power;
+    }
 
     public function render() {
         $this->species =
@@ -19,11 +23,7 @@ class Sidebar extends Component {
                 $query->where('student_id', auth()->user()->id);
             })->get();
 
-        $this->userEvolutions = Evolution::whereDoesntHave('userEvolutions', function (Builder $query) {
-            $query->where('student_id', auth()->user()->id);
-        })->get();
-
-        $this->creatureEvolutions = CreatureEvolution::whereDoesntHave('userCreatureEvolutions', function (Builder $query) {
+        $this->evolutions = Evolution::whereDoesntHave('userEvolutions', function (Builder $query) {
             $query->where('student_id', auth()->user()->id);
         })->get();
 

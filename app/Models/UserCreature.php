@@ -20,7 +20,7 @@ class UserCreature extends Model {
         return $this->hasOne(Species::class, 'id');
     }
 
-    public function userCreaturesEvolutions() {
-        return $this->belongsToMany(CreatureEvolution::class, 'user_creatures_evolutions');
+    public function creatureEvolutions(){
+        return $this->hasMany(Evolution::class);
     }
 }

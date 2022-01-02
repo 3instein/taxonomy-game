@@ -14,7 +14,7 @@ class CreateEvolutionsTable extends Migration {
         Schema::create('evolutions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->unsignedBigInteger('price');
             $table->foreignId('prerequisite_id')
                 ->nullable()

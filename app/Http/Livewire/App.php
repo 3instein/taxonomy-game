@@ -14,7 +14,8 @@ class App extends Component {
     protected $listeners = [
         'addEvo' => 'click',
         'upgradePower' => 'upgradePower',
-        'unlockCreature' => 'unlockCreature'
+        'unlockCreature' => 'unlockCreature',
+        'unlockEvolution' => 'unlockEvolution'
     ];
 
     public function click() {
@@ -41,6 +42,10 @@ class App extends Component {
         $this->user->update([
             'evo' => $this->userStat->evo - $species['price']
         ]);
+    }
+
+    public function unlockEvolution($id){
+        
     }
 
     public function render() {

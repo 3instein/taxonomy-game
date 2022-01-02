@@ -8,19 +8,31 @@
         {{-- upgrade --}}
         <div class="upgrades-wrapper">
             <h5 class="card-header">Upgrades</h5>
-            @foreach ($creatureEvolutions as $evo)
-            @endforeach
             <div class="card">
                 <div class="card-body d-flex">
                     <div>
                         <h5 class="card-title">Click power</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                        <p class="card-text">+{{ $power }} evo every click
                         </p>
                     </div>
                     <span wire:click="$emit('upgradePower')" class="btn btn-primary align-self-baseline">Upgrade
                         Power</span>
                 </div>
             </div>
+            <h5 class="card-header">Evolutions</h5>
+            @forelse ($evolutions as $evolution)
+            <div class="card">
+                <div class="card-body d-flex">
+                    <div>
+                        <h5 class="card-title">{{ $evolution->name }}</h5>
+                        <p class="card-text">{{ $evolution->description }}
+                        </p>
+                    </div>
+                    <span wire:click="$emit('upgradePower')" class="btn btn-primary align-self-baseline">{{ $evolution->price }} Evo</span>
+                </div>
+            </div>
+            @empty
+            @endforelse
         </div>
 
         {{-- creatures --}}
@@ -41,7 +53,7 @@
                                     <p class="mb-0">{{ substr($creature->description, 0, 30) }}...</p>
                                 </div>
                                 <span wire:click="$emit('unlockCreature', {{ $creature }})" class="btn btn-primary align-self-baseline">
-                                    {{ $creature->price }} DNA</span>
+                                    {{ $creature->price }} Evo</span>
                             </div>
                         </div>
                     </div>
