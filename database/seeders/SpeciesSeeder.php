@@ -18,7 +18,7 @@ class SpeciesSeeder extends Seeder {
             'name' => 'Sponge Sp',
             'price' => 1,
             'description' => 'Organisme multiseluler pertama di dunia. Bunga karang adalah organisme yang diam di tempat dan menyerap nutrisi menggunakan sebuah filter untuk menyaring makanan. Bunga karang terbentuk dari banyak sel eukariotik yang menjadi satu organisme.',
-            'image_path' => 'http://taxonomy-game-web.test/assets/species/sponge-sp.jpg'
+            'image_path' => 'http://taxonomy-game-web.test/assets/species/sponge-sp.png'
         ]);
 
         Species::create([
@@ -26,7 +26,7 @@ class SpeciesSeeder extends Seeder {
             'name' => 'Mnemiopsis iedyi',
             'price' => 1,
             'description' => 'Ubur-ubur adalah organisme laut bertubuh lunak dengan tubuh berbentuk payung dengan tekstur mirip gelatin dilengkapi dengan tentakel. Mereka bisa berenang melalui air dengan mendenyutkan tubuh mereka.',
-            'image_path' => 'http://taxonomy-game-web.test/assets/species/mnemiopsis-iedyi.jpg',
+            'image_path' => 'http://taxonomy-game-web.test/assets/species/mnemiopsis-iedyi.png',
             'prerequisite_id' => 1
         ]);
         // Species::create([

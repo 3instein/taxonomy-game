@@ -5,6 +5,13 @@
     </div> --}}
     <div class="circle"></div>
 
+    {{-- sea biome --}}
+    <div class="sea-biome d-none">
+        @foreach ($userCreatures as $userCreature)
+            <img class="{{ $userCreature->species->name }}" src="{{ $userCreature->species->image_path }}" />
+        @endforeach
+    </div>
+
     {{-- evolution tree --}}
     <section class="evolution-trees d-none">
         <div class="evolution-tree mx-auto">
@@ -17,7 +24,7 @@
             @foreach ($species as $creature)
                 <div class="species-canvas species-{{ $loop->iteration }}">
                     <img class="species-branch" src="{{ $creature->image_path }}" />
-                    <input type="hidden" id="creature" value="{{ $creature }}">
+                    <input type="hidden" id="creature" value="{{ $creature }}" data-genus="{{ $creature->genus->name }}" data-family="{{ $creature->genus->family->name }}" data-order="{{ $creature->genus->family->order->name }}" data-class="{{ $creature->genus->family->order->class->name }}" data-phylum="{{ $creature->genus->family->order->class->phylum->name }}" data-kingdom="{{ $creature->genus->family->order->class->phylum->kingdom->name }}" data-domain="{{ $creature->genus->family->order->class->phylum->kingdom->domain->name }}">
                 </div>
             @endforeach
         </div>
@@ -32,7 +39,20 @@
                 </div>
             </div>
             <div class="inner-branch-description d-none mt-3 mx-3">
-                <p class="creature-description text-white"></p>
+                <p class="creature-description text-white mb-0"></p>
+                <div class="taxonomy-classification d-none mt-3">
+                    <p class="text-white fw-bold fs-5 mb-1">Genus : <span class="fw-normal creature-genus"></span></p>
+                    <p class="text-white fw-bold fs-5 mb-1">Family : <span class="fw-normal creature-family"></span></p>
+                    <p class="text-white fw-bold fs-5 mb-1">Order : <span class="fw-normal creature-order"></span></p>
+                    <p class="text-white fw-bold fs-5 mb-1">Class : <span class="fw-normal creature-class"></span></p>
+                    <p class="text-white fw-bold fs-5 mb-1">Phylum : <span class="fw-normal creature-phylum"></span></p>
+                    <p class="text-white fw-bold fs-5 mb-1">Kingdom : <span class="fw-normal creature-kingdom"></span></p>
+                    <p class="text-white fw-bold fs-5 mb-1">Domain : <span class="fw-normal creature-domain"></span></p>
+                </div>
+                <div class="width-100 text-end">
+                    <span class="text-white fw-bold taxonomy-expand d-none p-2">Selengkapnya</span>
+                    <span class="text-white fw-bold taxonomy-close d-none p-2">Tutup</span>
+                </div>
             </div>
         </div>
     </section>
