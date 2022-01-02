@@ -13,11 +13,11 @@ class UserCreatureSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        // UserCreature::create([
-        //     'student_id' => 1,
-        //     'species_id' => 1,
-        //     'amount' => 1
-        // ]);
+        UserCreature::create([
+            'student_id' => 1,
+            'species_id' => 1,
+            'amount' => 1
+        ]);
 
         // UserCreature::create([
         //     'student_id' => 1,
