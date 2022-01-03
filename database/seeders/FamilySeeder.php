@@ -24,7 +24,17 @@ class FamilySeeder extends Seeder {
 
         Family::create([
             'order_id' => 3,
+            'name' => 'Dalyelliidae'
+        ]);
+
+        Family::create([
+            'order_id' => 4,
             'name' => 'Myllokunmingiidae'
+        ]);
+
+        Family::create([
+            'order_id' => 5,
+            'name' => 'Acanthostegidae'
         ]);
     }
 }

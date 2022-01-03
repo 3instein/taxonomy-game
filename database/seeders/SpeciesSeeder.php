@@ -33,8 +33,8 @@ class SpeciesSeeder extends Seeder {
         ]);
         
         Species::create([
-            'genus_id' => 2,
-            'name' => 'Derostoma Elongatum',
+            'genus_id' => 3,
+            'name' => 'Dalyellia Elongatum',
             'common_name' => 'Cacing pipih',
             'price' => 1,
             'description' => 'Cacing pipih adalah organisme pertama dengan simetri bilateral, yang memungkinkan adanya otak dan organ internal. Organisme sederhana ini merupakan awal dimulainya organisme bertulang belakang (vertebrata).',
@@ -43,13 +43,23 @@ class SpeciesSeeder extends Seeder {
         ]);
 
         Species::create([
-            'genus_id' => 3,
+            'genus_id' => 4,
             'name' => 'Haikouichthys Ercaicunensis',
             'common_name' => 'Ikan',
             'price' => 1,
             'description' => 'Ikan memiliki sirip untuk menjelajahi lautan. Ikan berevolusi dari invertebrata yang kurang lincah serta ikan telah berdiversifikasi menjadi banyak spesies ikan.',
             'image_path' => '',
             'prerequisite_id' => 3
+        ]);
+
+        Species::create([
+            'genus_id' => 5,
+            'name' => 'Acanthostega gunnari',
+            'common_name' => 'Tetrapoda',
+            'price' => 1,
+            'description' => 'Tetrapoda adalah makhluk air pertama yang mengevolusikan kaki dan sifat amfibi dan merayap di daratan.',
+            'image_path' => '',
+            'prerequisite_id' => 4
         ]);
 
     }

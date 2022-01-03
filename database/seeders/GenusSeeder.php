@@ -24,7 +24,17 @@ class GenusSeeder extends Seeder {
 
         Genus::create([
             'family_id' => 3,
+            'name' => 'Dalyellia'
+        ]);
+
+        Genus::create([
+            'family_id' => 4,
             'name' => 'Haikouichthys'
+        ]);
+
+        Genus::create([
+            'family_id' => 5,
+            'name' => 'Acanthostega'
         ]);
     }
 }
