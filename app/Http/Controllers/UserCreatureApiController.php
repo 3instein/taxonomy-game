@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Species;
+use App\Models\User;
 use App\Models\UserCreature;
 use Illuminate\Http\Request;
 
@@ -12,8 +14,18 @@ class UserCreatureApiController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $userCreatures = UserCreature::where('student_id', auth()->user()->id)->get();
-        return response()->json($userCreatures);
+        $userCreatures = UserCreature::with('species')
+            ->where('student_id', auth()->user()->id)
+            ->get()
+            ->pluck('species');
+
+        // $userCreatures = User::with('userCreatures.species')
+        //     ->where('id', auth()->user()->id)
+        //     ->get();
+
+        return response()->json([
+            'species' => $userCreatures
+        ]);
     }
 
     /**

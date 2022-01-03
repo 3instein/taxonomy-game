@@ -4,7 +4,7 @@
         <p class="mb-0 text-gray">{{ $power }} Click Power</p>
     </div>
     <livewire:click />
-    <livewire:sidebar :power="$power"/>
+    <livewire:sidebar :power="$power" />
     {{-- <form action="{{ route('logout') }}" method="POST">
         @csrf
         <button type="submit">Logout</button>
