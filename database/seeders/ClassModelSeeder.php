@@ -12,26 +12,6 @@ class ClassModelSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        // ClassModel::create([
-        //     'phylum_id' => 1,
-        //     'name' => 'Mammalia'
-        // ]);
-
-        // ClassModel::create([
-        //     'phylum_id' => 2,
-        //     'name' => 'Clitellata'
-        // ]);
-
-        // ClassModel::create([
-        //     'phylum_id' => 3,
-        //     'name' => 'Magnoliopsida'
-        // ]);
-
-        // ClassModel::create([
-        //     'phylum_id' => 4,
-        //     'name' => 'Monocotyledoneae'
-        // ]);
-
         ClassModel::create([
             'phylum_id' => 1,
             'name' => 'Porifera'
@@ -40,6 +20,16 @@ class ClassModelSeeder extends Seeder {
         ClassModel::create([
             'phylum_id' => 2,
             'name' => 'Tentaculata'
+        ]);
+
+        ClassModel::create([
+            'phylum_id' => 3,
+            'name' => 'Turbellaria'
+        ]);
+
+        ClassModel::create([
+            'phylum_id' => 4,
+            'name' => 'Agnatha'
         ]);
     }
 }

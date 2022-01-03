@@ -31,64 +31,22 @@ class SpeciesSeeder extends Seeder {
             'image_path' => 'http://taxonomy-game-web.test/assets/species/mnemiopsis-iedyi.png',
             'prerequisite_id' => 1
         ]);
-        // Species::create([
-        //     'genus_id' => 1,
-        //     'name' => 'Homo Sapiens',
-        //     'price' => 100
-        // ]);
+        
+        Species::create([
+            'genus_id' => 2,
+            'name' => 'Derostoma Elongatum',
+            'common_name' => 'Cacing pipih',
+            'price' => 1,
+            'description' => 'Cacing pipih adalah organisme pertama dengan simetri bilateral, yang memungkinkan adanya otak dan organ internal. Organisme sederhana ini merupakan awal dimulainya organisme bertulang belakang (vertebrata).',
+            'image_path' => '',
+            'prerequisite_id' => 2
+        ]);
 
-        // Species::create([
-        //     'genus_id' => 2,
-        //     'name' => 'Felis Catus',
-        //     'price' => 100
-        // ]);
+        Species::create([
+            'genus_id' => 4,
+            'name' => 'Haikouichthys ercaicunensis',
+            'price' => 1
+        ]);
 
-        // Species::create([
-        //     'genus_id' => 3,
-        //     'name' => 'Canis Familiaris',
-        //     'price' => 100
-        // ]);
-
-        // Species::create([
-        //     'genus_id' => 4,
-        //     'name' => 'Lumbricus Rubellus',
-        //     'price' => 100
-        // ]);
-
-        // Species::create([
-        //     'genus_id' => 5,
-        //     'name' => 'Orcinus Orca',
-        //     'price' => 100
-        // ]);
-
-        // Species::create([
-        //     'genus_id' => 6,
-        //     'name' => 'Rosa Hybrida',
-        //     'price' => 100
-        // ]);
-
-        // Species::create([
-        //     'genus_id' => 7,
-        //     'name' => 'Bambusa Vulgaris',
-        //     'price' => 100
-        // ]);
-
-        // Species::create([
-        //     'genus_id' => 8,
-        //     'name' => 'Helianthus Annuus',
-        //     'price' => 100
-        // ]);
-
-        // Species::create([
-        //     'genus_id' => 9,
-        //     'name' => 'Nymphaea Alba',
-        //     'price' => 100
-        // ]);
-
-        // Species::create([
-        //     'genus_id' => 10,
-        //     'name' => 'Bauhinia Purpurea',
-        //     'price' => 100
-        // ]);
     }
 }

@@ -85,5 +85,49 @@ class EvolutionSeeder extends Seeder {
             'image_path' => 'http://taxonomy-game-web.test/assets/evolutions/sistem-saraf.jpg',
             'price' => 1
         ]);
+
+        Evolution::create([
+            'species_id' => 3,
+            'name' => 'Simetri Bilateral',
+            'description' => 'Organisme dengan sisi kiri dan kanan yang identikal, sebuah kepala, dan sebuah ekor yang menunjukkan simetri bilateral. Evolusi ini membantu organisme untuk mempunyai sistem saraf yang kompleks.',
+            'image_path' => '',
+            'prerequisite_id' => 7,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 3,
+            'name' => 'Jantung',
+            'description' => 'Jantung adalah organ dalam yang didedikasikan untuk memompa darah dalam sebuah organisme. Pusat dari sistem peredaran darah, organ ini menjaga agar organisme tetap hidup.',
+            'image_path' => '',
+            'prerequisite_id' => 10,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 3,
+            'name' => 'Titik pigmen',
+            'description' => 'Titik pigmen adalah sebuah reseptor yang sensitif akan cahaya. Titik pigmen memudahkan organisme untuk membedakan antara terang dan gelap.',
+            'image_path' => '',
+            'prerequisite_id' => 10,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 3,
+            'name' => 'Tali Saraf',
+            'description' => 'Saraf adalah sekumpulan fiber saraf yang tersebar di seluruh tubuh organisme. Mereka membentuk sistem saraf yang sederhana.',
+            'image_path' => '',
+            'prerequisite_id' => 9,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 3,
+            'name' => 'Kepompong',
+            'description' => 'Telur yang sudah difertilisasi dibungkus kepompong yang kemudian disimpan di dalam tubuh cacing pipih. Kepompong akan menyediakan nutrisi yang diperlukan untuk pertumbuhan embrio dalam telur, yang kemudian akan menetas dan menjadi cacing pipih baru.',
+            'image_path' => '',
+            'price' => 1,
+        ]);
     }
 }

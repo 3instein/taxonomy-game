@@ -12,26 +12,6 @@ class PhylumSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        // Phylum::create([
-        //     'kingdom_id' => 1,
-        //     'name' => 'Chordata'
-        // ]);
-
-        // Phylum::create([
-        //     'kingdom_id' => 1,
-        //     'name' => 'Annelida'
-        // ]);
-
-        // Phylum::create([
-        //     'kingdom_id' => 2,
-        //     'name' => 'Magnoliophyta'
-        // ]);
-
-        // Phylum::create([
-        //     'kingdom_id' => 2,
-        //     'name' => 'Spermatohyta'
-        // ]);
-
         Phylum::create([
             'kingdom_id' => 1,
             'name' => 'Radiata'
@@ -40,6 +20,16 @@ class PhylumSeeder extends Seeder {
         Phylum::create([
             'kingdom_id' => 1,
             'name' => 'Ctenophora'
+        ]);
+        
+        Phylum::create([
+            'kingdom_id' => 1,
+            'name' => 'Platyhelminthes'
+        ]);
+
+        Phylum::create([
+            'kingdom_id' => 1,
+            'name' => 'Chordata'
         ]);
     }
 }
