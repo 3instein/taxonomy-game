@@ -23,7 +23,7 @@ class OrderSeeder extends Seeder {
         ]);
 
         Order::create([
-            'class_id' => 3,
+            'class_id' => 4,
             'name'=> 'Myllokunmingiida' 
         ]);
     }

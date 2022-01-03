@@ -43,9 +43,13 @@ class SpeciesSeeder extends Seeder {
         ]);
 
         Species::create([
-            'genus_id' => 4,
-            'name' => 'Haikouichthys ercaicunensis',
-            'price' => 1
+            'genus_id' => 3,
+            'name' => 'Haikouichthys Ercaicunensis',
+            'common_name' => 'Ikan',
+            'price' => 1,
+            'description' => 'Ikan memiliki sirip untuk menjelajahi lautan. Ikan berevolusi dari invertebrata yang kurang lincah serta ikan telah berdiversifikasi menjadi banyak spesies ikan.',
+            'image_path' => '',
+            'prerequisite_id' => 3
         ]);
 
     }
