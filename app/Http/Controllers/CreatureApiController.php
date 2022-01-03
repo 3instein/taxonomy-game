@@ -16,6 +16,10 @@ class CreatureApiController extends Controller {
     public function index() {
         $species = Species::whereDoesntHave('userCreatures', function (Builder $query) {
             $query->where('student_id', auth()->user()->id);
+        })->where(function ($query) {
+            $userCreatures = UserCreature::where('student_id', auth()->user()->id)->get();
+            $query->whereNull('prerequisite_id');
+            $query->orWhereIn('prerequisite_id', $userCreatures->pluck('species_id'));
         })->get();
 
         return response()->json([
