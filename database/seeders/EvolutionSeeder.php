@@ -82,7 +82,7 @@ class EvolutionSeeder extends Seeder {
             'species_id' => 2,
             'name' => 'Sistem Saraf',
             'description' => 'Sistem saraf adalah jaringan sel yang mengirimkan stimuli melalui tubuh organisme dalam bentuk sinyal elektrik. Sistem saraf dikontrol oleh otak.',
-            'image_path' => '',
+            'image_path' => 'http://taxonomy-game-web.test/assets/evolutions/sistem-saraf.jpg',
             'price' => 1
         ]);
     }

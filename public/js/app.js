@@ -1,32 +1,32 @@
 (function () {
 
   // Mnemiopsis animation
-  const refreshRate = 1000 / 60;
-  const maxXPosition = window.screen.width;
-  const maxYPosition = window.screen.height;
-  const jellyfish = document.querySelector('.Mnemiopsis');
-  let speedX = 2;
-  let speedY = 2;
-  window.setInterval(() => {
-    let positionX = jellyfish.getBoundingClientRect().left;
-    let positionY = jellyfish.getBoundingClientRect().top;
-    positionX = positionX + speedX;
-    positionY = positionY + speedY;
-    if (positionX >= maxXPosition - 120) {
-      speedX = -2;
-    } else if (positionX <= 0) {
-      speedX = 2
-    }
+  // const refreshRate = 1000 / 60;
+  // const maxXPosition = window.screen.width;
+  // const maxYPosition = window.screen.height;
+  // const jellyfish = document.querySelector('.Mnemiopsis');
+  // let speedX = 2;
+  // let speedY = 2;
+  // window.setInterval(() => {
+  //   let positionX = jellyfish.getBoundingClientRect().left;
+  //   let positionY = jellyfish.getBoundingClientRect().top;
+  //   positionX = positionX + speedX;
+  //   positionY = positionY + speedY;
+  //   if (positionX >= maxXPosition - 120) {
+  //     speedX = -2;
+  //   } else if (positionX <= 0) {
+  //     speedX = 2
+  //   }
 
-    if (positionY >= maxYPosition - 60) {
-      speedY = -2;
-    } else if (positionY <= 0) {
-      speedY = 2;
-    }
+  //   if (positionY >= maxYPosition - 60) {
+  //     speedY = -2;
+  //   } else if (positionY <= 0) {
+  //     speedY = 2;
+  //   }
 
-    jellyfish.style.left = positionX + 'px';
-    jellyfish.style.top = positionY + 'px';
-  }, refreshRate);
+  //   jellyfish.style.left = positionX + 'px';
+  //   jellyfish.style.top = positionY + 'px';
+  // }, refreshRate);
 
   // sidebar page changing
   const sidebarLinks = document.querySelectorAll('.sidebar-link');
@@ -75,6 +75,8 @@
   }
 
   // channging environemnt button
+  let quizModal = new bootstrap.Modal(document.getElementById('quiz-modal'));
+  let userPoint = document.querySelector('#user-point');
   const earth = document.querySelector('.circle');
   const seaBtn = document.querySelector('.sea-btn');
   const earthBtn = document.querySelector('.earth-btn')
@@ -83,12 +85,17 @@
   const seaBiome = document.querySelector('.sea-biome');
   const evolutionTree = document.querySelector('.evolution-trees');
   seaBtn.addEventListener('click', function () {
-    canvas.style.backgroundImage = "url('../assets/ocean-floor-1.jpg')";
-    canvas.style.backgroundRepeat = 'no-repeat';
-    canvas.style.backgroundSize = '100% 100%';
-    earth.style.display = 'none';
-    seaBiome.classList.remove('d-none');
-    evolutionTree.classList.add('d-none');
+    if (userPoint.value < 20) {
+      quizModal.toggle();
+      document.querySelector('.biome-prerequisite').innerHTML = `Saat ini point kamu ${userPoint.value}, untuk membuat biome selanjutnya kamu butuh 20 point!`;
+    } else {
+      canvas.style.backgroundImage = "url('../assets/ocean-floor-1.jpg')";
+      canvas.style.backgroundRepeat = 'no-repeat';
+      canvas.style.backgroundSize = '100% 100%';
+      earth.style.display = 'none';
+      seaBiome.classList.remove('d-none');
+      evolutionTree.classList.add('d-none');
+    }
   });
 
   earthBtn.addEventListener('click', function () {
