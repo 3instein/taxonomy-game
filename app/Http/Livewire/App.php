@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Quiz;
 use App\Models\User;
 use App\Models\UserCreature;
 use App\Models\UserEvolution;
@@ -45,7 +46,7 @@ class App extends Component {
         ]);
     }
 
-    public function unlockEvolution($evolution){
+    public function unlockEvolution($evolution) {
         UserEvolution::create([
             'student_id' => $this->user->id,
             'evolution_id' => $evolution['id']
@@ -61,6 +62,8 @@ class App extends Component {
         $this->userStat = UserStat::where('student_id', $this->user->id)->first();
         $this->evo = $this->userStat->evo;
         $this->power = $this->userStat->power;
-        return view('livewire.app');
+        return view('livewire.app', [
+            'quizzes' => Quiz::inRandomOrder()->get()
+        ]);
     }
 }

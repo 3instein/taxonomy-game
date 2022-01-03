@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder {
             SpeciesSeeder::class,
             // CreatureEvolutionSeeder::class,
             EvolutionSeeder::class,
-            UserCreatureSeeder::class
+            UserCreatureSeeder::class,
+            QuizSeeder::class
         ]);
     }
 }

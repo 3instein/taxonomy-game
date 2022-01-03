@@ -75,7 +75,7 @@
   }
 
   // channging environemnt button
-  let quizModal = new bootstrap.Modal(document.getElementById('quiz-modal'));
+  let quizModal = new bootstrap.Modal(document.getElementById('biome-modal'));
   let userPoint = document.querySelector('#user-point');
   const earth = document.querySelector('.circle');
   const seaBtn = document.querySelector('.sea-btn');
@@ -87,7 +87,7 @@
   seaBtn.addEventListener('click', function () {
     if (userPoint.value < 20) {
       quizModal.toggle();
-      document.querySelector('.biome-prerequisite').innerHTML = `Saat ini point kamu ${userPoint.value}, untuk membuat biome selanjutnya kamu butuh 20 point!`;
+      document.querySelector('.biome-prerequisite').innerHTML = `Saat ini point kamu ${userPoint.value}, untuk akses biome selanjutnya kamu butuh 20 point!`;
     } else {
       canvas.style.backgroundImage = "url('../assets/ocean-floor-1.jpg')";
       canvas.style.backgroundRepeat = 'no-repeat';
@@ -116,6 +116,79 @@
     evolutionTree.style.width = '100%';
     evolutionTree.style.height = '100%';
   });
+
+  // quiz modal
+  const questionText = document.querySelectorAll('.question-text');
+  const question = document.querySelectorAll('#question');
+  const answer = document.querySelectorAll('#answer');
+  const nextBtn = document.querySelectorAll('.btn-next');
+  const point = document.querySelectorAll('#point');
+  let feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'));
+  let wrongAnswer = [];
+  for (let i = 0; i < question.length; i++) {
+    nextBtn[i].addEventListener('click', function (e) {
+      let value = question[i].value;
+      if (value.toLowerCase() === answer[i].value.toLowerCase()) {
+        let gainedPoint = parseInt(userPoint.value) + parseInt(point[i].value)
+        userPoint.value = gainedPoint;
+      } else {
+        let foo = {
+          "question": questionText[i].innerHTML,
+          "answer": value
+        }
+
+        wrongAnswer.push(foo);
+      }
+
+      if (i == question.length - 1) {
+        let hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = 'wrong-answer';
+        hiddenInput.value = JSON.stringify(wrongAnswer);
+        document.querySelector('#quiz-form').append(userPoint);
+        document.querySelector('#quiz-form').appendChild(hiddenInput);
+        document.querySelector('#quiz-form').submit();
+      }
+    });
+  }
+
+  if (document.getElementById('feedback-toggle').value != "") {
+    let wrongAnswerResponses = JSON.parse(document.getElementById('feedback-toggle').value);
+    let feedbackModalTitle = document.querySelector('.feedback-title');
+    if (userPoint.value >= 20) {
+      feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma laut 🌊';
+      if (wrongAnswerResponses.length > 0) {
+        feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma laut 🌊, tapi masih ada yang salah nih. Coba di baca lagi';
+        let foo = '';
+        for (let wrongAnswerResponse of wrongAnswerResponses) {
+          foo += '<tr>';
+          foo += `<td scope="row">${wrongAnswerResponse.question}</td>`;
+          foo += `<td>${wrongAnswerResponse.answer}</td>`;
+          foo += '</tr>'
+        }
+        document.getElementById('wrong-answer-header').innerHTML = `<tr>
+      <th scope="col">Pertanyaan</th>
+      <th scope="col">Jawaban kamu</th>
+  </tr>`;
+        document.getElementById('wrong-answer-table').innerHTML = foo;
+      }
+    } else {
+      feedbackModalTitle.innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger me-2"></i>Ada yang salah, coba di baca lagi';
+      let foo = '';
+      for (let wrongAnswerResponse of wrongAnswerResponses) {
+        foo += '<tr>';
+        foo += `<td scope="row">${wrongAnswerResponse.question}</td>`;
+        foo += `<td>${wrongAnswerResponse.answer}</td>`;
+        foo += '</tr>'
+      }
+      document.getElementById('wrong-answer-header').innerHTML = `<tr>
+      <th scope="col">Pertanyaan</th>
+      <th scope="col">Jawaban kamu</th>
+  </tr>`;
+      document.getElementById('wrong-answer-table').innerHTML = foo;
+    }
+    feedbackModal.toggle();
+  }
 
   // evolution tree
   const species = document.querySelectorAll('.species-canvas');
