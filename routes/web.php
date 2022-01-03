@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CreatureController;
 use App\Http\Controllers\DomainController;
+use App\Http\Controllers\QuizController;
 use App\Http\Livewire\App;
 use App\Models\Domain;
 use Illuminate\Support\Facades\Route;
@@ -27,5 +28,6 @@ Route::prefix('admin')->group(function () {
 });
 Route::resource('domains', DomainController::class);
 Route::resource('creatures', CreatureController::class);
+Route::post('/update-point', [QuizController::class, 'updatePoint'])->name('update.point');
 
 require __DIR__.'/auth.php';
