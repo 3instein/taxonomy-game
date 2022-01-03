@@ -21,10 +21,20 @@ class OrderSeeder extends Seeder {
             'class_id' => 2,
             'name'=> 'Lobata' 
         ]);
+        
+        Order::create([
+            'class_id' => 3,
+            'name'=> 'Rhabdocoela' 
+        ]);
 
         Order::create([
             'class_id' => 4,
             'name'=> 'Myllokunmingiida' 
+        ]);
+
+        Order::create([
+            'class_id' => 5,
+            'name'=> 'Acanthostegiida' 
         ]);
     }
 }
