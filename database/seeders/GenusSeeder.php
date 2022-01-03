@@ -21,5 +21,10 @@ class GenusSeeder extends Seeder {
             'family_id' => 2,
             'name' => 'Mnemiopsis'
         ]);
+
+        Genus::create([
+            'family_id' => 3,
+            'name' => 'Haikouichthys'
+        ]);
     }
 }

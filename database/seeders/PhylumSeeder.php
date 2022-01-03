@@ -26,5 +26,10 @@ class PhylumSeeder extends Seeder {
             'kingdom_id' => 1,
             'name' => 'Platyhelminthes'
         ]);
+
+        Phylum::create([
+            'kingdom_id' => 1,
+            'name' => 'Chordata'
+        ]);
     }
 }

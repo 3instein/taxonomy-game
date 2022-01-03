@@ -26,5 +26,10 @@ class ClassModelSeeder extends Seeder {
             'phylum_id' => 3,
             'name' => 'Turbellaria'
         ]);
+
+        ClassModel::create([
+            'phylum_id' => 4,
+            'name' => 'Agnatha'
+        ]);
     }
 }

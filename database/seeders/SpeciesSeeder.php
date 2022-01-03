@@ -42,5 +42,11 @@ class SpeciesSeeder extends Seeder {
             'prerequisite_id' => 2
         ]);
 
+        Species::create([
+            'genus_id' => 4,
+            'name' => 'Haikouichthys ercaicunensis',
+            'price' => 1
+        ]);
+
     }
 }

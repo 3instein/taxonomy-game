@@ -21,5 +21,10 @@ class OrderSeeder extends Seeder {
             'class_id' => 2,
             'name'=> 'Lobata' 
         ]);
+
+        Order::create([
+            'class_id' => 3,
+            'name'=> 'Myllokunmingiida' 
+        ]);
     }
 }

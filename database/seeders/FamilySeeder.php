@@ -21,5 +21,10 @@ class FamilySeeder extends Seeder {
             'order_id' => 2,
             'name' => 'Bolinopsidae'
         ]);
+
+        Family::create([
+            'order_id' => 3,
+            'name' => 'Myllokunmingiidae'
+        ]);
     }
 }
