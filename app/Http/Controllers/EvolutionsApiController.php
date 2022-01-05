@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Evolution;
+use App\Models\UserCreature;
+use App\Models\UserEvolution;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class EvolutionsApiController extends Controller {
@@ -12,8 +15,21 @@ class EvolutionsApiController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $evolutions = Evolution::all();
-        return response()->json($evolutions);
+        $evolutions = Evolution::whereDoesntHave('userEvolutions', function (Builder $query) {
+            $query->where('student_id', auth()->user()->id);
+        })->where(function ($query) {
+            $userEvolutions = UserEvolution::where('student_id', auth()->user()->id)->get();
+            $query->whereNull('prerequisite_id');
+            $query->orWhereIn('prerequisite_id', $userEvolutions->pluck('evolution_id'));
+        })->where(function ($query) {
+            $userCreatures = UserCreature::where('student_id', auth()->user()->id)->get();
+            $query->whereNull('species_id');
+            $query->orWhereIn('species_id', $userCreatures->pluck('species_id'));
+        })->get();;
+
+        return response()->json([
+            'evolutions' => $evolutions
+        ]);
     }
 
     /**
