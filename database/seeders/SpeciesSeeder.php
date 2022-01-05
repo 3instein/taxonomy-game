@@ -19,7 +19,7 @@ class SpeciesSeeder extends Seeder {
             'common_name' => 'Bunga Karang',
             'price' => 1,
             'description' => 'Organisme multiseluler pertama di dunia. Bunga karang adalah organisme yang diam di tempat dan menyerap nutrisi menggunakan sebuah filter untuk menyaring makanan. Bunga karang terbentuk dari banyak sel eukariotik yang menjadi satu organisme.',
-            'image_path' => 'http://taxonomy-game-web.test/assets/species/sponge-sp.png'
+            'image_path' => 'assets/species/sponge-sp.png'
         ]);
 
         Species::create([
@@ -28,17 +28,17 @@ class SpeciesSeeder extends Seeder {
             'common_name' => 'Ubur-ubur',
             'price' => 1,
             'description' => 'Ubur-ubur adalah organisme laut bertubuh lunak dengan tubuh berbentuk payung dengan tekstur mirip gelatin dilengkapi dengan tentakel. Mereka bisa berenang melalui air dengan mendenyutkan tubuh mereka.',
-            'image_path' => 'http://taxonomy-game-web.test/assets/species/mnemiopsis-iedyi.png',
+            'image_path' => 'assets/species/mnemiopsis-iedyi.png',
             'prerequisite_id' => 1
         ]);
-        
+
         Species::create([
             'genus_id' => 3,
             'name' => 'Dalyellia Elongatum',
             'common_name' => 'Cacing pipih',
             'price' => 1,
             'description' => 'Cacing pipih adalah organisme pertama dengan simetri bilateral, yang memungkinkan adanya otak dan organ internal. Organisme sederhana ini merupakan awal dimulainya organisme bertulang belakang (vertebrata).',
-            'image_path' => '',
+            'image_path' => 'assets/species/dalyellia-elongatum.jpg',
             'prerequisite_id' => 2
         ]);
 
@@ -48,7 +48,7 @@ class SpeciesSeeder extends Seeder {
             'common_name' => 'Ikan',
             'price' => 1,
             'description' => 'Ikan memiliki sirip untuk menjelajahi lautan. Ikan berevolusi dari invertebrata yang kurang lincah serta ikan telah berdiversifikasi menjadi banyak spesies ikan.',
-            'image_path' => '',
+            'image_path' => 'assets/species/haikouichthys-ercaicunensis.jpg',
             'prerequisite_id' => 3
         ]);
 
@@ -58,9 +58,8 @@ class SpeciesSeeder extends Seeder {
             'common_name' => 'Tetrapoda',
             'price' => 1,
             'description' => 'Tetrapoda adalah makhluk air pertama yang mengevolusikan kaki dan sifat amfibi dan merayap di daratan.',
-            'image_path' => '',
+            'image_path' => 'assets/species/acanthostega-gunnari.jpg',
             'prerequisite_id' => 4
         ]);
-
     }
 }
