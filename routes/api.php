@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticationApiController;
 use App\Http\Controllers\CreatureApiController;
 use App\Http\Controllers\CreaturesEvolutionsApiController;
 use App\Http\Controllers\EvolutionsApiController;
+use App\Http\Controllers\QuizApiController;
 use App\Http\Controllers\SaveController;
 use App\Http\Controllers\UserCreatureApiController;
 use App\Http\Controllers\UserStatsApiController;
@@ -35,7 +36,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('user-creatures', UserCreatureApiController::class);
     Route::resource('creatures', CreatureApiController::class);
     Route::resource('creatures-evolutions', CreaturesEvolutionsApiController::class);
+    Route::resource('quiz', QuizApiController::class);
     Route::get('/upgrade-power', [UserStatsApiController::class, 'upgradePower']);
+    Route::post('/unlock-creature', [CreatureApiController::class, 'unlockCreature']);
     Route::post('/save-user-stats', [UserStatsApiController::class, 'saveUserStat']);
     Route::post('/logout', [AuthenticationApiController::class, 'logout']);
 });

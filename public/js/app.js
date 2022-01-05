@@ -152,7 +152,7 @@
     });
   }
 
-  if (document.getElementById('feedback-toggle').value != "") {
+  if (document.getElementById('feedback-toggle')) {
     let wrongAnswerResponses = JSON.parse(document.getElementById('feedback-toggle').value);
     let feedbackModalTitle = document.querySelector('.feedback-title');
     if (userPoint.value >= 20) {
