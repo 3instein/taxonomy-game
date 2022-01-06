@@ -14,11 +14,11 @@ class Evolution extends Model {
         return $this->belongsTo(self::class);
     }
 
-    public function userEvolutions() {
-        return $this->belongsToMany(User::class, 'user_evolutions', 'evolution_id', 'student_id');
+    public function user() {
+        return $this->hasMany(UserEvolution::class);
     }
 
-    public function creature(){
+    public function species(){
         return $this->belongsTo(Species::class, 'species_id');
     }
 }

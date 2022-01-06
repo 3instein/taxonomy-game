@@ -33,7 +33,7 @@ class Sidebar extends Component {
         $this->userEvolutions = UserEvolution::where('student_id', auth()->user()->id)->get();
 
         $this->evolutions =
-            Evolution::whereDoesntHave('userEvolutions', function (Builder $query) {
+            Evolution::whereDoesntHave('user', function (Builder $query) {
                 $query->where('student_id', auth()->user()->id);
             })
             ->where(function ($query) {

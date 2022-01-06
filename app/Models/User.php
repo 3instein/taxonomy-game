@@ -41,13 +41,13 @@ class User extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
-    
+
     public function userCreatures() {
         return $this->hasMany(UserCreature::class, 'student_id');
     }
 
-    public function userEvolutions() {
-        return $this->belongsToMany(Evolution::class, 'user_evolutions', 'student_id', 'id');
+    public function evolutions() {
+        return $this->hasMany(UserEvolution::class, 'student_id');
     }
 
     public function stat(){
@@ -55,6 +55,6 @@ class User extends Authenticatable {
     }
 
     public function logs() {
-        return $this->hasMany(Log::class);
+        return $this->hasMany(Log::class, 'student_id');
     }
 }

@@ -15,10 +15,6 @@ class UserEvolution extends Model
         return $this->belongsTo(User::class, 'student_id');
     }
 
-    public function creature(){
-        return $this->belongsTo(Species::class);
-    }
-
     public function evolution(){
         return $this->belongsTo(Evolution::class);
     }
