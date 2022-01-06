@@ -28,17 +28,6 @@ class UserCreatureApiController extends Controller
             })
             ->get();
 
-
-        // $userCreatures = Evolution::
-        // whereHas('userEvolutions', function (Builder $query) {
-        //     $query->where('student_id', auth()->user()->id);
-        // })
-        // ->
-
-        // whereNotNull('species_id')
-        // ->join('species', 'evolutions.species_id', '=', 'species.id')
-        // ->get();
-
         return response()->json(
             $userCreatures
         );
