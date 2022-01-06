@@ -10,15 +10,13 @@ use Illuminate\Http\Request;
 use App\Models\UserEvolution;
 use Illuminate\Database\Eloquent\Builder;
 
-class UserCreatureApiController extends Controller
-{
+class UserCreatureApiController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $userCreatures = Species::query()
             ->with(['evolutions' => function ($query) {
                 $query->has('user');
@@ -39,9 +37,9 @@ class UserCreatureApiController extends Controller
         // ->join('species', 'evolutions.species_id', '=', 'species.id')
         // ->get();
 
-        return response()->json(
-            $userCreatures
-        );
+        return response()->json([
+            "userCreatures" => $userCreatures
+        ]);
     }
 
     /**
@@ -50,8 +48,7 @@ class UserCreatureApiController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -61,8 +58,7 @@ class UserCreatureApiController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -73,8 +69,7 @@ class UserCreatureApiController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         //
     }
 
@@ -84,8 +79,7 @@ class UserCreatureApiController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
 }
