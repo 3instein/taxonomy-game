@@ -11,9 +11,11 @@ class CreateKingdomsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('kingdoms', function (Blueprint $table) {
+        Schema::create('bio10_kingdoms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('domain_id')
+                ->references('id')
+                ->on('bio10_domains')
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
@@ -28,6 +30,6 @@ class CreateKingdomsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('kingdoms');
+        Schema::dropIfExists('bio10_kingdoms');
     }
 }

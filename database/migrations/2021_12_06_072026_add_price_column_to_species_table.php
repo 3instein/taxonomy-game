@@ -11,7 +11,7 @@ class AddPriceColumnToSpeciesTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::table('species', function (Blueprint $table) {
+        Schema::table('bio10_species', function (Blueprint $table) {
             $table->unsignedBigInteger('price')->after('name');
         });
     }
@@ -22,7 +22,7 @@ class AddPriceColumnToSpeciesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::table('species', function (Blueprint $table) {
+        Schema::table('bio10_species', function (Blueprint $table) {
             $table->dropColumn('price');
         });
     }

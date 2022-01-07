@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Kingdom extends Model {
     use HasFactory;
 
+    protected $table = 'bio10_kingdoms';
+
     protected $guarded = ['id'];
 
     public function domain() {

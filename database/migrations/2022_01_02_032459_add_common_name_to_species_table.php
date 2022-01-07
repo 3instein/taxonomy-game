@@ -13,7 +13,7 @@ class AddCommonNameToSpeciesTable extends Migration
      */
     public function up()
     {
-        Schema::table('species', function (Blueprint $table) {
+        Schema::table('bio10_species', function (Blueprint $table) {
             $table->string('common_name')->after('name');
         });
     }
@@ -25,7 +25,7 @@ class AddCommonNameToSpeciesTable extends Migration
      */
     public function down()
     {
-        Schema::table('species', function (Blueprint $table) {
+        Schema::table('bio10_species', function (Blueprint $table) {
             $table->dropColumn('common_name');
         });
     }

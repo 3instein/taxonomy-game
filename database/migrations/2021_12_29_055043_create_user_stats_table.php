@@ -11,7 +11,7 @@ class CreateUserStatsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('user_stats', function (Blueprint $table) {
+        Schema::create('bio10_user_stats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_id')
                 ->constrained()
@@ -34,6 +34,6 @@ class CreateUserStatsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('user_stats');
+        Schema::dropIfExists('bio10_user_stats');
     }
 }

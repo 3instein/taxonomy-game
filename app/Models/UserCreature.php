@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserCreature extends Model {
     use HasFactory;
+    
+    protected $table = 'bio10_user_creatures';
 
     protected $guarded = [
         'id'

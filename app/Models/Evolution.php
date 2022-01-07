@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Evolution extends Model {
     use HasFactory;
 
+    protected $table = 'bio10_evolutions';
+
     protected $guarded = ['id'];
 
     public function prerequisite() {

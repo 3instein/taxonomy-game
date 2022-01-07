@@ -13,12 +13,12 @@ class AddPrerequisiteIdToSpeciesTable extends Migration
      */
     public function up()
     {
-        Schema::table('species', function (Blueprint $table) {
+        Schema::table('bio10_species', function (Blueprint $table) {
             $table->foreignId('prerequisite_id')
                 ->after('image_path')
                 ->nullable()
                 ->references('id')
-                ->on('species')
+                ->on('bio10_species')
                 ->constrained()
                 ->cascadeOnDelete();
         });
@@ -31,7 +31,7 @@ class AddPrerequisiteIdToSpeciesTable extends Migration
      */
     public function down()
     {
-        Schema::table('species', function (Blueprint $table) {
+        Schema::table('bio10_species', function (Blueprint $table) {
         $table->dropColumn('prerequisite_id');
         });
     }

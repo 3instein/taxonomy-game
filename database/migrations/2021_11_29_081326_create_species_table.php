@@ -11,11 +11,11 @@ class CreateSpeciesTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('species', function (Blueprint $table) {
+        Schema::create('bio10_species', function (Blueprint $table) {
             $table->id();
             $table->foreignId('genus_id')
                 ->references('id')
-                ->on('genera')
+                ->on('bio10_genera')
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
@@ -30,6 +30,6 @@ class CreateSpeciesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('species');
+        Schema::dropIfExists('bio10_species');
     }
 }

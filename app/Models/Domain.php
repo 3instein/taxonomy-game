@@ -8,5 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Domain extends Model {
     use HasFactory;
 
+    protected $table = 'bio10_domains';
+
     protected $guarded = ['id'];
 }

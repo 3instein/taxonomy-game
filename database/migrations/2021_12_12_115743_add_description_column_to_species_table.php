@@ -11,7 +11,7 @@ class AddDescriptionColumnToSpeciesTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::table('species', function (Blueprint $table) {
+        Schema::table('bio10_species', function (Blueprint $table) {
             $table->text('description')->after('price');
             $table->string('image_path')->nullable()->after('description');
         });
@@ -23,7 +23,7 @@ class AddDescriptionColumnToSpeciesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::table('species', function (Blueprint $table) {
+        Schema::table('bio10_species', function (Blueprint $table) {
             //
         });
     }

@@ -11,9 +11,11 @@ class CreateGeneraTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('genera', function (Blueprint $table) {
+        Schema::create('bio10_genera', function (Blueprint $table) {
             $table->id();
             $table->foreignId('family_id')
+                ->references('id')
+                ->on('bio10_families')
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
@@ -28,6 +30,6 @@ class CreateGeneraTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('genera');
+        Schema::dropIfExists('bio10_genera');
     }
 }

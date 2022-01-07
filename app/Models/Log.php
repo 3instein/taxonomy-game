@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Log extends Model {
     use HasFactory;
 
+    protected $table = 'bio10_logs';
+
     protected $guarded = ['id'];
 
     public function user() {

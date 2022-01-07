@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class UserStat extends Model {
     use HasFactory;
 
-    protected $table = 'user_stats';
+    protected $table = 'bio10_user_stats';
 
     protected $guarded = [''];
 

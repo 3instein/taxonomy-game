@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Species extends Model {
     use HasFactory;
 
+    protected $table = 'bio10_species';
+
     protected $guarded = ['id'];
 
     public function genus() {

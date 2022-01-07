@@ -11,7 +11,7 @@ class CreateQuizTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('quizzes', function (Blueprint $table) {
+        Schema::create('bio10_quizzes', function (Blueprint $table) {
             $table->id();
             $table->text('question');
             $table->string('answer');
@@ -26,6 +26,6 @@ class CreateQuizTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('quiz');
+        Schema::dropIfExists('bio10_quizzes');
     }
 }

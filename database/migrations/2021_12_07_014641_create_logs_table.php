@@ -11,7 +11,7 @@ class CreateLogsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('bio10_logs', function (Blueprint $table) {
             $table->id();
             $table->string('table');
             $table->foreignId('student_id')
@@ -30,6 +30,6 @@ class CreateLogsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('logs');
+        Schema::dropIfExists('bio10_logs');
     }
 }

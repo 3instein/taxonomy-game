@@ -11,9 +11,11 @@ class CreateFamiliesTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('families', function (Blueprint $table) {
+        Schema::create('bio10_families', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')
+                ->references('id')
+                ->on('bio10_orders')
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
@@ -28,6 +30,6 @@ class CreateFamiliesTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('families');
+        Schema::dropIfExists('bio10_families');
     }
 }

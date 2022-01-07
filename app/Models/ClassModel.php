@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClassModel extends Model {
     use HasFactory;
 
-    protected $table = 'classes';
+    protected $table = 'bio10_classes';
 
     protected $guarded = ['id'];
 

@@ -9,6 +9,8 @@ class UserEvolution extends Model
 {
     use HasFactory;
 
+    protected $table = 'bio10_user_evolutions';
+
     protected $guarded = ['id'];
 
     public function user(){

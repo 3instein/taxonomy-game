@@ -11,7 +11,7 @@ class AddImageColumnToEvolutionsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::table('evolutions', function (Blueprint $table) {
+        Schema::table('bio10_evolutions', function (Blueprint $table) {
             $table->string('image_path')->nullable()->after('description');
         });
     }
@@ -22,8 +22,8 @@ class AddImageColumnToEvolutionsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::table('evolutions', function (Blueprint $table) {
-            //
+        Schema::table('bio10_evolutions', function (Blueprint $table) {
+            $table->dropColumn('image_path');
         });
     }
 }

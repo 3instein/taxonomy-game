@@ -11,7 +11,7 @@ class CreateDomainsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('domains', function (Blueprint $table) {
+        Schema::create('bio10_domains', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -24,6 +24,6 @@ class CreateDomainsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::dropIfExists('domains');
+        Schema::dropIfExists('bio10_domains');
     }
 }

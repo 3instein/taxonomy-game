@@ -13,10 +13,12 @@ class AddSpeciesIdToEvolutionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('evolutions', function (Blueprint $table) {
+        Schema::table('bio10_evolutions', function (Blueprint $table) {
             $table->foreignId('species_id')
                 ->after('id')
                 ->nullable()
+                ->references('id')
+                ->on('bio10_species')
                 ->constrained()
                 ->cascadeOnDelete();
         });
@@ -29,7 +31,7 @@ class AddSpeciesIdToEvolutionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('evolutions', function (Blueprint $table) {
+        Schema::table('bio10_evolutions', function (Blueprint $table) {
             $table->dropColumn('species_id');
         });
     }
