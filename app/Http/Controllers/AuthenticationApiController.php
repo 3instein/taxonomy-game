@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserStat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -51,7 +52,10 @@ class AuthenticationApiController extends Controller {
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'unique:students', 'max:40'],
             'email' => ['required', 'email:dns', 'unique:students', 'max:255'],
-            'password' => ['required', Password::defaults()]
+            'password' => ['required', Password::defaults()],
+            'school' => ['required'],
+            'city' => ['required'],
+            'birthyear' => ['required']
         ]);
 
         if ($validator->fails()) {
@@ -66,11 +70,21 @@ class AuthenticationApiController extends Controller {
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'school' => $request->school,
+            'city' => $request->city,
+            'birthyear' => $request->birthyear
         ]);
+
+        UserStat::create([
+            'student_id' => $user->id
+        ]);
+
+        $user = User::with('stat')
+            ->where('email', $request->email)
+            ->first();
 
         return response()->json(([
             'user' => $user,
-            'token' => $user->createToken('tokens')->plainTextToken,
             'status_code' => 201
         ]), 201);
     }
