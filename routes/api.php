@@ -7,6 +7,7 @@ use App\Http\Controllers\EvolutionsApiController;
 use App\Http\Controllers\QuizApiController;
 use App\Http\Controllers\SaveController;
 use App\Http\Controllers\UserCreatureApiController;
+use App\Http\Controllers\UserEvolutionApiController;
 use App\Http\Controllers\UserStatsApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('saves', SaveController::class);
     Route::resource('evolutions', EvolutionsApiController::class);
     Route::resource('user-creatures', UserCreatureApiController::class);
+    Route::resource('user-evolutions', UserEvolutionApiController::class);
     Route::resource('creatures', CreatureApiController::class);
     Route::resource('creatures-evolutions', CreaturesEvolutionsApiController::class);
     Route::resource('quiz', QuizApiController::class);
