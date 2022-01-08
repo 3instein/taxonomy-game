@@ -40,6 +40,22 @@ class UserStatsApiController extends Controller {
     }
 
     /**
+     * Display leader board order by point, evo and power desc
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function leaderboard() {
+        $leaderboard = UserStat::with('user')
+            ->orderByDesc('evo')
+            ->orderByDesc('point')
+            ->orderByDesc('power')->get();
+
+        return response()->json([
+            'leaderboard' => $leaderboard
+        ]);
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
