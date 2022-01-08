@@ -59,7 +59,6 @@ class App extends Component {
         $this->user->update([
             'evo' => $this->userStat->evo - $species['price']
         ]);
-
         Log::create([
             'table' => app(UserCreature::class)->getTable(),
             'student_id' => $this->user->id,
