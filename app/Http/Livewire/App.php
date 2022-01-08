@@ -11,7 +11,7 @@ use Livewire\Component;
 
 class App extends Component {
 
-    public $evo = 0, $power, $userStat, $user;
+    public $evo = 0, $power, $userStat, $user, $leaderboard;
 
     protected $listeners = [
         'addEvo' => 'click',
@@ -58,6 +58,7 @@ class App extends Component {
     }
 
     public function render() {
+        $this->leaderboard = UserStat::orderByDesc('evo')->orderByDesc('point')->orderByDesc('power')->get();
         $this->user = User::whereId(auth()->user()->id)->first();
         $this->userStat = UserStat::where('student_id', $this->user->id)->first();
         $this->evo = $this->userStat->evo;
