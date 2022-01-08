@@ -13,9 +13,12 @@ class UserStatsApiController extends Controller {
      */
     public function upgradePower() {
         $userStat = UserStat::where('student_id', auth()->user()->id)->first();
-        $userStat->update([
-            'power' => $userStat->power + 1
-        ]);
+        if ($userStat->evo > $userStat->power) {
+            $userStat->update([
+                'power' => $userStat->power + 1,
+                'evo' => $userStat->evo - $userStat->power
+            ]);
+        }
 
         return response()->json($userStat);
     }
