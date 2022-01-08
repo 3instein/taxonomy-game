@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthenticationApiController;
 use App\Http\Controllers\CreatureApiController;
 use App\Http\Controllers\CreaturesEvolutionsApiController;
 use App\Http\Controllers\EvolutionsApiController;
+use App\Http\Controllers\LogApiController;
 use App\Http\Controllers\QuizApiController;
 use App\Http\Controllers\SaveController;
 use App\Http\Controllers\UserCreatureApiController;
@@ -43,4 +44,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/unlock-creature', [CreatureApiController::class, 'unlockCreature']);
     Route::post('/save-user-stats', [UserStatsApiController::class, 'saveUserStat']);
     Route::post('/logout', [AuthenticationApiController::class, 'logout']);
+    Route::resource('log', LogApiController::class);
 });
