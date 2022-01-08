@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Log;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -44,13 +43,6 @@ class RegisteredUserController extends Controller {
         ]);
 
         event(new Registered($user));
-
-        Log::create([
-            'table' => app(User::class)->getTable(),
-            'student_id' => $user->id,
-            'description' => 'User id:' . $user->id . ' registered',
-            'ip' => request()->ip()
-        ]);
 
         Auth::login($user);
 

@@ -2,13 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Log;
 use App\Models\Quiz;
 use App\Models\User;
-use Livewire\Component;
-use App\Models\UserStat;
 use App\Models\UserCreature;
 use App\Models\UserEvolution;
+use App\Models\UserStat;
+use Livewire\Component;
 
 class App extends Component {
 
@@ -33,20 +32,6 @@ class App extends Component {
                 'power' => $this->userStat->power + 1,
                 'evo' => $this->evo - $this->userStat->power
             ]);
-
-            Log::create([
-                'table' => app(UserStat::class)->getTable(),
-                'student_id' => $this->user->id,
-                'description' => 'User id:' . $this->user->id . ' UserStat.power added by ' . 1, 
-                'ip' => request()->ip()
-            ]);
-
-            Log::create([
-                'table' => app(UserStat::class)->getTable(),
-                'student_id' => $this->user->id,
-                'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $this->userStat->power, 
-                'ip' => request()->ip()
-            ]);
         }
     }
 
@@ -59,19 +44,6 @@ class App extends Component {
         $this->user->update([
             'evo' => $this->userStat->evo - $species['price']
         ]);
-        Log::create([
-            'table' => app(UserCreature::class)->getTable(),
-            'student_id' => $this->user->id,
-            'description' => 'User id:' . $this->user->id . ' unlocked Species id:' . $species['id'],
-            'ip' => request()->ip()
-        ]);
-
-        Log::create([
-            'table' => app(UserStat::class)->getTable(),
-            'student_id' => $this->user->id,
-            'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $species['price'], 
-            'ip' => request()->ip()
-        ]);
     }
 
     public function unlockEvolution($evolution) {
@@ -82,20 +54,6 @@ class App extends Component {
 
         $this->user->update([
             'evo' => $this->userStat->evo - $evolution['price']
-        ]);
-
-        Log::create([
-            'table' => app(UserEvolution::class)->getTable(),
-            'student_id' => $this->user->id,
-            'description' => 'User id:' . $this->user->id . ' unlocked Evolution id:' . $evolution['id'],
-            'ip' => request()->ip()
-        ]);
-
-        Log::create([
-            'table' => app(UserStat::class)->getTable(),
-            'student_id' => $this->user->id,
-            'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $evolution['price'], 
-            'ip' => request()->ip()
         ]);
     }
 
