@@ -36,30 +36,26 @@
   //   jellyfish.style.top = positionY + 'px';
   // }, refreshRate);
 
-  let isOpen = false;
-  const opener = document.querySelector('.open-sidebar');
-  const sideBar = document.querySelector('.sidebar');
-  const canvas = document.querySelector('.canvas');
-  const score = document.querySelector('.score');
-  opener.addEventListener('click', function () {
-    if (!isOpen) {
-      sideBar.style.width = '400px';
-      opener.style.left = 'calc(400px - 64px)';
-      canvas.style.marginLeft = '400px';
-      score.style.marginLeft = '400px';
-      canvas.setAttribute('wire:click:prevent', 'click()');
-      canvas.removeAttribute('wire:click');
-      isOpen = true;
-    } else {
-      sideBar.style.width = '0';
-      opener.style.left = 'calc(0% - 64px)';
-      canvas.style.marginLeft = '0';
-      score.style.marginLeft = '0';
-      canvas.removeAttribute('wire:click:prevent');
-      canvas.setAttribute('wire:click', '$emit("addEvo")');
-      isOpen = false;
-    }
-  });
+  // let isOpen = true;
+  // const opener = document.querySelector('.open-sidebar');
+  // const sideBar = document.querySelector('.sidebar');
+  // const canvas = document.querySelector('.canvas');
+  // const score = document.querySelector('.score');
+  // opener.addEventListener('click', function () {
+  //   if (!isOpen) {
+  //     sideBar.style.width = '400px';
+  //     opener.style.left = 'calc(400px - 64px)';
+  //     canvas.style.marginLeft = '400px';
+  //     score.style.marginLeft = '400px';
+  //     isOpen = true;
+  //   } else {
+  //     sideBar.style.width = '0';
+  //     opener.style.left = 'calc(0% - 64px)';
+  //     canvas.style.marginLeft = '0';
+  //     score.style.marginLeft = '0';
+  //     isOpen = false;
+  //   }
+  // });
 
   // channging environemnt button
   let quizModal = new bootstrap.Modal(document.getElementById('biome-modal'));
