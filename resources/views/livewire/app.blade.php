@@ -223,6 +223,9 @@
     <input type="hidden" id="user-point" value="{{ $userStat->point }}" name="user-point" />
     {{-- biome button --}}
     <div class="biome-btn d-flex flex-column align-items-center justify-content-evenly">
+        <div class="land-btn">
+            <img class="land-icon" src="{{ asset('assets/icons/land.png') }}" />
+        </div>
         <div class="sea-btn">
             <img class="sea-icon" src="{{ asset('assets/icons/water.png') }}" />
         </div>

@@ -70,11 +70,26 @@
   let treeModal = new bootstrap.Modal(document.getElementById('tree-modal'));
   const earth = document.querySelector('.circle');
   const canvas = document.querySelector('.canvas');
+  const landBtn = document.querySelector('.land-btn');
   const seaBtn = document.querySelector('.sea-btn');
   const earthBtn = document.querySelector('.earth-btn')
   const tree = document.querySelector('.tree-btn');
   const seaBiome = document.querySelector('.sea-biome');
   const evolutionTree = document.querySelector('.evolution-trees');
+  landBtn.addEventListener('click', function () {
+    if (userPoint.value < 40) {
+      quizModal.toggle();
+      document.querySelector('.biome-prerequisite').innerHTML = `Saat ini point kamu ${userPoint.value}, untuk akses biome selanjutnya kamu butuh 40 point!`;
+    } else {
+      canvas.style.backgroundImage = "url('../assets/land.jpg')";
+      canvas.style.backgroundRepeat = 'no-repeat';
+      canvas.style.backgroundSize = '100% 100%';
+      earth.style.display = 'none';
+      seaBiome.classList.remove('d-none');
+      evolutionTree.classList.add('d-none');
+    }
+  });
+
   seaBtn.addEventListener('click', function () {
     if (userPoint.value < 20) {
       quizModal.toggle();
@@ -203,6 +218,23 @@
       feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma laut 🌊';
       if (wrongAnswerResponses.length > 0) {
         feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma laut 🌊, tapi masih ada yang salah nih. Coba di baca lagi';
+        let foo = '';
+        for (let wrongAnswerResponse of wrongAnswerResponses) {
+          foo += '<tr>';
+          foo += `<td scope="row">${wrongAnswerResponse.question}</td>`;
+          foo += `<td>${wrongAnswerResponse.answer}</td>`;
+          foo += '</tr>'
+        }
+        document.getElementById('wrong-answer-header').innerHTML = `<tr>
+        <th scope="col">Pertanyaan</th>
+        <th scope="col">Jawaban kamu</th>
+    </tr>`;
+        document.getElementById('wrong-answer-table').innerHTML = foo;
+      }
+    } else if (userPoint.value >= 40) {
+      feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma darat 🪨';
+      if (wrongAnswerResponses.length > 0) {
+        feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma darat 🪨, tapi masih ada yang salah nih. Coba di baca lagi';
         let foo = '';
         for (let wrongAnswerResponse of wrongAnswerResponses) {
           foo += '<tr>';

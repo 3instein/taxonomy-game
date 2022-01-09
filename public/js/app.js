@@ -75,11 +75,25 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   var treeModal = new bootstrap.Modal(document.getElementById('tree-modal'));
   var earth = document.querySelector('.circle');
   var canvas = document.querySelector('.canvas');
+  var landBtn = document.querySelector('.land-btn');
   var seaBtn = document.querySelector('.sea-btn');
   var earthBtn = document.querySelector('.earth-btn');
   var tree = document.querySelector('.tree-btn');
   var seaBiome = document.querySelector('.sea-biome');
   var evolutionTree = document.querySelector('.evolution-trees');
+  landBtn.addEventListener('click', function () {
+    if (userPoint.value < 40) {
+      quizModal.toggle();
+      document.querySelector('.biome-prerequisite').innerHTML = "Saat ini point kamu ".concat(userPoint.value, ", untuk akses biome selanjutnya kamu butuh 40 point!");
+    } else {
+      canvas.style.backgroundImage = "url('../assets/land.jpg')";
+      canvas.style.backgroundRepeat = 'no-repeat';
+      canvas.style.backgroundSize = '100% 100%';
+      earth.style.display = 'none';
+      seaBiome.classList.remove('d-none');
+      evolutionTree.classList.add('d-none');
+    }
+  });
   seaBtn.addEventListener('click', function () {
     if (userPoint.value < 20) {
       quizModal.toggle();
@@ -185,11 +199,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         var gainedPoint = parseInt(userPoint.value) + parseInt(point[_i].value);
         userPoint.value = gainedPoint;
       } else {
-        var _foo2 = {
+        var _foo3 = {
           "question": questionText[_i].innerHTML,
           "answer": value
         };
-        wrongAnswer.push(_foo2);
+        wrongAnswer.push(_foo3);
       }
 
       if (_i == question.length - 1) {
@@ -239,29 +253,56 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         document.getElementById('wrong-answer-header').innerHTML = "<tr>\n        <th scope=\"col\">Pertanyaan</th>\n        <th scope=\"col\">Jawaban kamu</th>\n    </tr>";
         document.getElementById('wrong-answer-table').innerHTML = foo;
       }
+    } else if (userPoint.value >= 40) {
+      feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma darat 🪨';
+
+      if (wrongAnswerResponses.length > 0) {
+        feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma darat 🪨, tapi masih ada yang salah nih. Coba di baca lagi';
+        var _foo = '';
+
+        var _iterator2 = _createForOfIteratorHelper(wrongAnswerResponses),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var _wrongAnswerResponse = _step2.value;
+            _foo += '<tr>';
+            _foo += "<td scope=\"row\">".concat(_wrongAnswerResponse.question, "</td>");
+            _foo += "<td>".concat(_wrongAnswerResponse.answer, "</td>");
+            _foo += '</tr>';
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+
+        document.getElementById('wrong-answer-header').innerHTML = "<tr>\n        <th scope=\"col\">Pertanyaan</th>\n        <th scope=\"col\">Jawaban kamu</th>\n    </tr>";
+        document.getElementById('wrong-answer-table').innerHTML = _foo;
+      }
     } else {
       feedbackModalTitle.innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger me-2"></i>Ada yang salah, coba di baca lagi';
-      var _foo = '';
+      var _foo2 = '';
 
-      var _iterator2 = _createForOfIteratorHelper(wrongAnswerResponses),
-          _step2;
+      var _iterator3 = _createForOfIteratorHelper(wrongAnswerResponses),
+          _step3;
 
       try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var _wrongAnswerResponse = _step2.value;
-          _foo += '<tr>';
-          _foo += "<td scope=\"row\">".concat(_wrongAnswerResponse.question, "</td>");
-          _foo += "<td>".concat(_wrongAnswerResponse.answer, "</td>");
-          _foo += '</tr>';
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var _wrongAnswerResponse2 = _step3.value;
+          _foo2 += '<tr>';
+          _foo2 += "<td scope=\"row\">".concat(_wrongAnswerResponse2.question, "</td>");
+          _foo2 += "<td>".concat(_wrongAnswerResponse2.answer, "</td>");
+          _foo2 += '</tr>';
         }
       } catch (err) {
-        _iterator2.e(err);
+        _iterator3.e(err);
       } finally {
-        _iterator2.f();
+        _iterator3.f();
       }
 
       document.getElementById('wrong-answer-header').innerHTML = "<tr>\n        <th scope=\"col\">Pertanyaan</th>\n        <th scope=\"col\">Jawaban kamu</th>\n    </tr>";
-      document.getElementById('wrong-answer-table').innerHTML = _foo;
+      document.getElementById('wrong-answer-table').innerHTML = _foo2;
     }
 
     feedbackModal.toggle();
