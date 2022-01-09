@@ -63,12 +63,6 @@ class QuizSeeder extends Seeder {
         ]);
 
         Quiz::create([
-            'question' => 'Molekul DNA yang mengandung materi genetik disebut',
-            'answer' => 'Kromosom',
-            'point' => 10
-        ]);
-
-        Quiz::create([
             'question' => 'Molekul yang mempertahankan urutan genom yang memungkinkan sifat-sifat diturunkan dari induk ke anakan adalah',
             'answer' => 'Kromosom',
             'point' => 10
