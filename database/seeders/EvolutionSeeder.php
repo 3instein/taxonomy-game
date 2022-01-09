@@ -21,14 +21,14 @@ class EvolutionSeeder extends Seeder
         Evolution::create([
             'name' => 'Nukleotida',
             'description' => 'Nukleotida adalah senyawa kimia yang menjadi fondasi DNA dan RNA',
-            'image_path' => $image_path.'',
+            'image_path' => $image_path.'nukleotida.jpg',
             'price' => 1
         ]);
         
         Evolution::create([
             'name' => 'DNA',
             'description' => 'Molekul dengan properti unik replikasi diri. Konfigurasi tidak terbatas dari sebuah DNA merupakan kunci utama dari evolusi.',
-            'image_path' => $image_path.'',
+            'image_path' => $image_path.'dna.jpg',
             'price' => 1,
             'prerequisite_id' => 1
         ]);
@@ -36,7 +36,7 @@ class EvolutionSeeder extends Seeder
         Evolution::create([
             'name' => 'RNA',
             'description' => 'RNA bertanggung jawab untuk mentransfer kode genetik dari nukleus ke ribosom untuk membuat protein.',
-            'image_path' => $image_path.'',
+            'image_path' => $image_path.'rna.png',
             'price' => 1,
             'prerequisite_id' => 1
         ]);
@@ -45,14 +45,14 @@ class EvolutionSeeder extends Seeder
         Evolution::create([
             'name' => 'Asam amino',
             'description' => 'Atom dan molekul yang bergabung menjadi asam amino, yaitu senyawa kimia yang digunakan untuk membangun protein.',
-            'image_path' => $image_path.'',
+            'image_path' => $image_path.'asam-amino.png',
             'price' => 1
         ]);
         
         Evolution::create([
             'name' => 'Protein',
             'description' => 'Protein adalah molekul yang digunakan untuk menciptakan sel dalam makhluk hidup. Protein adalah molekul yang terbuat dari rantai asam amino',
-            'image_path' => $image_path.'',
+            'image_path' => $image_path.'protein.jpg',
             'price' => 1,
             'prerequisite_id' => 4
         ]);
@@ -60,7 +60,7 @@ class EvolutionSeeder extends Seeder
         Evolution::create([
             'name' => 'Polipeptida',
             'description' => 'Ketika asam amino bergabung, asam amino membentuk rantai yang menjadi bahan dalam membuat protein',
-            'image_path' => $image_path.'',
+            'image_path' => $image_path.'polipeptida.png',
             'price' => 1,
             'prerequisite_id' => 5
         ]);
