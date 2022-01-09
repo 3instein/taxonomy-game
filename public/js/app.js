@@ -82,9 +82,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   var seaBiome = document.querySelector('.sea-biome');
   var evolutionTree = document.querySelector('.evolution-trees');
   landBtn.addEventListener('click', function () {
-    if (userPoint.value < 40) {
+    if (userPoint.value < 200) {
       quizModal.toggle();
-      document.querySelector('.biome-prerequisite').innerHTML = "Saat ini point kamu ".concat(userPoint.value, ", untuk akses biome selanjutnya kamu butuh 40 point!");
+      document.querySelector('.biome-prerequisite').innerHTML = "Saat ini point kamu ".concat(userPoint.value, ", untuk akses biome selanjutnya kamu butuh 200 point!");
     } else {
       canvas.style.backgroundImage = "url('../assets/land.jpg')";
       canvas.style.backgroundRepeat = 'no-repeat';
@@ -95,9 +95,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   });
   seaBtn.addEventListener('click', function () {
-    if (userPoint.value < 20) {
+    if (userPoint.value < 100) {
       quizModal.toggle();
-      document.querySelector('.biome-prerequisite').innerHTML = "Saat ini point kamu ".concat(userPoint.value, ", untuk akses biome selanjutnya kamu butuh 20 point!");
+      document.querySelector('.biome-prerequisite').innerHTML = "Saat ini point kamu ".concat(userPoint.value, ", untuk akses biome selanjutnya kamu butuh 100 point!");
     } else {
       canvas.style.backgroundImage = "url('../assets/ocean-floor-1.jpg')";
       canvas.style.backgroundRepeat = 'no-repeat';
@@ -190,14 +190,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   var point = document.querySelectorAll('#point');
   var feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'));
   var wrongAnswer = [];
+  var correctCounter = 0;
 
   var _loop2 = function _loop2(_i) {
     nextBtn[_i].addEventListener('click', function (e) {
       var value = question[_i].value;
 
       if (value.toLowerCase() === answer[_i].value.toLowerCase()) {
-        var gainedPoint = parseInt(userPoint.value) + parseInt(point[_i].value);
-        userPoint.value = gainedPoint;
+        correctCounter++; // let gainedPoint = parseInt(userPoint.value) + parseInt(point[i].value)
+        // userPoint.value = gainedPoint;
       } else {
         var _foo3 = {
           "question": questionText[_i].innerHTML,
@@ -213,7 +214,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         hiddenInput.value = JSON.stringify(wrongAnswer);
         document.querySelector('#quiz-form').append(userPoint);
         document.querySelector('#quiz-form').appendChild(hiddenInput);
-        document.querySelector('#quiz-form').submit();
+
+        if (correctCounter == question.length) {
+          var gainedPoint = parseInt(userPoint.value) + 100;
+          userPoint.value = gainedPoint;
+          document.querySelector('#quiz-form').submit();
+        }
       }
     });
   };
