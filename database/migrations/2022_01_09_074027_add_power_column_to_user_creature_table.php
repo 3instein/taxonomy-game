@@ -14,7 +14,7 @@ class AddPowerColumnToUserCreatureTable extends Migration
     public function up()
     {
         Schema::table('bio10_user_creatures', function (Blueprint $table) {
-            $table->integer('power')->after('species_id');
+            $table->bigInteger('power')->after('species_id');
         });
     }
 
