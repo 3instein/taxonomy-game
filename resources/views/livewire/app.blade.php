@@ -167,9 +167,10 @@
 
     <span class="open-sidebar" wire:click:prevent="click()"></span>
     <div class="score text-center py-2 position-fixed start-50 translate-middle-x rounded">
-        <h1 class="text-gray">{{ number_format($evo) }}</h1>
-        <p class="mb-0 text-gray">[{{ number_format($power) }} Click Power] [{{ number_format($creaturePower) }}
+        <h1 class="text-gray">{{ number_format($evo, 2) }}</h1>
+        <p class="mb-0 text-gray">[{{ number_format($power,2) }} Click Power] * [{{ number_format($creaturePower * 0.25, 2) }}
             Creature power]</p>
+
     </div>
     <livewire:click />
     <livewire:sidebar :power="$power" />

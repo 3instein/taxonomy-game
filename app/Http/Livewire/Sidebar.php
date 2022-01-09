@@ -12,15 +12,12 @@ use Illuminate\Database\Eloquent\Builder;
 class Sidebar extends Component
 {
 
-    public $power;
-    
     protected $listeners = [
         'refreshSidebar' => '$refresh',
     ];
 
-    public function mount($power)
-    {
-        $this->power = $power;
+    public function getPowerProperty(){
+        return request()->user()->stat->power;
     }
 
     public function getUserCreaturesProperty(){
