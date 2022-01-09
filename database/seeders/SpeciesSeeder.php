@@ -68,7 +68,7 @@ class SpeciesSeeder extends Seeder {
             'common_name' => 'Mamalia',
             'price' => 1,
             'description' => 'Mamalia adalah vertebrata pertama berdarah panas, mamalia merawat anakan mereka dengan susu dari kelenjar susu mereka. Mamalia mempunyai kulit yang ditutupi bulu atau rambut dan mereka memiliki otak yang lebih besar yang mempunyai neocortex.',
-            'image_path' => '',
+            'image_path' => 'assets/species/morganucodon-watsoni.jpg',
             'prerequisite_id' => 5 
         ]);
 
@@ -78,7 +78,7 @@ class SpeciesSeeder extends Seeder {
             'common_name' => 'Kera',
             'price' => 1,
             'description' => 'Kemajuan pada evolusi primata, kera merupakan leluhur paling awal dari manusia. Cabang evolusi yang berbeda dari kera merupakan awal dari manusia dan kera modern.',
-            'image_path' => '',
+            'image_path' => 'assets/species/proconsul-africanus.jpg',
             'prerequisite_id' => 6 
         ]);
 
@@ -88,7 +88,7 @@ class SpeciesSeeder extends Seeder {
             'common_name' => 'Manusia',
             'price' => 1,
             'description' => 'Manusia adalah spesies dominan di bumi. Hasil dari evolusi berjuta-juta tahun, manusia merupakan makhluk pertama yang menciptakan budaya, masyarakat, dan teknologi.',
-            'image_path' => '',
+            'image_path' => 'assets/species/homo-sapiens.jpg',
             'prerequisite_id' => 7 
         ]);
     }
