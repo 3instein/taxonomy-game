@@ -9,18 +9,27 @@ use App\Models\UserCreature;
 use App\Models\UserEvolution;
 use Illuminate\Database\Eloquent\Builder;
 
-class Sidebar extends Component {
+class Sidebar extends Component
+{
 
-    public $species, $evolutions, $userCreatures, $userEvolutions, $power;
+    public $power;
+    
+    protected $listeners = [
+        'refreshSidebar' => '$refresh',
+    ];
 
-    public function mount($power) {
+    public function mount($power)
+    {
         $this->power = $power;
     }
 
-    public function render() {
-        $this->userCreatures = UserCreature::where('student_id', auth()->user()->id)->get();
+    public function getUserCreaturesProperty(){
+        return UserCreature::where('student_id', auth()->user()->id)->get();
+    }
 
-        $this->species =
+    public function getSpeciesProperty()
+    {
+        return
             Species::whereDoesntHave('userCreatures', function (Builder $query) {
                 $query->where('student_id', auth()->user()->id);
             })
@@ -29,10 +38,15 @@ class Sidebar extends Component {
                 $query->orWhereIn('prerequisite_id', $this->userCreatures->pluck('species_id'));
             })
             ->get();
+    }
 
-        $this->userEvolutions = UserEvolution::where('student_id', auth()->user()->id)->get();
+    public function getUserEvolutionsProperty(){
+        return UserEvolution::where('student_id', auth()->user()->id)->get();
+    }
 
-        $this->evolutions =
+    public function getEvolutionsProperty()
+    {
+        return
             Evolution::whereDoesntHave('user', function (Builder $query) {
                 $query->where('student_id', auth()->user()->id);
             })
@@ -45,6 +59,10 @@ class Sidebar extends Component {
                 $query->orWhereIn('species_id', $this->userCreatures->pluck('species_id'));
             })
             ->get();
+    }
+
+    public function render()
+    {
         return view('livewire.sidebar');
     }
 }

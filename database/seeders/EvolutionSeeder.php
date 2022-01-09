@@ -35,7 +35,8 @@ class EvolutionSeeder extends Seeder
             'name' => 'Jaringan',
             'description' => 'Jaringan adalah kumpulan sel yang menjadi satu untuk melakukan fungsi spesifik organ terbentuk dari kumpulan jaringan.',
             'image_path' => 'assets/creatures-evolutions/jaringan.png',
-            'price' => 1
+            'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -44,7 +45,8 @@ class EvolutionSeeder extends Seeder
             'description' => 'Otot adalah jaringan fibrosa di tubuh binatang yang memiliki kemampuan untuk berkontraksi. Hal ini memungkinkan otot untuk bergerak yang mana kemudian menggerakan tulang yang terhubung dengan otot.',
             'image_path' => 'assets/creatures-evolutions/otot.png',
             'prerequisite_id' => 3,
-            'price' => 1
+            'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -52,7 +54,8 @@ class EvolutionSeeder extends Seeder
             'name' => 'Filter Makan',
             'description' => 'Cara pasif untuk menemukan nutrisi dengan menggunakan filter nutrisi lewat tubuh organisme. Ini adalah cara makan untuk kerang, kril, dan bunga karang.',
             'image_path' => 'assets/creatures-evolutions/filter-feeding.png',
-            'price' => 1
+            'price' => 1,
+            'percentage' => 1.5
         ]);
 
         Evolution::create([
@@ -61,7 +64,8 @@ class EvolutionSeeder extends Seeder
             'description' => 'Kemampuan organisme untuk bergerak dari satu tempat ke tempat lain dalam air.',
             'image_path' => 'assets/creatures-evolutions/swimming.jpg',
             'prerequisite_id' => 4,
-            'price' => 1
+            'price' => 1,
+            'percentage' => 1.5
         ]);
 
         Evolution::create([
@@ -69,7 +73,8 @@ class EvolutionSeeder extends Seeder
             'name' => 'Simetri Radial',
             'description' => 'Organisme yang dapat dibagi menjadi potongan identik melalui titik sentral, bentuk simetri ini lebih kompleks daripada simetri bilateral.',
             'image_path' => 'assets/creatures-evolutions/radial-symmetry.png',
-            'price' => 1
+            'price' => 1,
+            'percentage' => 1.5
         ]);
 
         Evolution::create([
@@ -77,7 +82,8 @@ class EvolutionSeeder extends Seeder
             'name' => 'Knidosit',
             'description' => 'Senjata organik pertama, knidosit adalah sel eksplosif yang menembakan harpoon untuk pertahanan diri dan berburu.',
             'image_path' => 'assets/creatures-evolutions/knidosit.png',
-            'price' => 1
+            'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -85,7 +91,8 @@ class EvolutionSeeder extends Seeder
             'name' => 'Sistem Saraf',
             'description' => 'Sistem saraf adalah jaringan sel yang mengirimkan stimuli melalui tubuh organisme dalam bentuk sinyal elektrik. Sistem saraf dikontrol oleh otak.',
             'image_path' => 'assets/evolutions/sistem-saraf.jpg',
-            'price' => 1
+            'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -95,6 +102,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 7,
             'price' => 1,
+            'percentage' => 1.3
         ]);
 
         Evolution::create([
@@ -104,6 +112,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 10,
             'price' => 1,
+            'percentage' => 1.5
         ]);
 
         Evolution::create([
@@ -113,6 +122,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 10,
             'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -122,6 +132,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 9,
             'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -130,6 +141,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Telur yang sudah difertilisasi dibungkus kepompong yang kemudian disimpan di dalam tubuh cacing pipih. Kepompong akan menyediakan nutrisi yang diperlukan untuk pertumbuhan embrio dalam telur, yang kemudian akan menetas dan menjadi cacing pipih baru.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 1.75
         ]);
 
         Evolution::create([
@@ -138,6 +150,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Prototipe kaki dan tangan. Sirip merupakan dasar evolusi dari kaki belakang mamalia, reptil, dan burung serta amfibi yang ada di daratan.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 1.5
         ]);
 
         Evolution::create([
@@ -146,6 +159,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Tulang yang mengelilingi mulut, rahang membuat respirasi dan penyerapan nutrisi lebih efisien. Mereka memungkinkan mengunyah, menahan gigi, dan melindungi lidah serta organ lunak.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 1.5
         ]);
 
         Evolution::create([
@@ -154,6 +168,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Insang adalah organ respirasi yang dimiliki ikan untuk mengekstrak oksigen dari air di sekitar mereka. Insang memungkinkan ikan untuk bernafas di dalam air.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 1.25
         ]);
 
         Evolution::create([
@@ -162,6 +177,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Organisme berdarah dingin mengandalkan sumber panas eksternal untuk mengatur suhu tubuh mereka. Hal ini memungkinkan organisme berdarah dingin untuk memperlambat metabolisme dan menyimpan energi, tetapi juga rentan mengalami suhu tubuh yang terlalu panas atau terlalu dingin.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 1.33
         ]);
 
         Evolution::create([
@@ -170,6 +186,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Telur ikan berupa jelly dan terkadang semi transparan bertujuan untuk melindungi embrio bertahan hidup di lingkungan yang lembab dan basah. Telur ikan meningkatkan kecepatan reproduksi ikan.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 2.5
         ]);
 
         Evolution::create([
@@ -179,6 +196,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 13,
             'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -188,6 +206,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 17,
             'price' => 1,
+            'percentage' => 1.25
         ]);
 
         Evolution::create([
@@ -197,6 +216,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 15,
             'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -205,6 +225,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Organ pendengaran yang lebih modern untuk mendeteksi vibrasi di udara, telinga memungkinkan makhluk untuk mendengar predator yang menyelinap untuk memangsa mereka atau ketika mangasa mereka mencoba untuk kabur.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 1.75
         ]);
 
         Evolution::create([
@@ -214,6 +235,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 21,
             'price' => 1,
+            'percentage' => 1.75
         ]);
 
         Evolution::create([
@@ -223,6 +245,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 21,
             'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -232,6 +255,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 22,
             'price' => 1,
+            'percentage' => 1.3
         ]);
 
         Evolution::create([
@@ -240,6 +264,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Telur adalah sistem dukungan kehidupan mandiri yang berisikan cairan ketuban yang memungkinkan reproduksi di luar lingkungan air. Reptil, burung dan beberapa mamalia bereproduksi dengan bertelur.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 2.5
         ]);
 
         Evolution::create([
@@ -248,6 +273,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Organisme berdarah panas mempunyai kemampuan untuk mengatur suhu tubuh mereka agar lebih tinggi daripada suhu lingkungan. Hal ini memungkinkan organisme berdarah panas untuk tinggal di habitat yang lebih beragam.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 1.2
         ]);
 
         Evolution::create([
@@ -256,6 +282,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Kulit yang tebal dan kuat serta dibungkus sisik memungkinkan reptil untuk hidup di daratan tanpa harus kembali ke air secara periodikal untuk bertahan hidup. Amfibi tidak mempunyai evolusi ini, yang mana menjadikan reptil spesies yang dominan di daratan untuk waktu yang cukup lama.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 1.6
         ]);
 
         Evolution::create([
@@ -265,6 +292,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 29,
             'price' => 1,
+            'percentage' => 1.5
         ]);
 
         Evolution::create([
@@ -274,6 +302,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 30,
             'price' => 1,
+            'percentage' => 2.3
         ]);
 
         Evolution::create([
@@ -282,6 +311,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Rambut tidak hanya menjaga temperatur tubuh mamalia, folikel rambut juga berevolusi menjadi kelenjar susu yang memproduksi susu untuk anakan mamalia.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 1.3
         ]);
 
         Evolution::create([
@@ -291,6 +321,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 32,
             'price' => 1,
+            'percentage' => 1.95
         ]);
 
         Evolution::create([
@@ -300,6 +331,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 33,
             'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -308,6 +340,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Dengan diet mamalia yang berubah menjadi lebih kompleks, gigi-gigi spesial muncul dan membantu diferensiasi spesies baru.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 1.25
         ]);
 
         Evolution::create([
@@ -317,6 +350,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 35,
             'price' => 1,
+            'percentage' => 1.65
         ]);
 
         Evolution::create([
@@ -325,6 +359,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Uterus adalah organ tempat fetus berkembang. Uterus merupakan tempat telur yang sudah terfertilisasi berkembang hingga siap dilahirkan.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 3.0
         ]);
 
         Evolution::create([
@@ -334,6 +369,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 37,
             'price' => 1,
+            'percentage' => 1.6
         ]);
 
         Evolution::create([
@@ -343,6 +379,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 38,
             'price' => 1,
+            'percentage' => 1.45
         ]);
         
         Evolution::create([
@@ -352,6 +389,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 38,
             'price' => 1,
+            'percentage' => 1.5
         ]);
 
         Evolution::create([
@@ -361,6 +399,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 38,
             'price' => 1,
+            'percentage' => 1.75
         ]);
 
         Evolution::create([
@@ -370,6 +409,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 39,
             'price' => 1,
+            'percentage' => 1.4
         ]);
 
         Evolution::create([
@@ -379,6 +419,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 40,
             'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -388,6 +429,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 42,
             'price' => 1,
+            'percentage' => 3.0
         ]);
 
         Evolution::create([
@@ -397,6 +439,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 39,
             'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -406,6 +449,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 41,
             'price' => 1,
+            'percentage' => 1.9
         ]);
 
         Evolution::create([
@@ -415,6 +459,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 39,
             'price' => 1,
+            'percentage' => 1.8
         ]);
 
         Evolution::create([
@@ -424,6 +469,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 47,
             'price' => 1,
+            'percentage' => 2.5
         ]);
 
         Evolution::create([
@@ -432,6 +478,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Kemampuan untuk berjalan diatas 2 kaki dibandingkan 4 kaki. Hal ini memungkinkan tangan untuk digunakan untuk fungsi lain selain berjalan.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 2.0
         ]);
 
         Evolution::create([
@@ -441,6 +488,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 49,
             'price' => 1,
+            'percentage' => 2.3
         ]);
 
         Evolution::create([
@@ -450,6 +498,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 49,
             'price' => 1,
+            'percentage' => 1.55
         ]);
 
         Evolution::create([
@@ -459,6 +508,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 47,
             'price' => 1,
+            'percentage' => 1.8
         ]);
 
         Evolution::create([
@@ -468,6 +518,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 52,
             'price' => 1,
+            'percentage' => 2.75
         ]);
 
         Evolution::create([
@@ -477,6 +528,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 53,
             'price' => 1,
+            'percentage' => 2.5
         ]);
 
         Evolution::create([
@@ -486,6 +538,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 53,
             'price' => 1,
+            'percentage' => 3.0
         ]);
 
         Evolution::create([
@@ -495,6 +548,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 55,
             'price' => 1,
+            'percentage' => 2.4
         ]);
 
         Evolution::create([
@@ -503,6 +557,7 @@ class EvolutionSeeder extends Seeder
             'description' => 'Pada kebanyakan mamalia, lapisan rahim akan diserap kembali pada akhir siklus reproduksi. Namun pada beberapa primata seperti manusia, lapisan tersebut akan mengelupas dan dikeluarkan dari tubuh dalam bentuk darah. Makhluk yang mengalami menstruasi dapat hamil kapanpun tanpa harus menunggu siklus reproduksi seperti estrus.',
             'image_path' => '',
             'price' => 1,
+            'percentage' => 3.0
         ]);
 
         Evolution::create([
@@ -512,6 +567,7 @@ class EvolutionSeeder extends Seeder
             'image_path' => '',
             'prerequisite_id' => 57,
             'price' => 1,
+            'percentage' => 6.0
         ]);
     }
 }

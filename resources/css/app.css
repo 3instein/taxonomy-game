@@ -1,3 +1,521 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gray: #F9FAFB;
+  --white: #fff;
+}
+
+/* ready to use class */
+.sidebar-active {
+  font-weight: bold;
+}
+
+.height-100 {
+  height: 100vh;
+}
+
+.width-100 {
+  width: 100%;
+}
+
+.bg-gray {
+  background-color: var(--gray);
+}
+
+.text-gray {
+  color: var(--gray);
+}
+
+/* sidebar width 400px*/
+.sidebar {
+  width: 0;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.1s;
+  background-color: rgba(255, 255, 255, 0.75);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar .sidebar-link:hover {
+  cursor: pointer;
+}
+
+.sidebar .creatures-wrapper .card {
+  overflow-x: hidden;
+}
+
+.sidebar .creatures-wrapper .creature-icon {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+}
+
+.open-sidebar {
+  position: absolute;
+  top: 50%;
+  left: calc(0% - 64px);
+  z-index: 1;
+  width: 176px;
+  height: 0;
+  border-bottom: 50px solid rgba(255, 255, 255, 0.5);
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-radius: 60px 60px 0 0;
+  transform: rotate(90deg);
+  transition: 0.1s;
+}
+
+.open-sidebar::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid #000;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: calc(50px - 36px);
+}
+
+/* click canvas */
+.canvas {
+  background-image: url('../../public/assets/galaxy.jpg');
+  width: 100vw;
+  height: 100vh;
+  transition: .1s;
+}
+
+.canvas #dna {
+  position: fixed;
+}
+
+.canvas #dna img {
+  width: 4.5rem;
+  height: 4.5rem;
+}
+
+.score, .score::after, .score::before {
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  cursor: default;
+}
+
+.score {
+  transition: .1s;
+  margin-top: 24px;
+  width: 400px;
+}
+
+.circle {
+  background-image: url('../../public/assets/earth.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 30rem;
+  width: 30rem;
+  -webkit-animation: spin 240s linear infinite;
+  animation: spin 240s linear infinite;
+}
+
+/* biome button */
+.biome-btn {
+  position: fixed;
+  right: 1%;
+  bottom: 14%;
+  width: 75px;
+  height: 150px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, .25);
+}
+
+.earth-icon {
+  opacity: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+.sea-icon {
+  opacity: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+/* tree button */
+.tree-btn {
+  position: fixed;
+  bottom: 2%;
+  right: 1%;
+  width: 90px;
+  height: 120px;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.tree-btn .tree {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3px;
+  height: 70px;
+}
+
+.tree-btn .tree::before {
+  content: '';
+  position: inherit;
+  top: -21%;
+  left: 50%;
+  transform: translate(-50%, 21%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 4px solid var(--white);
+}
+
+.tree-btn .right-branch-1 {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: rotate(45deg) translate(-35%, -50%);
+  background-color: var(--white);
+  width: 3px;
+  height: 30px;
+}
+
+.tree-btn .right-branch-1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 60%;
+  transform: translate(-40%, -60%);
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--white);
+  border-radius: 50%;
+}
+
+.tree-btn .left-branch-1 {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: rotate(-45deg) translate(-35%, -50%);
+  background-color: var(--white);
+  width: 3px;
+  height: 30px;
+}
+
+.tree-btn .left-branch-1::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 60%;
+  transform: translate(-40%, -60%);
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--white);
+  border-radius: 50%;
+}
+
+.tree-btn .right-branch-2 {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: rotate(45deg) translate(-50%, -55%);
+  background-color: var(--white);
+  width: 3px;
+  height: 30px;
+}
+
+.tree-btn .right-branch-2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 60%;
+  transform: translate(-40%, -60%);
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--white);
+  border-radius: 50%;
+}
+
+.tree-btn .left-branch-2 {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: rotate(-45deg) translate(-50%, -55%);
+  background-color: var(--white);
+  width: 3px;
+  height: 30px;
+}
+
+.tree-btn .left-branch-2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 60%;
+  transform: translate(-40%, -60%);
+  width: 16px;
+  height: 16px;
+  border: 4px solid var(--white);
+  border-radius: 50%;
+}
+
+/* login */
+.login-brand {
+  font-family: 'Viga', sans-serif;
+}
+
+.login-form {
+  border-radius: .75rem !important;
+}
+
+.login-form input, .login-form button {
+  border-radius: .35rem;
+}
+
+/* evolution tree */
+/* species */
+.evolution-tree .species-canvas {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  background-color: var(--gray);
+}
+
+.evolution-tree .species-canvas .species-branch {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  border: 3px solid var(--white);
+}
+
+.evolution-tree .species-1 {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -15%);
+}
+
+.evolution-tree .species-1::before {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 0%;
+  transform: rotate(45deg);
+  width: 2px;
+  height: 144px;
+  background-color: var(--gray);
+  z-index: -1;
+}
+
+.evolution-tree .species-1::after {
+  content: '';
+  position: absolute;
+  top: 60%;
+  left: 100%;
+  transform: rotate(-45deg);
+  width: 2px;
+  height: 144px;
+  background-color: var(--gray);
+  z-index: -1;
+}
+
+.evolution-tree .species-2 {
+  position: absolute;
+  top: 33%;
+  left: 43%;
+  transform: translate(-50%, -15%);
+}
+
+.evolution-tree .species-2::before {
+  content: '';
+  position: absolute;
+  bottom: -22%;
+  right: -24%;
+  transform: rotate(-55deg);
+  width: 2px;
+  height: 88px;
+  background-color: var(--gray);
+}
+
+.evolution-tree .species-2::after {
+  content: '';
+  position: absolute;
+  bottom: -22%;
+  left: -24%;
+  transform: rotate(55deg);
+  width: 2px;
+  height: 88px;
+  background-color: var(--gray);
+}
+
+/* creature evolution */
+.evolution-tree .creatureEvolution-canvas {
+  width: 80px;
+  height: 80px;
+}
+
+.evolution-tree .creatureEvolution-canvas .creatureEvolution-branch {
+  width: 80px;
+  height: 80px;
+  border-radius: 15%;
+  border: 1px solid var(--white);
+}
+
+.evolution-tree .creatureEvolution-1 {
+  position: absolute;
+  right: 40.2%;
+  top: 31.5%;
+}
+
+.evolution-tree .creatureEvolution-1::before {
+  content: '';
+  position: absolute;
+  left: 145%;
+  top: 66%;
+  transform: rotate(-60deg);
+  width: 2px;
+  height: 96px;
+  background-color: var(--gray);
+}
+
+.evolution-tree .creatureEvolution-2 {
+  position: absolute;
+  right: 32%;
+  top: 42%;
+}
+
+.evolution-tree .creatureEvolution-2::before {
+  content: '';
+  position: absolute;
+  right: -47%;
+  top: 55%;
+  transform: rotate(-80deg);
+  width: 2px;
+  height: 80px;
+  background-color: var(--gray);
+}
+
+.evolution-tree .creatureEvolution-3 {
+  position: absolute;
+  right: 32%;
+  top: 10%;
+}
+
+.evolution-tree .creatureEvolution-3::before {
+  content: '';
+  position: absolute;
+  left: -127%;
+  top: -40%;
+  transform: rotate(80deg);
+  width: 2px;
+  height: 212px;
+  background-color: var(--gray);
+}
+
+.evolution-tree .creatureEvolution-4 {
+  position: absolute;
+  right: 24%;
+  top: 47%;
+}
+
+.evolution-tree .creatureEvolution-5 {
+  position: absolute;
+  right: 47%;
+  top: 44%;
+}
+
+.evolution-tree .creatureEvolution-6 {
+  position: absolute;
+  left: 33%;
+  top: 44%;
+}
+
+/* creature description */
+.branch-description {
+  /* expanded 
+  width: 455px;
+  height: 260px;
+  border-radius: 50px; */
+
+  /* collapsed */
+  width: 455px;
+  height: 100px;
+  position: fixed;
+  bottom: 2%;
+  right: 6.5%;
+  background-color: rgba(255, 255, 255, .25);
+  border-radius: 25px;
+  
+}
+
+.branch-description .branch-img {
+  max-width: 72px;
+  max-height: 72px;
+  border-radius: 25%;
+  background-color: var(--gray);
+  overflow: hidden;
+}
+
+.branch-description .branch-img .creature-img {
+  width: 72px;
+  height: 72px;
+  border-radius: 25%;
+  border: 1px solid var(--gray);
+}
+
+.branch-description .branch-img .creature-name {
+  font-weight: 600;
+}
+
+/* sea biome */
+.Sponge {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  height: 144px;
+}
+
+.Mnemiopsis {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  height: 176px;
+}
+
+/* keyframe */
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
