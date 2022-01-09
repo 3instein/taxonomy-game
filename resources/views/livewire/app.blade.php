@@ -89,8 +89,8 @@
     @endforeach
 
     <div class="score text-center py-2 position-fixed start-50 translate-middle-x rounded" style="margin-left: 400px;">
-        <h1 class="text-gray">{{ $evo }}</h1>
-        <p class="mb-0 text-gray">{{ $power }} Click Power + {{ $creaturePower }} Creature power</p>
+        <h1 class="text-gray">{{ number_format($evo) }}</h1>
+        <p class="mb-0 text-gray">[{{ number_format($power) }} Click Power]  [{{ number_format($creaturePower) }} Creature power]</p>
     </div>
     <livewire:click />
     <livewire:sidebar :power="$power" />
