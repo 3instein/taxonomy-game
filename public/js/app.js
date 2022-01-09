@@ -49,8 +49,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   var canvas = document.querySelector('.canvas');
   var score = document.querySelector('.score');
   opener.addEventListener('click', function () {
-    console.log(isOpen);
-
     if (!isOpen) {
       sideBar.style.width = '400px';
       opener.style.left = 'calc(400px - 64px)';
@@ -107,12 +105,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   }); // user creature card
 
   var userCreature = document.querySelectorAll('.card-user-creature');
+  var userCreatureEvolutionSection = document.querySelector('.user-creature-evolution');
 
   var _loop = function _loop(i) {
     userCreature[i].addEventListener('click', function () {
       var creature = userCreature[i].querySelector('#user-creature').value;
       var userCreatureDetailModal = new bootstrap.Modal(document.getElementById('user-creature-detail'));
-      var userCreatureEvolutionSection = document.querySelector('.user-creature-evolution');
       creature = JSON.parse(creature);
       var userCreatureEvolution = creature.evolutions;
       var userCreatureName = creature.name;
@@ -139,7 +137,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       document.querySelector('.user-creature-detail-genus').innerHTML = "Genus : ".concat(genus);
       document.querySelector('.user-creature-detail-species').innerHTML = "Species : ".concat(species);
       document.querySelector('.user-creature-detail-image').src = userCreatureImage;
-      console.log(userCreatureEvolution);
+      userCreatureEvolutionSection.innerHTML = "";
 
       for (var j = 0; j < userCreatureEvolution.length; j++) {
         var data = '<div class="row mb-3">';

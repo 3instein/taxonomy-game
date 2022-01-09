@@ -144,7 +144,7 @@
                             <p class="user-creature-detail-description"></p>
                         </div>
                     </div>
-                    <h5 class="fw-bold">Klasifikasi</h5>
+                    <h5 class="fw-bold border-top pt-3">Klasifikasi</h5>
                     <div class="mb-3">
                         <h6 class="user-creature-detail-domain"></h6>
                         <h6 class="user-creature-detail-kingdom"></h6>
@@ -155,9 +155,9 @@
                         <h6 class="user-creature-detail-genus"></h6>
                         <h6 class="user-creature-detail-species"></h6>
                     </div>
-                    <h5 class="fw-bold">Evolusi</h5>
+                    <h5 class="fw-bold border-top pt-3">Evolusi</h5>
                     <div class="user-creature-evolution"></div>
-                    <div class="modal-footer bg-tertiary-green border-0">
+                    <div class="modal-footer bg-tertiary-green">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                     </div>
                 </div>

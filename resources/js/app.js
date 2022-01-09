@@ -42,7 +42,6 @@
   const canvas = document.querySelector('.canvas');
   const score = document.querySelector('.score');
   opener.addEventListener('click', function () {
-    console.log(isOpen);
     if (!isOpen) {
       sideBar.style.width = '400px';
       opener.style.left = 'calc(400px - 64px)';
@@ -105,11 +104,11 @@
 
   // user creature card
   let userCreature = document.querySelectorAll('.card-user-creature');
+  let userCreatureEvolutionSection = document.querySelector('.user-creature-evolution');
   for (let i = 0; i < userCreature.length; i++) {
     userCreature[i].addEventListener('click', function () {
       let creature = userCreature[i].querySelector('#user-creature').value;
       let userCreatureDetailModal = new bootstrap.Modal(document.getElementById('user-creature-detail'));
-      let userCreatureEvolutionSection = document.querySelector('.user-creature-evolution');
       creature = JSON.parse(creature);
       let userCreatureEvolution = creature.evolutions;
       let userCreatureName = creature.name;
@@ -136,7 +135,7 @@
       document.querySelector('.user-creature-detail-genus').innerHTML = `Genus : ${genus}`;
       document.querySelector('.user-creature-detail-species').innerHTML = `Species : ${species}`;
       document.querySelector('.user-creature-detail-image').src = userCreatureImage;
-      console.log(userCreatureEvolution);
+      userCreatureEvolutionSection.innerHTML = "";
       for (let j = 0; j < userCreatureEvolution.length; j++) {
         let data = '<div class="row mb-3">';
         data += '<div class="col-lg-12">';
@@ -152,7 +151,6 @@
       }
 
       userCreatureDetailModal.toggle();
-      
     });
   }
 
