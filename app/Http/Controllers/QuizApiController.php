@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\UserStat;
 use Illuminate\Http\Request;
 
 class QuizApiController extends Controller {
@@ -12,7 +13,15 @@ class QuizApiController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $quiz = Quiz::inRandomOrder()->get();
+        $userStat = UserStat::where('student_id', auth()->user()->id)->first();
+        if ($userStat->point < 100) {
+            $quiz = Quiz::take(10)->get();
+        } else if ($userStat->point >= 100) {
+            $quiz = Quiz::skip(10)->take(10)->get();
+        } else if ($userStat->point >= 200) {
+            $quiz = Quiz::skip(20)->take(10)->get();
+        }
+
         return response()->json([
             'quizzes' => $quiz
         ]);
