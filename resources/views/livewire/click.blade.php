@@ -14,7 +14,7 @@
     </div>
 
     {{-- evolution tree --}}
-    <section class="evolution-trees d-none">
+    {{-- <section class="evolution-trees d-none">
         <div class="evolution-tree mx-auto">
             @foreach ($creatureEvolutions as $creatureEvolution)
                 <div class="creatureEvolution-canvas creatureEvolution-{{ $loop->iteration }}">
@@ -63,5 +63,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 </div>

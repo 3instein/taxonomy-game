@@ -2,18 +2,20 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Evolution;
 use App\Models\Log;
 use App\Models\Quiz;
+use App\Models\Species;
 use App\Models\User;
 use Livewire\Component;
 use App\Models\UserStat;
 use App\Models\UserCreature;
 use App\Models\UserEvolution;
+use Illuminate\Database\Eloquent\Builder;
 
-class App extends Component
-{
+class App extends Component {
 
-    public $evo = 0, $power, $userStat, $user, $leaderboard, $creaturePower, $totalCreaturePower = 0;
+    public $evo = 0, $power, $userStat, $user, $leaderboard, $creaturePower, $totalCreaturePower = 0, $userCreatures;
 
     protected $listeners = [
         'addEvo' => 'click',
@@ -22,15 +24,13 @@ class App extends Component
         'unlockEvolution' => 'unlockEvolution'
     ];
 
-    public function click()
-    {
+    public function click() {
         $this->userStat->update([
             'evo' => $this->evo + $this->power + $this->creaturePower
         ]);
     }
 
-    public function upgradePower()
-    {
+    public function upgradePower() {
         if ($this->userStat->evo > $this->userStat->power) {
             $this->userStat->update([
                 'power' => $this->userStat->power + 1,
@@ -53,8 +53,7 @@ class App extends Component
         }
     }
 
-    public function unlockCreature($species)
-    {
+    public function unlockCreature($species) {
         $this->creaturePower = UserCreature::count() == 0 ? 10 : (UserCreature::count() + 1) * 10;
 
         UserCreature::create([
@@ -82,8 +81,7 @@ class App extends Component
         $this->emit('refreshSidebar');
     }
 
-    public function unlockEvolution($evolution)
-    {
+    public function unlockEvolution($evolution) {
         UserEvolution::create([
             'student_id' => $this->user->id,
             'evolution_id' => $evolution['id']
@@ -117,14 +115,21 @@ class App extends Component
         $this->emit('refreshSidebar');
     }
 
-    public function render()
-    {
+    public function render() {
         $this->leaderboard = UserStat::orderByDesc('evo')->orderByDesc('point')->orderByDesc('power')->get();
         $this->user = User::whereId(auth()->user()->id)->first();
         $this->userStat = UserStat::where('student_id', $this->user->id)->first();
         $this->evo = $this->userStat->evo;
         $this->power = $this->userStat->power;
         $this->creaturePower = UserCreature::where('student_id', $this->user->id)->sum('power');
+        $this->userCreatures = Species::query()
+            ->with(['evolutions' => function ($query) {
+                $query->has('user');
+            }])
+            ->whereHas('userCreatures', function ($query) {
+                $query->where('student_id', auth()->user()->id);
+            })
+            ->get();
         return view('livewire.app', [
             'quizzes' => Quiz::inRandomOrder()->get()
         ]);

@@ -88,6 +88,83 @@
         </div>
     @endforeach
 
+    {{-- tree modal --}}
+    <div class="modal fade" id="tree-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header border-0 bg-secondary-green">
+                    <h5 class="modal-title fw-bold text-cream" id="exampleModalLabel">Spesies Anda</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-secondary-green">
+                    <div class="row">
+                        @forelse ($this->userCreatures as $userCreature)
+                            <div class="col-lg-3">
+                                <div class="card mb-3 card-user-creature">
+                                    <img src="{{ asset($userCreature->image_path) }}" class="card-img-top"
+                                        height="96" />
+                                    <div class="card-body bg-cream">
+                                        <p class="card-text text-coral fw-bold">{{ $userCreature->name }}</p>
+                                        <input type="hidden" id="user-creature" value="{{ $userCreature }}"
+                                            data-species="{{ $userCreature->name }}"
+                                            data-genus="{{ $userCreature->genus->name }}"
+                                            data-family="{{ $userCreature->genus->family->name }}"
+                                            data-order="{{ $userCreature->genus->family->order->name }}"
+                                            data-class="{{ $userCreature->genus->family->order->class->name }}"
+                                            data-phylum="{{ $userCreature->genus->family->order->class->phylum->name }}"
+                                            data-kingdom="{{ $userCreature->genus->family->order->class->phylum->kingdom->name }}"
+                                            data-domain="{{ $userCreature->genus->family->order->class->phylum->kingdom->domain->name }}" />
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                        @endforelse
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- user creature detail modal --}}
+    <div class="modal fade" id="user-creature-detail" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header bg-tertiary-green border-0">
+                    <h5 class="modal-title user-creature-detail-name fw-bold" id="staticBackdropLabel">Modal
+                        title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-tertiary-green">
+                    <div class="d-flex">
+                        <img class="user-creature-detail-image"
+                            src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" height="96" />
+                        <div class="flex-column ms-3">
+                            <h5 class="user-creature-detail-common-name"></h5>
+                            <p class="user-creature-detail-description"></p>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold">Klasifikasi</h5>
+                    <div class="mb-3">
+                        <h6 class="user-creature-detail-domain"></h6>
+                        <h6 class="user-creature-detail-kingdom"></h6>
+                        <h6 class="user-creature-detail-phylum"></h6>
+                        <h6 class="user-creature-detail-classes"></h6>
+                        <h6 class="user-creature-detail-order"></h6>
+                        <h6 class="user-creature-detail-family"></h6>
+                        <h6 class="user-creature-detail-genus"></h6>
+                        <h6 class="user-creature-detail-species"></h6>
+                    </div>
+                    <h5 class="fw-bold">Evolusi</h5>
+                    <div class="user-creature-evolution"></div>
+                    <div class="modal-footer bg-tertiary-green border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="score text-center py-2 position-fixed start-50 translate-middle-x rounded" style="margin-left: 400px;">
         <h1 class="text-gray">{{ number_format($evo) }}</h1>
         <p class="mb-0 text-gray">[{{ number_format($power) }} Click Power]  [{{ number_format($creaturePower) }} Creature power]</p>
@@ -118,4 +195,5 @@
         <span class="right-branch-2 opacity-50"></span>
         <span class="left-branch-2 opacity-50"></span>
     </div>
+</div>
 </div>

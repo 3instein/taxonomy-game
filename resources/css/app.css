@@ -9,6 +9,11 @@
 :root {
   --gray: #F9FAFB;
   --white: #fff;
+  --cream: #f7e7be;
+  --coral: #FD9F82;
+  --primary-green: #005366;
+  --secondary-green: #00777b;
+  --tertiary-green: #009f92;
 }
 
 /* ready to use class */
@@ -32,6 +37,30 @@
   color: var(--gray);
 }
 
+.text-cream {
+  color: var(--cream);
+}
+
+.text-coral {
+  color: var(--coral);
+}
+
+.bg-secondary-green {
+  background-color: var(--secondary-green);
+}
+
+.bg-primary-green {
+  background-color: var(--primary-green);
+}
+
+.bg-tertiary-green {
+  background-color: var(--tertiary-green);
+}
+
+.bg-cream {
+  background-color: var(--cream);
+}
+
 /* sidebar width 400px*/
 .sidebar {
   width: 0;
@@ -42,9 +71,24 @@
   left: 0;
   overflow-x: hidden;
   transition: 0.1s;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: var(--primary-green);
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.sidebar .card-upgrade-click-power,
+.sidebar .card-evolution,
+.sidebar .card-creature {
+  background-color: var(--cream);
+  color: var(--secondary-green);
+}
+
+.sidebar .card-creature .btn-buy-creature, .sidebar .card-evolution .btn-buy-evolution,
+.sidebar .card-upgrade-click-power .btn-click-upgrade {
+  display: grid;
+  place-items: center;
+  background-color: var(--primary-green);
+  color: var(--cream);
 }
 
 .sidebar::-webkit-scrollbar {
@@ -55,16 +99,6 @@
   cursor: pointer;
 }
 
-.sidebar .creatures-wrapper .card {
-  overflow-x: hidden;
-}
-
-.sidebar .creatures-wrapper .creature-icon {
-  width: 72px;
-  height: 72px;
-  object-fit: cover;
-}
-
 .open-sidebar {
   position: absolute;
   top: 50%;
@@ -72,7 +106,7 @@
   z-index: 1;
   width: 176px;
   height: 0;
-  border-bottom: 50px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 50px solid rgba(255, 255, 255, 0.4);
   border-left: 25px solid transparent;
   border-right: 25px solid transparent;
   border-radius: 60px 60px 0 0;
@@ -93,6 +127,9 @@
   transform: translateX(-50%);
   margin-top: calc(50px - 36px);
 }
+
+/* user creature detail modal */
+
 
 /* click canvas */
 .canvas {
@@ -137,7 +174,7 @@
 .biome-btn {
   position: fixed;
   right: 1%;
-  bottom: 14%;
+  bottom: 15%;
   width: 75px;
   height: 150px;
   border-radius: 25px;
@@ -462,7 +499,7 @@
   right: 6.5%;
   background-color: rgba(255, 255, 255, .25);
   border-radius: 25px;
-  
+
 }
 
 .branch-description .branch-img {

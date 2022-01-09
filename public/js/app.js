@@ -43,66 +43,36 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   //   jellyfish.style.left = positionX + 'px';
   //   jellyfish.style.top = positionY + 'px';
   // }, refreshRate);
-  // sidebar page changing
-  var sidebarLinks = document.querySelectorAll('.sidebar-link');
+  var isOpen = true;
+  var opener = document.querySelector('.open-sidebar');
+  var sideBar = document.querySelector('.sidebar');
+  var canvas = document.querySelector('.canvas');
+  var score = document.querySelector('.score');
+  opener.addEventListener('click', function () {
+    console.log(isOpen);
 
-  var _loop = function _loop(i) {
-    sidebarLinks[i].addEventListener('click', function () {
-      if (!sidebarLinks[i].classList.contains('sidebar-active')) {
-        for (var j = 0; j < sidebarLinks.length; j++) {
-          if (sidebarLinks[j].classList.contains('sidebar-active')) {
-            sidebarLinks[j].classList.remove('sidebar-active');
-          }
-        }
-
-        if (sidebarLinks[i].innerHTML == 'Creatures') {
-          document.querySelector('.creatures-wrapper').classList.remove('d-none');
-          document.querySelector('.upgrades-wrapper').classList.add('d-none');
-        } else if (sidebarLinks[i].innerHTML == 'Upgrades') {
-          document.querySelector('.creatures-wrapper').classList.add('d-none');
-          document.querySelector('.upgrades-wrapper').classList.remove('d-none');
-        }
-
-        sidebarLinks[i].classList.add('sidebar-active');
-      } else {
-        sidebarLinks[i].classList.remove('sidebar-active');
-      }
-    }); // collapse sidebar
-
-    var isOpen = true;
-    var opener = document.querySelector('.open-sidebar');
-    var sideBar = document.querySelector('.sidebar');
-    var canvas = document.querySelector('.canvas');
-    var score = document.querySelector('.score');
-    opener.addEventListener('click', function () {
-      if (!isOpen) {
-        sideBar.style.width = '400px';
-        opener.style.left = 'calc(400px - 64px)';
-        canvas.style.marginLeft = '400px';
-        score.style.marginLeft = '400px';
-        isOpen = true;
-      } else {
-        sideBar.style.width = '0';
-        opener.style.left = 'calc(0% - 64px)';
-        canvas.style.marginLeft = '0';
-        score.style.marginLeft = '0';
-        isOpen = false;
-      }
-    });
-  };
-
-  for (var i = 0; i < sidebarLinks.length; i++) {
-    _loop(i);
-  } // channging environemnt button
-
+    if (!isOpen) {
+      sideBar.style.width = '400px';
+      opener.style.left = 'calc(400px - 64px)';
+      canvas.style.marginLeft = '400px';
+      score.style.marginLeft = '400px';
+      isOpen = true;
+    } else {
+      sideBar.style.width = '0';
+      opener.style.left = 'calc(0% - 64px)';
+      canvas.style.marginLeft = '0';
+      score.style.marginLeft = '0';
+      isOpen = false;
+    }
+  }); // channging environemnt button
 
   var quizModal = new bootstrap.Modal(document.getElementById('biome-modal'));
   var userPoint = document.querySelector('#user-point');
+  var treeModal = new bootstrap.Modal(document.getElementById('tree-modal'));
   var earth = document.querySelector('.circle');
   var seaBtn = document.querySelector('.sea-btn');
   var earthBtn = document.querySelector('.earth-btn');
   var tree = document.querySelector('.tree-btn');
-  var canvas = document.querySelector('.canvas');
   var seaBiome = document.querySelector('.sea-biome');
   var evolutionTree = document.querySelector('.evolution-trees');
   seaBtn.addEventListener('click', function () {
@@ -127,14 +97,72 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     evolutionTree.classList.add('d-none');
   });
   tree.addEventListener('click', function () {
-    canvas.style.background = 'rgb(92,107,40)';
-    canvas.style.background = 'radial-gradient(circle, rgba(92,107,40,1) 0%, rgba(0,0,0,1) 100%)';
-    earth.style.display = 'none';
-    seaBiome.classList.add('d-none');
-    evolutionTree.classList.remove('d-none');
-    evolutionTree.style.width = '100%';
-    evolutionTree.style.height = '100%';
-  }); // quiz modal
+    treeModal.toggle(); // canvas.style.background = 'rgb(92,107,40)';
+    // canvas.style.background = 'radial-gradient(circle, rgba(92,107,40,1) 0%, rgba(0,0,0,1) 100%)';
+    // earth.style.display = 'none';
+    // seaBiome.classList.add('d-none');
+    // evolutionTree.classList.remove('d-none');
+    // evolutionTree.style.width = '100%';
+    // evolutionTree.style.height = '100%';
+  }); // user creature card
+
+  var userCreature = document.querySelectorAll('.card-user-creature');
+
+  var _loop = function _loop(i) {
+    userCreature[i].addEventListener('click', function () {
+      var creature = userCreature[i].querySelector('#user-creature').value;
+      var userCreatureDetailModal = new bootstrap.Modal(document.getElementById('user-creature-detail'));
+      var userCreatureEvolutionSection = document.querySelector('.user-creature-evolution');
+      creature = JSON.parse(creature);
+      var userCreatureEvolution = creature.evolutions;
+      var userCreatureName = creature.name;
+      var userCreatureCommonName = creature.common_name;
+      var userCreatureImage = creature.image_path;
+      var userCreatureDescription = creature.description;
+      var species = userCreature[i].querySelector('#user-creature').getAttribute('data-species');
+      var genus = userCreature[i].querySelector('#user-creature').getAttribute('data-genus');
+      var family = userCreature[i].querySelector('#user-creature').getAttribute('data-family');
+      var order = userCreature[i].querySelector('#user-creature').getAttribute('data-order');
+      var classes = userCreature[i].querySelector('#user-creature').getAttribute('data-class');
+      var phylum = userCreature[i].querySelector('#user-creature').getAttribute('data-phylum');
+      var kingdom = userCreature[i].querySelector('#user-creature').getAttribute('data-kingdom');
+      var domain = userCreature[i].querySelector('#user-creature').getAttribute('data-domain');
+      document.querySelector('.user-creature-detail-common-name').innerHTML = userCreatureCommonName;
+      document.querySelector('.user-creature-detail-name').innerHTML = userCreatureName;
+      document.querySelector('.user-creature-detail-description').innerHTML = userCreatureDescription;
+      document.querySelector('.user-creature-detail-domain').innerHTML = "Domain : ".concat(domain);
+      document.querySelector('.user-creature-detail-kingdom').innerHTML = "Kingdom : ".concat(kingdom);
+      document.querySelector('.user-creature-detail-phylum').innerHTML = "Phylum : ".concat(phylum);
+      document.querySelector('.user-creature-detail-classes').innerHTML = "Class : ".concat(classes);
+      document.querySelector('.user-creature-detail-order').innerHTML = "Order : ".concat(order);
+      document.querySelector('.user-creature-detail-family').innerHTML = "Family : ".concat(family);
+      document.querySelector('.user-creature-detail-genus').innerHTML = "Genus : ".concat(genus);
+      document.querySelector('.user-creature-detail-species').innerHTML = "Species : ".concat(species);
+      document.querySelector('.user-creature-detail-image').src = userCreatureImage;
+      console.log(userCreatureEvolution);
+
+      for (var j = 0; j < userCreatureEvolution.length; j++) {
+        var data = '<div class="row mb-3">';
+        data += '<div class="col-lg-12">';
+        data += '<div class="d-flex align-items-center">';
+        data += "<img src=\"".concat(userCreatureEvolution[j].image_path, "\" width=\"80\" height=\"80\" />");
+        data += '<div class="flex-column ms-3">';
+        data += "<p class=\"fw-bold mb-0\">".concat(userCreatureEvolution[j].name, "</p>");
+        data += "<p class=\"mb-3\">".concat(userCreatureEvolution[j].description, "</p>");
+        data += '</div>';
+        data += '</div>';
+        data += '</div>';
+        userCreatureEvolutionSection.innerHTML = userCreatureEvolutionSection.innerHTML + data;
+      }
+
+      userCreatureDetailModal.toggle();
+    });
+  };
+
+  for (var i = 0; i < userCreature.length; i++) {
+    _loop(i);
+  } // quiz modal
+
 
   var questionText = document.querySelectorAll('.question-text');
   var question = document.querySelectorAll('#question');
@@ -233,124 +261,101 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
     feedbackModal.toggle();
   } // evolution tree
+  // const species = document.querySelectorAll('.species-canvas');
+  // const creatureEvolutions = document.querySelectorAll('.creatureEvolution-canvas');
+  // const branchDescription = document.querySelector('.branch-description');
+  // const taxonomyExpand = document.querySelector('.taxonomy-expand');
+  // const taxonomyClosed = document.querySelector('.taxonomy-close');
+  // const taxonomyClassification = document.querySelector('.taxonomy-classification');
+  // const creatureGenus = document.querySelector('.creature-genus');
+  // const creatureFamily = document.querySelector('.creature-family');
+  // const creatureOrder = document.querySelector('.creature-order');
+  // const creatureClass = document.querySelector('.creature-class');
+  // const creaturePhylum = document.querySelector('.creature-phylum');
+  // const creatureKingdom = document.querySelector('.creature-kingdom');
+  // const creatureDomain = document.querySelector('.creature-domain');
+  // let checker = 1;
+  // let isExpanded = false;
+  // for (let i = 0; i < species.length; i++) {
+  //   species[i].addEventListener('click', function () {
+  //     let creature = species[i].querySelector('#creature').value;
+  //     creature = JSON.parse(creature);
+  //     branchDescription.classList.remove('d-none');
+  //     branchDescription.querySelector('.creature-img').src = creature.image_path;
+  //     branchDescription.querySelector('.creature-name').innerHTML = creature.name;
+  //     branchDescription.querySelector('.creature-description').innerHTML = creature.description;
+  //     let genus = species[i].querySelector('#creature').getAttribute('data-genus');
+  //     let family = species[i].querySelector('#creature').getAttribute('data-family');
+  //     let order = species[i].querySelector('#creature').getAttribute('data-order');
+  //     let classes = species[i].querySelector('#creature').getAttribute('data-class');
+  //     let phylum = species[i].querySelector('#creature').getAttribute('data-phylum');
+  //     let kingdom = species[i].querySelector('#creature').getAttribute('data-kingdom');
+  //     let domain = species[i].querySelector('#creature').getAttribute('data-domain');
+  //     creatureGenus.innerHTML = genus;
+  //     creatureFamily.innerHTML = family;
+  //     creatureOrder.innerHTML = order;
+  //     creatureClass.innerHTML = classes;
+  //     creaturePhylum.innerHTML = phylum;
+  //     creatureKingdom.innerHTML = kingdom;
+  //     creatureDomain.innerHTML = domain;
+  //     if (checker == 1) {
+  //       taxonomyExpand.classList.remove('d-none');
+  //     }
+  //   });
+  // }
+  // for (let i = 0; i < creatureEvolutions.length; i++) {
+  //   creatureEvolutions[i].addEventListener('click', function () {
+  //     let creatureEvolution = creatureEvolutions[i].querySelector('#creatureEvolution').value;
+  //     dataValue = "";
+  //     creatureEvolution = JSON.parse(creatureEvolution);
+  //     branchDescription.classList.remove('d-none');
+  //     branchDescription.querySelector('.creature-img').src = creatureEvolution.image_path;
+  //     branchDescription.querySelector('.creature-name').innerHTML = creatureEvolution.name;
+  //     branchDescription.querySelector('.creature-description').innerHTML = creatureEvolution.description;
+  //     taxonomyExpand.classList.add('d-none');
+  //     checker = 1;
+  //   });
+  // }
+  // branchDescription.addEventListener('click', function () {
+  //   if (checker == 1) {
+  //     if (!isExpanded) {
+  //       branchDescription.style.height = '260px';
+  //       document.querySelector('.inner-branch-description').classList.remove('d-none');
+  //       isExpanded = true;
+  //     } else {
+  //       branchDescription.style.height = '100px';
+  //       document.querySelector('.inner-branch-description').classList.add('d-none');
+  //       isExpanded = false;
+  //     }
+  //   }
+  // });
+  // taxonomyExpand.addEventListener('click', function () {
+  //   checker = 0;
+  //   taxonomyClosed.classList.remove('d-none');
+  //   taxonomyClassification.classList.remove('d-none');
+  //   branchDescription.style.bottom = '25%';
+  //   branchDescription.style.right = '25%';
+  //   branchDescription.style.width = '900px';
+  //   branchDescription.style.height = '500px';
+  //   branchDescription.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+  //   branchDescription.style.transition = '0.3s';
+  //   taxonomyExpand.classList.add('d-none');
+  // });
+  // taxonomyClosed.addEventListener('click', function () {
+  //   checker = 1;
+  //   taxonomyClassification.classList.add('d-none');
+  //   branchDescription.style.width = '455px';
+  //   branchDescription.style.height = '260px';
+  //   branchDescription.style.position = 'fixed';
+  //   branchDescription.style.bottom = '2%';
+  //   branchDescription.style.right = '6.5%';
+  //   branchDescription.style.backgroundColor = 'rgba(255, 255, 255, .25)';
+  //   branchDescription.style.transition = '0.3s';
+  //   taxonomyClosed.classList.add('d-none');
+  //   taxonomyExpand.classList.remove('d-none');
+  //   isExpanded = false;
+  // });
 
-
-  var species = document.querySelectorAll('.species-canvas');
-  var creatureEvolutions = document.querySelectorAll('.creatureEvolution-canvas');
-  var branchDescription = document.querySelector('.branch-description');
-  var taxonomyExpand = document.querySelector('.taxonomy-expand');
-  var taxonomyClosed = document.querySelector('.taxonomy-close');
-  var taxonomyClassification = document.querySelector('.taxonomy-classification');
-  var creatureGenus = document.querySelector('.creature-genus');
-  var creatureFamily = document.querySelector('.creature-family');
-  var creatureOrder = document.querySelector('.creature-order');
-  var creatureClass = document.querySelector('.creature-class');
-  var creaturePhylum = document.querySelector('.creature-phylum');
-  var creatureKingdom = document.querySelector('.creature-kingdom');
-  var creatureDomain = document.querySelector('.creature-domain');
-  var checker = 1;
-  var isExpanded = false;
-
-  var _loop3 = function _loop3(_i2) {
-    species[_i2].addEventListener('click', function () {
-      var creature = species[_i2].querySelector('#creature').value;
-
-      creature = JSON.parse(creature);
-      branchDescription.classList.remove('d-none');
-      branchDescription.querySelector('.creature-img').src = creature.image_path;
-      branchDescription.querySelector('.creature-name').innerHTML = creature.name;
-      branchDescription.querySelector('.creature-description').innerHTML = creature.description;
-
-      var genus = species[_i2].querySelector('#creature').getAttribute('data-genus');
-
-      var family = species[_i2].querySelector('#creature').getAttribute('data-family');
-
-      var order = species[_i2].querySelector('#creature').getAttribute('data-order');
-
-      var classes = species[_i2].querySelector('#creature').getAttribute('data-class');
-
-      var phylum = species[_i2].querySelector('#creature').getAttribute('data-phylum');
-
-      var kingdom = species[_i2].querySelector('#creature').getAttribute('data-kingdom');
-
-      var domain = species[_i2].querySelector('#creature').getAttribute('data-domain');
-
-      creatureGenus.innerHTML = genus;
-      creatureFamily.innerHTML = family;
-      creatureOrder.innerHTML = order;
-      creatureClass.innerHTML = classes;
-      creaturePhylum.innerHTML = phylum;
-      creatureKingdom.innerHTML = kingdom;
-      creatureDomain.innerHTML = domain;
-
-      if (checker == 1) {
-        taxonomyExpand.classList.remove('d-none');
-      }
-    });
-  };
-
-  for (var _i2 = 0; _i2 < species.length; _i2++) {
-    _loop3(_i2);
-  }
-
-  var _loop4 = function _loop4(_i3) {
-    creatureEvolutions[_i3].addEventListener('click', function () {
-      var creatureEvolution = creatureEvolutions[_i3].querySelector('#creatureEvolution').value;
-
-      dataValue = "";
-      creatureEvolution = JSON.parse(creatureEvolution);
-      branchDescription.classList.remove('d-none');
-      branchDescription.querySelector('.creature-img').src = creatureEvolution.image_path;
-      branchDescription.querySelector('.creature-name').innerHTML = creatureEvolution.name;
-      branchDescription.querySelector('.creature-description').innerHTML = creatureEvolution.description;
-      taxonomyExpand.classList.add('d-none');
-      checker = 1;
-    });
-  };
-
-  for (var _i3 = 0; _i3 < creatureEvolutions.length; _i3++) {
-    _loop4(_i3);
-  }
-
-  branchDescription.addEventListener('click', function () {
-    if (checker == 1) {
-      if (!isExpanded) {
-        branchDescription.style.height = '260px';
-        document.querySelector('.inner-branch-description').classList.remove('d-none');
-        isExpanded = true;
-      } else {
-        branchDescription.style.height = '100px';
-        document.querySelector('.inner-branch-description').classList.add('d-none');
-        isExpanded = false;
-      }
-    }
-  });
-  taxonomyExpand.addEventListener('click', function () {
-    checker = 0;
-    taxonomyClosed.classList.remove('d-none');
-    taxonomyClassification.classList.remove('d-none');
-    branchDescription.style.bottom = '25%';
-    branchDescription.style.right = '25%';
-    branchDescription.style.width = '900px';
-    branchDescription.style.height = '500px';
-    branchDescription.style.backgroundColor = 'rgba(0, 0, 0, 1)';
-    branchDescription.style.transition = '0.3s';
-    taxonomyExpand.classList.add('d-none');
-  });
-  taxonomyClosed.addEventListener('click', function () {
-    checker = 1;
-    taxonomyClassification.classList.add('d-none');
-    branchDescription.style.width = '455px';
-    branchDescription.style.height = '260px';
-    branchDescription.style.position = 'fixed';
-    branchDescription.style.bottom = '2%';
-    branchDescription.style.right = '6.5%';
-    branchDescription.style.backgroundColor = 'rgba(255, 255, 255, .25)';
-    branchDescription.style.transition = '0.3s';
-    taxonomyClosed.classList.add('d-none');
-    taxonomyExpand.classList.remove('d-none');
-    isExpanded = false;
-  });
 })();
 
 /***/ }),
