@@ -57,11 +57,19 @@
   //   }
   // });
 
+  // leaderboard modal
+  let leaderboardModal = new bootstrap.Modal(document.getElementById('leaderboardModal'));
+  let leaderboardBtn = document.querySelector('.leaderboard-btn');
+  leaderboardBtn.addEventListener('click', function () {
+    leaderboardModal.toggle();
+  });
+
   // channging environemnt button
   let quizModal = new bootstrap.Modal(document.getElementById('biome-modal'));
   let userPoint = document.querySelector('#user-point');
   let treeModal = new bootstrap.Modal(document.getElementById('tree-modal'));
   const earth = document.querySelector('.circle');
+  const canvas = document.querySelector('.canvas');
   const seaBtn = document.querySelector('.sea-btn');
   const earthBtn = document.querySelector('.earth-btn')
   const tree = document.querySelector('.tree-btn');
