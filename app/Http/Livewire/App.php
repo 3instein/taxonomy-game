@@ -66,66 +66,74 @@ class App extends Component
 
     public function unlockCreature($species)
     {
-        $this->creaturePower = UserCreature::count() == 0 ? 10 : (UserCreature::count() + 1) * 10;
+        if ($this->user->stat->evo >= $species['price']) {
+            $this->creaturePower = UserCreature::count() == 0 ? 10 : (UserCreature::count() + 1) * 10;
 
-        UserCreature::create([
-            'student_id' => $this->user->id,
-            'species_id' => $species['id'],
-            'power' => $this->creaturePower
-        ]);
+            UserCreature::create([
+                'student_id' => $this->user->id,
+                'species_id' => $species['id'],
+                'power' => $this->creaturePower
+            ]);
 
-        $this->user->update([
-            'evo' => $this->userStat->evo - $species['price']
-        ]);
-        Log::create([
-            'table' => app(UserCreature::class)->getTable(),
-            'student_id' => $this->user->id,
-            'description' => 'User id:' . $this->user->id . ' unlocked Species id:' . $species['id'],
-            'ip' => request()->ip()
-        ]);
+            $this->user->stat->update([
+                'evo' => $this->user->stat->evo - $species['price']
+            ]);
+            Log::create([
+                'table' => app(UserCreature::class)->getTable(),
+                'student_id' => $this->user->id,
+                'description' => 'User id:' . $this->user->id . ' unlocked Species id:' . $species['id'],
+                'ip' => request()->ip()
+            ]);
 
-        Log::create([
-            'table' => app(UserStat::class)->getTable(),
-            'student_id' => $this->user->id,
-            'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $species['price'],
-            'ip' => request()->ip()
-        ]);
-        $this->emit('refreshSidebar');
+            Log::create([
+                'table' => app(UserStat::class)->getTable(),
+                'student_id' => $this->user->id,
+                'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $species['price'],
+                'ip' => request()->ip()
+            ]);
+            $this->emit('refreshSidebar');
+        }
     }
 
     public function unlockEvolution($evolution)
     {
-        UserEvolution::create([
-            'student_id' => $this->user->id,
-            'evolution_id' => $evolution['id']
-        ]);
-
-        $this->user->update([
-            'evo' => $this->userStat->evo - $evolution['price']
-        ]);
-
-        if ($evolution['species_id'] != null) {
-            $updatedCreature = UserCreature::where('student_id', $this->user->id)->where('species_id', $evolution['species_id'])->first();
-
-            $updatedCreature->update([
-                'power' => $updatedCreature->power * $evolution['percentage']
+        if ($this->user->stat->evo >= $evolution['price']) {
+            UserEvolution::create([
+                'student_id' => $this->user->id,
+                'evolution_id' => $evolution['id']
             ]);
+
+            $this->user->update([
+                'evo' => $this->userStat->evo - $evolution['price']
+            ]);
+
+            if ($evolution['species_id'] != null && $evolution['species_id'] < 9) {
+                $updatedCreature = UserCreature::where('student_id', $this->user->id)->where('species_id', $evolution['species_id'])->first();
+
+                $updatedCreature->update([
+                    'power' => $updatedCreature->power * $evolution['percentage']
+                ]);
+            } else {
+                $this->user->stat->update([
+                    'power' => $this->user->stat->power * 1.01
+                ]);
+            }
+
+            Log::create([
+                'table' => app(UserEvolution::class)->getTable(),
+                'student_id' => $this->user->id,
+                'description' => 'User id:' . $this->user->id . ' unlocked Evolution id:' . $evolution['id'],
+                'ip' => request()->ip()
+            ]);
+
+            Log::create([
+                'table' => app(UserStat::class)->getTable(),
+                'student_id' => $this->user->id,
+                'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $evolution['price'],
+                'ip' => request()->ip()
+            ]);
+            $this->emit('refreshSidebar');
         }
-
-        Log::create([
-            'table' => app(UserEvolution::class)->getTable(),
-            'student_id' => $this->user->id,
-            'description' => 'User id:' . $this->user->id . ' unlocked Evolution id:' . $evolution['id'],
-            'ip' => request()->ip()
-        ]);
-
-        Log::create([
-            'table' => app(UserStat::class)->getTable(),
-            'student_id' => $this->user->id,
-            'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $evolution['price'],
-            'ip' => request()->ip()
-        ]);
-        $this->emit('refreshSidebar');
     }
 
     public function render()
@@ -135,7 +143,8 @@ class App extends Component
         $this->userStat = UserStat::where('student_id', $this->user->id)->first();
         $this->evo = $this->userStat->evo;
         $this->power = $this->userStat->power;
-        $this->creaturePower = UserCreature::where('student_id', $this->user->id)->sum('power');
+        $this->creaturePower =
+            UserCreature::where('student_id', $this->user->id)->sum('power');
         $this->userCreatures = Species::query()
             ->with(['evolutions' => function ($query) {
                 $query->has('user');
