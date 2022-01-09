@@ -58,7 +58,7 @@
     <div class="container-fluid bg-gray">
         <div class="row height-100">
             <div class="col-md-3 mx-auto my-auto">
-                <h1 class="fw-bold text-center login-brand text-primary">Taxon</h1>
+                <h1 class="fw-bold text-center login-brand text-primary">Taxev</h1>
                 <h2 class="text-center fw-bold">Masuk ke akun anda</h2>
                 <h6 class="text-center">atau <a class="text-decoration-none" href="{{ route('register') }}">daftar
                         sekarang</a></h6>
