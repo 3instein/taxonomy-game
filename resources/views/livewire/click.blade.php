@@ -1,4 +1,4 @@
-<div class="canvas d-flex flex-column align-items-center justify-content-evenly" wire:click="$emit('addEvo')">
+<div class="canvas d-flex flex-column align-items-center justify-content-evenly" wire:click="$emit('addEvo')" style="margin-left: 200px">
     {{-- <div id="dna">
         <img src="{{ asset('assets/dna.png') }}">
     </div> --}}

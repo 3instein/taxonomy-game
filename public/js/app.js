@@ -43,31 +43,27 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   //   jellyfish.style.left = positionX + 'px';
   //   jellyfish.style.top = positionY + 'px';
   // }, refreshRate);
-  var isOpen = false;
-  var opener = document.querySelector('.open-sidebar');
-  var sideBar = document.querySelector('.sidebar');
-  var canvas = document.querySelector('.canvas');
-  var score = document.querySelector('.score');
-  opener.addEventListener('click', function () {
-    if (!isOpen) {
-      sideBar.style.width = '400px';
-      opener.style.left = 'calc(400px - 64px)';
-      canvas.style.marginLeft = '400px';
-      score.style.marginLeft = '400px';
-      canvas.setAttribute('wire:click:prevent', 'click()');
-      canvas.removeAttribute('wire:click');
-      isOpen = true;
-    } else {
-      sideBar.style.width = '0';
-      opener.style.left = 'calc(0% - 64px)';
-      canvas.style.marginLeft = '0';
-      score.style.marginLeft = '0';
-      canvas.removeAttribute('wire:click:prevent');
-      canvas.setAttribute('wire:click', '$emit("addEvo")');
-      isOpen = false;
-    }
-  }); // channging environemnt button
-
+  // let isOpen = true;
+  // const opener = document.querySelector('.open-sidebar');
+  // const sideBar = document.querySelector('.sidebar');
+  // const canvas = document.querySelector('.canvas');
+  // const score = document.querySelector('.score');
+  // opener.addEventListener('click', function () {
+  //   if (!isOpen) {
+  //     sideBar.style.width = '400px';
+  //     opener.style.left = 'calc(400px - 64px)';
+  //     canvas.style.marginLeft = '400px';
+  //     score.style.marginLeft = '400px';
+  //     isOpen = true;
+  //   } else {
+  //     sideBar.style.width = '0';
+  //     opener.style.left = 'calc(0% - 64px)';
+  //     canvas.style.marginLeft = '0';
+  //     score.style.marginLeft = '0';
+  //     isOpen = false;
+  //   }
+  // });
+  // channging environemnt button
   var quizModal = new bootstrap.Modal(document.getElementById('biome-modal'));
   var userPoint = document.querySelector('#user-point');
   var treeModal = new bootstrap.Modal(document.getElementById('tree-modal'));

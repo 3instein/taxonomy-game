@@ -1,5 +1,5 @@
-<div class="sidebar" style="width: 0px">
-    <div class="wrapper overflow-auto">
+<div class="sidebar" style="width: 400px">
+    <div class="wrapper overflow-auto" style="width: 400px">
         {{-- upgrade --}}
         <div class="upgrades-wrapper">
             <h5 class="card-header text-cream fw-bold">Upgrades</h5>

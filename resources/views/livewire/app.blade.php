@@ -165,8 +165,8 @@
         </div>
     </div>
 
-    <span class="open-sidebar" wire:click:prevent="click()"></span>
-    <div class="score text-center py-2 position-fixed start-50 translate-middle-x rounded">
+    {{-- <span class="open-sidebar" wire:click:prevent="click()" style="left: calc(400px - 64px)"></span> --}}
+    <div class="score text-center py-2 position-fixed start-50 translate-middle-x rounded" style="margin-left: 200px">
         <h1 class="text-gray">{{ number_format($evo, 2) }}</h1>
         <p class="mb-0 text-gray">[{{ number_format($power,2) }} Click Power] * [{{ number_format($creaturePower * 0.25, 2) }}
             Creature power]</p>
