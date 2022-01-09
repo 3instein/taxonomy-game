@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
-class AuthenticationApiController extends Controller {
-    public function login(Request $request) {
+class AuthenticationApiController extends Controller
+{
+    public function login(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'exists:students,email', 'max:255'],
             'password' => ['required']
@@ -40,6 +42,9 @@ class AuthenticationApiController extends Controller {
             ->where('email', $request->input('email'))
             ->first();
 
+        $user->stat->power = (int) $user->stat->power;
+        $user->stat->evo = (int) $user->stat->evo;
+
         return response()->json([
             'user' => $user,
             'token' => auth()->user()->createToken('API Token')->plainTextToken,
@@ -47,7 +52,8 @@ class AuthenticationApiController extends Controller {
         ]);
     }
 
-    public function register(Request $request) {
+    public function register(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'email' => ['required', 'email:dns', 'unique:students', 'max:255'],
             'password' => ['required', Password::defaults()],
@@ -83,13 +89,17 @@ class AuthenticationApiController extends Controller {
             ->where('email', $request->email)
             ->first();
 
+        $user->stat->power = (int) $user->stat->power;
+        $user->stat->evo = (int) $user->stat->evo;
+
         return response()->json(([
             'user' => $user,
             'status_code' => 201
         ]), 201);
     }
 
-    public function logout() {
+    public function logout()
+    {
         auth()->user()->tokens()->delete();
 
         return response()->json([
