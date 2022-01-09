@@ -107,7 +107,7 @@ class App extends Component
                 'evo' => $this->userStat->evo - $evolution['price']
             ]);
 
-            if ($evolution['species_id'] != null && $evolution['species_id'] < 10) {
+            if ($evolution['species_id'] != null && $evolution['species_id'] < 9) {
                 $updatedCreature = UserCreature::where('student_id', $this->user->id)->where('species_id', $evolution['species_id'])->first();
 
                 $updatedCreature->update([

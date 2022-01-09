@@ -17,11 +17,60 @@ class EvolutionSeeder extends Seeder
     {
         $image_path = 'assets/evolutions/';
 
+        //Early Evolutions
+        Evolution::create([
+            'name' => 'Nukleotida',
+            'description' => 'Nukleotida adalah senyawa kimia yang menjadi fondasi DNA dan RNA',
+            'image_path' => $image_path.'',
+            'price' => 1
+        ]);
+        
+        Evolution::create([
+            'name' => 'DNA',
+            'description' => 'Molekul dengan properti unik replikasi diri. Konfigurasi tidak terbatas dari sebuah DNA merupakan kunci utama dari evolusi.',
+            'image_path' => $image_path.'',
+            'price' => 1,
+            'prerequisite_id' => 1
+        ]);
+
+        Evolution::create([
+            'name' => 'RNA',
+            'description' => 'RNA bertanggung jawab untuk mentransfer kode genetik dari nukleus ke ribosom untuk membuat protein.',
+            'image_path' => $image_path.'',
+            'price' => 1,
+            'prerequisite_id' => 1
+        ]);
+
+        
+        Evolution::create([
+            'name' => 'Asam amino',
+            'description' => 'Atom dan molekul yang bergabung menjadi asam amino, yaitu senyawa kimia yang digunakan untuk membangun protein.',
+            'image_path' => $image_path.'',
+            'price' => 1
+        ]);
+        
+        Evolution::create([
+            'name' => 'Protein',
+            'description' => 'Protein adalah molekul yang digunakan untuk menciptakan sel dalam makhluk hidup. Protein adalah molekul yang terbuat dari rantai asam amino',
+            'image_path' => $image_path.'',
+            'price' => 1,
+            'prerequisite_id' => 4
+        ]);
+
+        Evolution::create([
+            'name' => 'Polipeptida',
+            'description' => 'Ketika asam amino bergabung, asam amino membentuk rantai yang menjadi bahan dalam membuat protein',
+            'image_path' => $image_path.'',
+            'price' => 1,
+            'prerequisite_id' => 5
+        ]);
+
         Evolution::create([
             'name' => 'Kromosom',
             'description' => 'Kromosom adalah molekul DNA yang mengandung materi genetik. Kromosom mempertahankan urutan genom yang memungkinkan sifat-sifat diturunkan dari induk ke anakan.',
             'image_path' => $image_path.'kromosom.jpg',
-            'price' => 1
+            'price' => 1,
+            'prerequisite_id' => 2
         ]);
 
         Evolution::create([
@@ -29,8 +78,11 @@ class EvolutionSeeder extends Seeder
             'description' => 'Virus adalah agen biologi yang bereplikasi di dalam sel lain. Uniknya, jika bukan karena kemampuan virus untuk masuk ke DNA organisme, manusia mungkin tidak akan ada.',
             'image_path' => $image_path.'virus.jpeg',
             'prerequisite_id' => 1,
-            'price' => 1
+            'price' => 1,
+            'prerequisite_id' => 5
         ]);
+
+        //Creature Evolutions
 
         Evolution::create([
             'species_id' => 1,
