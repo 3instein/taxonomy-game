@@ -16,9 +16,9 @@ class CreateUserStatsTable extends Migration {
             $table->foreignId('student_id')
                 ->constrained()
                 ->cascadeOnDelete();
-            $table->unsignedBigInteger('power')
+            $table->unsignedFloat('power')
                 ->default(1);
-            $table->unsignedBigInteger('evo')
+            $table->unsignedFloat('evo')
                 ->default(0);
             $table->integer('dna')
                 ->default(0);

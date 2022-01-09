@@ -7,10 +7,10 @@
                 <div class="card-body d-flex justify-content-between card-upgrade-click-power">
                     <div>
                         <h5 class="card-title fw-bold">Click power</h5>
-                        <p class="card-text fw-normal">+{{ $power }} evo every click
+                        <p class="card-text fw-normal">+0.02 evo every click
                         </p>
                     </div>
-                    <span wire:click="$emit('upgradePower')" class="btn btn-click-upgrade">Upgrade</span>
+                    <span wire:click="$emit('upgradePower')" class="btn btn-click-upgrade">Upgrade {{ $this->power * 100 }}</span>
                 </div>
             </div>
             <h5 class="card-header text-cream fw-bold">Creatures</h5>
