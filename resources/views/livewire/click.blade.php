@@ -6,10 +6,10 @@
 
     {{-- sea biome --}}
     <div class="sea-biome d-none">
-        @forelse ($userCreatures as $userCreature)
+        {{-- @forelse ($userCreatures as $userCreature)
             <img class="{{ $userCreature->species->name }}" src="{{ $userCreature->species->image_path }}" />
         @empty
-        @endforelse
+        @endforelse --}}
     </div>
 
     {{-- evolution tree --}}

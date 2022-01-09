@@ -165,10 +165,51 @@
         </div>
     </div>
 
+    {{-- leaderboard modal --}}
+    <div class="modal fade" id="leaderboardModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Papan Peringkat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Posisi</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Evo</th>
+                                <th scope="col">Power</th>
+                                <th scope="col">Point</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($this->leaderboard as $leader)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td>{{ $leader->user->username }}</td>
+                                    <td>{{ $leader->evo }}</td>
+                                    <td>{{ $leader->power }}</td>
+                                    <td>{{ $leader->point }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- <span class="open-sidebar" wire:click:prevent="click()" style="left: calc(400px - 64px)"></span> --}}
     <div class="score text-center py-2 position-fixed start-50 translate-middle-x rounded" style="margin-left: 200px">
         <h1 class="text-gray">{{ number_format($evo, 2) }}</h1>
-        <p class="mb-0 text-gray">[{{ number_format($power,2) }} Click Power] * [{{ number_format($creaturePower * 0.25, 2) }}
+        <p class="mb-0 text-gray">[{{ number_format($power, 2) }} Click Power] *
+            [{{ number_format($creaturePower * 0.25, 2) }}
             Creature power]</p>
 
     </div>
@@ -197,6 +238,11 @@
         <span class="left-branch-1 opacity-50"></span>
         <span class="right-branch-2 opacity-50"></span>
         <span class="left-branch-2 opacity-50"></span>
+    </div>
+
+    {{-- leaderboard btn --}}
+    <div class="leaderboard-btn">
+        <img src="{{ asset('assets/icons/leaderboard.png') }}" />
     </div>
 </div>
 </div>

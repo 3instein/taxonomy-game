@@ -63,11 +63,18 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   //     isOpen = false;
   //   }
   // });
-  // channging environemnt button
+  // leaderboard modal
+  var leaderboardModal = new bootstrap.Modal(document.getElementById('leaderboardModal'));
+  var leaderboardBtn = document.querySelector('.leaderboard-btn');
+  leaderboardBtn.addEventListener('click', function () {
+    leaderboardModal.toggle();
+  }); // channging environemnt button
+
   var quizModal = new bootstrap.Modal(document.getElementById('biome-modal'));
   var userPoint = document.querySelector('#user-point');
   var treeModal = new bootstrap.Modal(document.getElementById('tree-modal'));
   var earth = document.querySelector('.circle');
+  var canvas = document.querySelector('.canvas');
   var seaBtn = document.querySelector('.sea-btn');
   var earthBtn = document.querySelector('.earth-btn');
   var tree = document.querySelector('.tree-btn');
