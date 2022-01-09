@@ -10,9 +10,10 @@ use App\Models\UserStat;
 use App\Models\UserCreature;
 use App\Models\UserEvolution;
 
-class App extends Component {
+class App extends Component
+{
 
-    public $evo = 0, $power, $userStat, $user, $leaderboard;
+    public $evo = 0, $power, $userStat, $user, $leaderboard, $creaturePower, $totalCreaturePower = 0;
 
     protected $listeners = [
         'addEvo' => 'click',
@@ -21,13 +22,15 @@ class App extends Component {
         'unlockEvolution' => 'unlockEvolution'
     ];
 
-    public function click() {
+    public function click()
+    {
         $this->userStat->update([
-            'evo' => $this->evo + $this->power
+            'evo' => $this->evo + $this->power + $this->creaturePower
         ]);
     }
 
-    public function upgradePower() {
+    public function upgradePower()
+    {
         if ($this->userStat->evo > $this->userStat->power) {
             $this->userStat->update([
                 'power' => $this->userStat->power + 1,
@@ -37,23 +40,27 @@ class App extends Component {
             Log::create([
                 'table' => app(UserStat::class)->getTable(),
                 'student_id' => $this->user->id,
-                'description' => 'User id:' . $this->user->id . ' UserStat.power added by ' . 1, 
+                'description' => 'User id:' . $this->user->id . ' UserStat.power added by ' . 1,
                 'ip' => request()->ip()
             ]);
 
             Log::create([
                 'table' => app(UserStat::class)->getTable(),
                 'student_id' => $this->user->id,
-                'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $this->userStat->power, 
+                'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $this->userStat->power,
                 'ip' => request()->ip()
             ]);
         }
     }
 
-    public function unlockCreature($species) {
+    public function unlockCreature($species)
+    {
+        $this->creaturePower = UserCreature::count() == 0 ? 10 : (UserCreature::count() + 1) * 10;
+
         UserCreature::create([
             'student_id' => $this->user->id,
-            'species_id' => $species['id']
+            'species_id' => $species['id'],
+            'power' => $this->creaturePower
         ]);
 
         $this->user->update([
@@ -69,12 +76,14 @@ class App extends Component {
         Log::create([
             'table' => app(UserStat::class)->getTable(),
             'student_id' => $this->user->id,
-            'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $species['price'], 
+            'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $species['price'],
             'ip' => request()->ip()
         ]);
+        $this->emit('refreshSidebar');
     }
 
-    public function unlockEvolution($evolution) {
+    public function unlockEvolution($evolution)
+    {
         UserEvolution::create([
             'student_id' => $this->user->id,
             'evolution_id' => $evolution['id']
@@ -83,6 +92,14 @@ class App extends Component {
         $this->user->update([
             'evo' => $this->userStat->evo - $evolution['price']
         ]);
+
+        if ($evolution['species_id'] != null) {
+            $updatedCreature = UserCreature::where('student_id', $this->user->id)->where('species_id', $evolution['species_id'])->first();
+
+            $updatedCreature->update([
+                'power' => $updatedCreature->power * $evolution['percentage']
+            ]);
+        }
 
         Log::create([
             'table' => app(UserEvolution::class)->getTable(),
@@ -94,17 +111,20 @@ class App extends Component {
         Log::create([
             'table' => app(UserStat::class)->getTable(),
             'student_id' => $this->user->id,
-            'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $evolution['price'], 
+            'description' => 'User id:' . $this->user->id . ' UserStat.evo subtracted by ' . $evolution['price'],
             'ip' => request()->ip()
         ]);
+        $this->emit('refreshSidebar');
     }
 
-    public function render() {
+    public function render()
+    {
         $this->leaderboard = UserStat::orderByDesc('evo')->orderByDesc('point')->orderByDesc('power')->get();
         $this->user = User::whereId(auth()->user()->id)->first();
         $this->userStat = UserStat::where('student_id', $this->user->id)->first();
         $this->evo = $this->userStat->evo;
         $this->power = $this->userStat->power;
+        $this->creaturePower = UserCreature::where('student_id', $this->user->id)->sum('power');
         return view('livewire.app', [
             'quizzes' => Quiz::inRandomOrder()->get()
         ]);

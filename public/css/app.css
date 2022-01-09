@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
-
+@import url(https://fonts.googleapis.com/css2?family=Viga&display=swap);
 * {
   margin: 0;
   padding: 0;
@@ -12,6 +11,7 @@
 }
 
 /* ready to use class */
+
 .sidebar-active {
   font-weight: bold;
 }
@@ -33,6 +33,7 @@
 }
 
 /* sidebar width 400px*/
+
 .sidebar {
   width: 0;
   height: 100%;
@@ -62,7 +63,8 @@
 .sidebar .creatures-wrapper .creature-icon {
   width: 72px;
   height: 72px;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .open-sidebar {
@@ -95,8 +97,9 @@
 }
 
 /* click canvas */
+
 .canvas {
-  background-image: url('../assets/galaxy.jpg');
+  background-image: url(/images/galaxy.jpg?ba74dfba2bd6ca6b8efe50f110d23f7f);
   width: 100vw;
   height: 100vh;
   transition: .1s;
@@ -124,7 +127,7 @@
 }
 
 .circle {
-  background-image: url('../assets/earth.png');
+  background-image: url(/images/earth.png?a6905e38ba73f99f1cb799218522f8f8);
   background-repeat: no-repeat;
   background-size: contain;
   height: 30rem;
@@ -134,6 +137,7 @@
 }
 
 /* biome button */
+
 .biome-btn {
   position: fixed;
   right: 1%;
@@ -157,6 +161,7 @@
 }
 
 /* tree button */
+
 .tree-btn {
   position: fixed;
   bottom: 2%;
@@ -277,6 +282,7 @@
 }
 
 /* login */
+
 .login-brand {
   font-family: 'Viga', sans-serif;
 }
@@ -290,7 +296,9 @@
 }
 
 /* evolution tree */
+
 /* species */
+
 .evolution-tree .species-canvas {
   width: 128px;
   height: 128px;
@@ -366,6 +374,7 @@
 }
 
 /* creature evolution */
+
 .evolution-tree .creatureEvolution-canvas {
   width: 80px;
   height: 80px;
@@ -448,12 +457,12 @@
 }
 
 /* creature description */
+
 .branch-description {
   /* expanded 
   width: 455px;
   height: 260px;
   border-radius: 50px; */
-
   /* collapsed */
   width: 455px;
   height: 100px;
@@ -462,7 +471,6 @@
   right: 6.5%;
   background-color: rgba(255, 255, 255, .25);
   border-radius: 25px;
-  
 }
 
 .branch-description .branch-img {
@@ -485,6 +493,7 @@
 }
 
 /* sea biome */
+
 .Sponge {
   position: absolute;
   bottom: 10%;
@@ -500,6 +509,7 @@
 }
 
 /* keyframe */
+
 @-webkit-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);

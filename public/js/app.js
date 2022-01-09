@@ -1,5 +1,23 @@
-(function () {
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
 
+/***/ "./resources/js/app.js":
+/*!*****************************!*\
+  !*** ./resources/js/app.js ***!
+  \*****************************/
+/***/ (() => {
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+// require('./bootstrap');
+// import Alpine from 'alpinejs';
+// window.Alpine = Alpine;
+// Alpine.start();
+(function () {
   // Mnemiopsis animation
   // const refreshRate = 1000 / 60;
   // const maxXPosition = window.screen.width;
@@ -17,27 +35,26 @@
   //   } else if (positionX <= 0) {
   //     speedX = 2
   //   }
-
   //   if (positionY >= maxYPosition - 60) {
   //     speedY = -2;
   //   } else if (positionY <= 0) {
   //     speedY = 2;
   //   }
-
   //   jellyfish.style.left = positionX + 'px';
   //   jellyfish.style.top = positionY + 'px';
   // }, refreshRate);
-
   // sidebar page changing
-  const sidebarLinks = document.querySelectorAll('.sidebar-link');
-  for (let i = 0; i < sidebarLinks.length; i++) {
+  var sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+  var _loop = function _loop(i) {
     sidebarLinks[i].addEventListener('click', function () {
       if (!sidebarLinks[i].classList.contains('sidebar-active')) {
-        for (let j = 0; j < sidebarLinks.length; j++) {
+        for (var j = 0; j < sidebarLinks.length; j++) {
           if (sidebarLinks[j].classList.contains('sidebar-active')) {
             sidebarLinks[j].classList.remove('sidebar-active');
           }
         }
+
         if (sidebarLinks[i].innerHTML == 'Creatures') {
           document.querySelector('.creatures-wrapper').classList.remove('d-none');
           document.querySelector('.upgrades-wrapper').classList.add('d-none');
@@ -45,18 +62,18 @@
           document.querySelector('.creatures-wrapper').classList.add('d-none');
           document.querySelector('.upgrades-wrapper').classList.remove('d-none');
         }
+
         sidebarLinks[i].classList.add('sidebar-active');
       } else {
         sidebarLinks[i].classList.remove('sidebar-active');
       }
-    });
+    }); // collapse sidebar
 
-    // collapse sidebar
-    let isOpen = false;
-    const opener = document.querySelector('.open-sidebar');
-    const sideBar = document.querySelector('.sidebar');
-    const canvas = document.querySelector('.canvas');
-    const score = document.querySelector('.score');
+    var isOpen = true;
+    var opener = document.querySelector('.open-sidebar');
+    var sideBar = document.querySelector('.sidebar');
+    var canvas = document.querySelector('.canvas');
+    var score = document.querySelector('.score');
     opener.addEventListener('click', function () {
       if (!isOpen) {
         sideBar.style.width = '400px';
@@ -72,22 +89,26 @@
         isOpen = false;
       }
     });
-  }
+  };
 
-  // channging environemnt button
-  let quizModal = new bootstrap.Modal(document.getElementById('biome-modal'));
-  let userPoint = document.querySelector('#user-point');
-  const earth = document.querySelector('.circle');
-  const seaBtn = document.querySelector('.sea-btn');
-  const earthBtn = document.querySelector('.earth-btn')
-  const tree = document.querySelector('.tree-btn');
-  const canvas = document.querySelector('.canvas');
-  const seaBiome = document.querySelector('.sea-biome');
-  const evolutionTree = document.querySelector('.evolution-trees');
+  for (var i = 0; i < sidebarLinks.length; i++) {
+    _loop(i);
+  } // channging environemnt button
+
+
+  var quizModal = new bootstrap.Modal(document.getElementById('biome-modal'));
+  var userPoint = document.querySelector('#user-point');
+  var earth = document.querySelector('.circle');
+  var seaBtn = document.querySelector('.sea-btn');
+  var earthBtn = document.querySelector('.earth-btn');
+  var tree = document.querySelector('.tree-btn');
+  var canvas = document.querySelector('.canvas');
+  var seaBiome = document.querySelector('.sea-biome');
+  var evolutionTree = document.querySelector('.evolution-trees');
   seaBtn.addEventListener('click', function () {
     if (userPoint.value < 20) {
       quizModal.toggle();
-      document.querySelector('.biome-prerequisite').innerHTML = `Saat ini point kamu ${userPoint.value}, untuk akses biome selanjutnya kamu butuh 20 point!`;
+      document.querySelector('.biome-prerequisite').innerHTML = "Saat ini point kamu ".concat(userPoint.value, ", untuk akses biome selanjutnya kamu butuh 20 point!");
     } else {
       canvas.style.backgroundImage = "url('../assets/ocean-floor-1.jpg')";
       canvas.style.backgroundRepeat = 'no-repeat';
@@ -97,7 +118,6 @@
       evolutionTree.classList.add('d-none');
     }
   });
-
   earthBtn.addEventListener('click', function () {
     canvas.style.backgroundImage = "url('../assets/galaxy.jpg')";
     canvas.style.backgroundRepeat = 'repeat';
@@ -106,7 +126,6 @@
     seaBiome.classList.add('d-none');
     evolutionTree.classList.add('d-none');
   });
-
   tree.addEventListener('click', function () {
     canvas.style.background = 'rgb(92,107,40)';
     canvas.style.background = 'radial-gradient(circle, rgba(92,107,40,1) 0%, rgba(0,0,0,1) 100%)';
@@ -115,33 +134,33 @@
     evolutionTree.classList.remove('d-none');
     evolutionTree.style.width = '100%';
     evolutionTree.style.height = '100%';
-  });
+  }); // quiz modal
 
-  // quiz modal
-  const questionText = document.querySelectorAll('.question-text');
-  const question = document.querySelectorAll('#question');
-  const answer = document.querySelectorAll('#answer');
-  const nextBtn = document.querySelectorAll('.btn-next');
-  const point = document.querySelectorAll('#point');
-  let feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'));
-  let wrongAnswer = [];
-  for (let i = 0; i < question.length; i++) {
-    nextBtn[i].addEventListener('click', function (e) {
-      let value = question[i].value;
-      if (value.toLowerCase() === answer[i].value.toLowerCase()) {
-        let gainedPoint = parseInt(userPoint.value) + parseInt(point[i].value)
+  var questionText = document.querySelectorAll('.question-text');
+  var question = document.querySelectorAll('#question');
+  var answer = document.querySelectorAll('#answer');
+  var nextBtn = document.querySelectorAll('.btn-next');
+  var point = document.querySelectorAll('#point');
+  var feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'));
+  var wrongAnswer = [];
+
+  var _loop2 = function _loop2(_i) {
+    nextBtn[_i].addEventListener('click', function (e) {
+      var value = question[_i].value;
+
+      if (value.toLowerCase() === answer[_i].value.toLowerCase()) {
+        var gainedPoint = parseInt(userPoint.value) + parseInt(point[_i].value);
         userPoint.value = gainedPoint;
       } else {
-        let foo = {
-          "question": questionText[i].innerHTML,
+        var _foo2 = {
+          "question": questionText[_i].innerHTML,
           "answer": value
-        }
-
-        wrongAnswer.push(foo);
+        };
+        wrongAnswer.push(_foo2);
       }
 
-      if (i == question.length - 1) {
-        let hiddenInput = document.createElement('input');
+      if (_i == question.length - 1) {
+        var hiddenInput = document.createElement('input');
         hiddenInput.type = 'hidden';
         hiddenInput.name = 'wrong-answer';
         hiddenInput.value = JSON.stringify(wrongAnswer);
@@ -150,77 +169,112 @@
         document.querySelector('#quiz-form').submit();
       }
     });
+  };
+
+  for (var _i = 0; _i < question.length; _i++) {
+    _loop2(_i);
   }
 
   if (document.getElementById('feedback-toggle')) {
-    let wrongAnswerResponses = JSON.parse(document.getElementById('feedback-toggle').value);
-    let feedbackModalTitle = document.querySelector('.feedback-title');
+    var wrongAnswerResponses = JSON.parse(document.getElementById('feedback-toggle').value);
+    var feedbackModalTitle = document.querySelector('.feedback-title');
+
     if (userPoint.value >= 20) {
       feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma laut 🌊';
+
       if (wrongAnswerResponses.length > 0) {
         feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma laut 🌊, tapi masih ada yang salah nih. Coba di baca lagi';
-        let foo = '';
-        for (let wrongAnswerResponse of wrongAnswerResponses) {
-          foo += '<tr>';
-          foo += `<td scope="row">${wrongAnswerResponse.question}</td>`;
-          foo += `<td>${wrongAnswerResponse.answer}</td>`;
-          foo += '</tr>'
+        var foo = '';
+
+        var _iterator = _createForOfIteratorHelper(wrongAnswerResponses),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var wrongAnswerResponse = _step.value;
+            foo += '<tr>';
+            foo += "<td scope=\"row\">".concat(wrongAnswerResponse.question, "</td>");
+            foo += "<td>".concat(wrongAnswerResponse.answer, "</td>");
+            foo += '</tr>';
+          }
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
         }
-        document.getElementById('wrong-answer-header').innerHTML = `<tr>
-      <th scope="col">Pertanyaan</th>
-      <th scope="col">Jawaban kamu</th>
-  </tr>`;
+
+        document.getElementById('wrong-answer-header').innerHTML = "<tr>\n        <th scope=\"col\">Pertanyaan</th>\n        <th scope=\"col\">Jawaban kamu</th>\n    </tr>";
         document.getElementById('wrong-answer-table').innerHTML = foo;
       }
     } else {
       feedbackModalTitle.innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger me-2"></i>Ada yang salah, coba di baca lagi';
-      let foo = '';
-      for (let wrongAnswerResponse of wrongAnswerResponses) {
-        foo += '<tr>';
-        foo += `<td scope="row">${wrongAnswerResponse.question}</td>`;
-        foo += `<td>${wrongAnswerResponse.answer}</td>`;
-        foo += '</tr>'
-      }
-      document.getElementById('wrong-answer-header').innerHTML = `<tr>
-      <th scope="col">Pertanyaan</th>
-      <th scope="col">Jawaban kamu</th>
-  </tr>`;
-      document.getElementById('wrong-answer-table').innerHTML = foo;
-    }
-    feedbackModal.toggle();
-  }
+      var _foo = '';
 
-  // evolution tree
-  const species = document.querySelectorAll('.species-canvas');
-  const creatureEvolutions = document.querySelectorAll('.creatureEvolution-canvas');
-  const branchDescription = document.querySelector('.branch-description');
-  const taxonomyExpand = document.querySelector('.taxonomy-expand');
-  const taxonomyClosed = document.querySelector('.taxonomy-close');
-  const taxonomyClassification = document.querySelector('.taxonomy-classification');
-  const creatureGenus = document.querySelector('.creature-genus');
-  const creatureFamily = document.querySelector('.creature-family');
-  const creatureOrder = document.querySelector('.creature-order');
-  const creatureClass = document.querySelector('.creature-class');
-  const creaturePhylum = document.querySelector('.creature-phylum');
-  const creatureKingdom = document.querySelector('.creature-kingdom');
-  const creatureDomain = document.querySelector('.creature-domain');
-  let checker = 1;
-  let isExpanded = false;
-  for (let i = 0; i < species.length; i++) {
-    species[i].addEventListener('click', function () {
-      let creature = species[i].querySelector('#creature').value;
+      var _iterator2 = _createForOfIteratorHelper(wrongAnswerResponses),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var _wrongAnswerResponse = _step2.value;
+          _foo += '<tr>';
+          _foo += "<td scope=\"row\">".concat(_wrongAnswerResponse.question, "</td>");
+          _foo += "<td>".concat(_wrongAnswerResponse.answer, "</td>");
+          _foo += '</tr>';
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      document.getElementById('wrong-answer-header').innerHTML = "<tr>\n        <th scope=\"col\">Pertanyaan</th>\n        <th scope=\"col\">Jawaban kamu</th>\n    </tr>";
+      document.getElementById('wrong-answer-table').innerHTML = _foo;
+    }
+
+    feedbackModal.toggle();
+  } // evolution tree
+
+
+  var species = document.querySelectorAll('.species-canvas');
+  var creatureEvolutions = document.querySelectorAll('.creatureEvolution-canvas');
+  var branchDescription = document.querySelector('.branch-description');
+  var taxonomyExpand = document.querySelector('.taxonomy-expand');
+  var taxonomyClosed = document.querySelector('.taxonomy-close');
+  var taxonomyClassification = document.querySelector('.taxonomy-classification');
+  var creatureGenus = document.querySelector('.creature-genus');
+  var creatureFamily = document.querySelector('.creature-family');
+  var creatureOrder = document.querySelector('.creature-order');
+  var creatureClass = document.querySelector('.creature-class');
+  var creaturePhylum = document.querySelector('.creature-phylum');
+  var creatureKingdom = document.querySelector('.creature-kingdom');
+  var creatureDomain = document.querySelector('.creature-domain');
+  var checker = 1;
+  var isExpanded = false;
+
+  var _loop3 = function _loop3(_i2) {
+    species[_i2].addEventListener('click', function () {
+      var creature = species[_i2].querySelector('#creature').value;
+
       creature = JSON.parse(creature);
       branchDescription.classList.remove('d-none');
       branchDescription.querySelector('.creature-img').src = creature.image_path;
       branchDescription.querySelector('.creature-name').innerHTML = creature.name;
       branchDescription.querySelector('.creature-description').innerHTML = creature.description;
-      let genus = species[i].querySelector('#creature').getAttribute('data-genus');
-      let family = species[i].querySelector('#creature').getAttribute('data-family');
-      let order = species[i].querySelector('#creature').getAttribute('data-order');
-      let classes = species[i].querySelector('#creature').getAttribute('data-class');
-      let phylum = species[i].querySelector('#creature').getAttribute('data-phylum');
-      let kingdom = species[i].querySelector('#creature').getAttribute('data-kingdom');
-      let domain = species[i].querySelector('#creature').getAttribute('data-domain');
+
+      var genus = species[_i2].querySelector('#creature').getAttribute('data-genus');
+
+      var family = species[_i2].querySelector('#creature').getAttribute('data-family');
+
+      var order = species[_i2].querySelector('#creature').getAttribute('data-order');
+
+      var classes = species[_i2].querySelector('#creature').getAttribute('data-class');
+
+      var phylum = species[_i2].querySelector('#creature').getAttribute('data-phylum');
+
+      var kingdom = species[_i2].querySelector('#creature').getAttribute('data-kingdom');
+
+      var domain = species[_i2].querySelector('#creature').getAttribute('data-domain');
+
       creatureGenus.innerHTML = genus;
       creatureFamily.innerHTML = family;
       creatureOrder.innerHTML = order;
@@ -228,15 +282,21 @@
       creaturePhylum.innerHTML = phylum;
       creatureKingdom.innerHTML = kingdom;
       creatureDomain.innerHTML = domain;
+
       if (checker == 1) {
         taxonomyExpand.classList.remove('d-none');
       }
     });
+  };
+
+  for (var _i2 = 0; _i2 < species.length; _i2++) {
+    _loop3(_i2);
   }
 
-  for (let i = 0; i < creatureEvolutions.length; i++) {
-    creatureEvolutions[i].addEventListener('click', function () {
-      let creatureEvolution = creatureEvolutions[i].querySelector('#creatureEvolution').value;
+  var _loop4 = function _loop4(_i3) {
+    creatureEvolutions[_i3].addEventListener('click', function () {
+      var creatureEvolution = creatureEvolutions[_i3].querySelector('#creatureEvolution').value;
+
       dataValue = "";
       creatureEvolution = JSON.parse(creatureEvolution);
       branchDescription.classList.remove('d-none');
@@ -246,6 +306,10 @@
       taxonomyExpand.classList.add('d-none');
       checker = 1;
     });
+  };
+
+  for (var _i3 = 0; _i3 < creatureEvolutions.length; _i3++) {
+    _loop4(_i3);
   }
 
   branchDescription.addEventListener('click', function () {
@@ -261,7 +325,6 @@
       }
     }
   });
-
   taxonomyExpand.addEventListener('click', function () {
     checker = 0;
     taxonomyClosed.classList.remove('d-none');
@@ -274,7 +337,6 @@
     branchDescription.style.transition = '0.3s';
     taxonomyExpand.classList.add('d-none');
   });
-
   taxonomyClosed.addEventListener('click', function () {
     checker = 1;
     taxonomyClassification.classList.add('d-none');
@@ -290,3 +352,162 @@
     isExpanded = false;
   });
 })();
+
+/***/ }),
+
+/***/ "./resources/css/app.css":
+/*!*******************************!*\
+  !*** ./resources/css/app.css ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/chunk loaded */
+/******/ 	(() => {
+/******/ 		var deferred = [];
+/******/ 		__webpack_require__.O = (result, chunkIds, fn, priority) => {
+/******/ 			if(chunkIds) {
+/******/ 				priority = priority || 0;
+/******/ 				for(var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+/******/ 				deferred[i] = [chunkIds, fn, priority];
+/******/ 				return;
+/******/ 			}
+/******/ 			var notFulfilled = Infinity;
+/******/ 			for (var i = 0; i < deferred.length; i++) {
+/******/ 				var [chunkIds, fn, priority] = deferred[i];
+/******/ 				var fulfilled = true;
+/******/ 				for (var j = 0; j < chunkIds.length; j++) {
+/******/ 					if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+/******/ 						chunkIds.splice(j--, 1);
+/******/ 					} else {
+/******/ 						fulfilled = false;
+/******/ 						if(priority < notFulfilled) notFulfilled = priority;
+/******/ 					}
+/******/ 				}
+/******/ 				if(fulfilled) {
+/******/ 					deferred.splice(i--, 1)
+/******/ 					var r = fn();
+/******/ 					if (r !== undefined) result = r;
+/******/ 				}
+/******/ 			}
+/******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		// no baseURI
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"/js/app": 0,
+/******/ 			"css/app": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+/******/ 		
+/******/ 		// install a JSONP callback for chunk loading
+/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+/******/ 			var [chunkIds, moreModules, runtime] = data;
+/******/ 			// add "moreModules" to the modules object,
+/******/ 			// then flag all "chunkIds" as loaded and fire callback
+/******/ 			var moduleId, chunkId, i = 0;
+/******/ 			if(chunkIds.some((id) => (installedChunks[id] !== 0))) {
+/******/ 				for(moduleId in moreModules) {
+/******/ 					if(__webpack_require__.o(moreModules, moduleId)) {
+/******/ 						__webpack_require__.m[moduleId] = moreModules[moduleId];
+/******/ 					}
+/******/ 				}
+/******/ 				if(runtime) var result = runtime(__webpack_require__);
+/******/ 			}
+/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+/******/ 			for(;i < chunkIds.length; i++) {
+/******/ 				chunkId = chunkIds[i];
+/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+/******/ 					installedChunks[chunkId][0]();
+/******/ 				}
+/******/ 				installedChunks[chunkIds[i]] = 0;
+/******/ 			}
+/******/ 			return __webpack_require__.O(result);
+/******/ 		}
+/******/ 		
+/******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
+/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+/******/ 	
+/******/ })()
+;

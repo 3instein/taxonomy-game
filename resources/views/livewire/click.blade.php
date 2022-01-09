@@ -1,5 +1,5 @@
-<div class="canvas d-flex flex-column align-items-center justify-content-evenly" wire:click="$emit('addEvo')">
-    <span class="open-sidebar"></span>
+<div class="canvas d-flex flex-column align-items-center justify-content-evenly" wire:click="$emit('addEvo')" style="margin-left: 400px">
+    <span class="open-sidebar" style="left: calc(400px - 64px)"></span>
     {{-- <div id="dna">
         <img src="{{ asset('assets/dna.png') }}">
     </div> --}}
