@@ -103,8 +103,8 @@ class App extends Component
                 'evolution_id' => $evolution['id']
             ]);
 
-            $this->user->update([
-                'evo' => $this->userStat->evo - $evolution['price']
+            $this->user->stat->update([
+                'evo' => $this->user->stat->evo - $evolution['price']
             ]);
 
             if ($evolution['species_id'] != null && $evolution['species_id'] < 9) {
