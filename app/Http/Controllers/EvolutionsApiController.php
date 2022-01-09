@@ -25,7 +25,7 @@ class EvolutionsApiController extends Controller {
             $userCreatures = UserCreature::where('student_id', auth()->user()->id)->get();
             $query->whereNull('species_id');
             $query->orWhereIn('species_id', $userCreatures->pluck('species_id'));
-        })->get();;
+        })->get();
 
         return response()->json([
             'evolutions' => $evolutions
