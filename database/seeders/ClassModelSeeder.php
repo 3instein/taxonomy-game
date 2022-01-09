@@ -36,5 +36,15 @@ class ClassModelSeeder extends Seeder {
             'phylum_id' => 4,
             'name' => 'Stegocephalia'
         ]);
+        
+        ClassModel::create([
+            'phylum_id' => 4,
+            'name' => 'Gnathostomata'
+        ]);
+
+        ClassModel::create([
+            'phylum_id' => 4,
+            'name' => 'Mammalia'
+        ]);
     }
 }

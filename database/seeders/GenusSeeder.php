@@ -36,5 +36,20 @@ class GenusSeeder extends Seeder {
             'family_id' => 5,
             'name' => 'Acanthostega'
         ]);
+
+        Genus::create([
+            'family_id' => 6,
+            'name' => 'Morganucodon'
+        ]);
+
+        Genus::create([
+            'family_id' => 7,
+            'name' => 'Proconsul'
+        ]);
+
+        Genus::create([
+            'family_id' => 8,
+            'name' => 'Homo'
+        ]);
     }
 }

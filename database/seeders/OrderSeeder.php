@@ -36,5 +36,15 @@ class OrderSeeder extends Seeder {
             'class_id' => 5,
             'name'=> 'Acanthostegiida' 
         ]);
+        
+        Order::create([
+            'class_id' => 6,
+            'name' => 'Morganucodonta'
+        ]);
+
+        Order::create([
+            'class_id' => 7,
+            'name' => 'Primates'
+        ]);
     }
 }

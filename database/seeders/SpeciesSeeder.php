@@ -61,5 +61,35 @@ class SpeciesSeeder extends Seeder {
             'image_path' => 'assets/species/acanthostega-gunnari.jpg',
             'prerequisite_id' => 4
         ]);
+
+        Species::create([
+            'genus_id' => 6,
+            'name' => 'Morganucodon Watsoni',
+            'common_name' => 'Mamalia',
+            'price' => 1,
+            'description' => 'Mamalia adalah vertebrata pertama berdarah panas, mamalia merawat anakan mereka dengan susu dari kelenjar susu mereka. Mamalia mempunyai kulit yang ditutupi bulu atau rambut dan mereka memiliki otak yang lebih besar yang mempunyai neocortex.',
+            'image_path' => '',
+            'prerequisite_id' => 5 
+        ]);
+
+        Species::create([
+            'genus_id' => 7,
+            'name' => 'Proconsul Africanus',
+            'common_name' => 'Kera',
+            'price' => 1,
+            'description' => 'Kemajuan pada evolusi primata, kera merupakan leluhur paling awal dari manusia. Cabang evolusi yang berbeda dari kera merupakan awal dari manusia dan kera modern.',
+            'image_path' => '',
+            'prerequisite_id' => 6 
+        ]);
+
+        Species::create([
+            'genus_id' => 8,
+            'name' => 'Homo Sapiens',
+            'common_name' => 'Manusia',
+            'price' => 1,
+            'description' => 'Manusia adalah spesies dominan di bumi. Hasil dari evolusi berjuta-juta tahun, manusia merupakan makhluk pertama yang menciptakan budaya, masyarakat, dan teknologi.',
+            'image_path' => '',
+            'prerequisite_id' => 7 
+        ]);
     }
 }

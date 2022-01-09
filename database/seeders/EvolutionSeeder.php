@@ -275,5 +275,243 @@ class EvolutionSeeder extends Seeder
             'prerequisite_id' => 30,
             'price' => 1,
         ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Rambut',
+            'description' => 'Rambut tidak hanya menjaga temperatur tubuh mamalia, folikel rambut juga berevolusi menjadi kelenjar susu yang memproduksi susu untuk anakan mamalia.',
+            'image_path' => '',
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Kelenjar keringat',
+            'description' => 'Kelenjar keringat membantu mamalia untuk mengatur suhu tubuh mereka dan mengeluarkan cairan berlebih. Kelenjar keringat juga mencegah tumbuhnya bakteri di kulit.',
+            'image_path' => '',
+            'prerequisite_id' => 32,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Kelenjar susu',
+            'description' => 'Kelenjar susu berevolusi dari kelenjar keringat, dan bertanggung jawab untuk memproduksi susu untuk makanan anakan mamalia.',
+            'image_path' => '',
+            'prerequisite_id' => 33,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Gigi mamalia',
+            'description' => 'Dengan diet mamalia yang berubah menjadi lebih kompleks, gigi-gigi spesial muncul dan membantu diferensiasi spesies baru.',
+            'image_path' => '',
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Langit-langit mulut',
+            'description' => 'Munculnya langit-langit mulut yang terbagi atas bagian yang keras dan lembek, memungkinkan organisme untuk makan dan bernafas disaat yang sama. Hal ini memungkinkan metabolisme yang lebih cepat.',
+            'image_path' => '',
+            'prerequisite_id' => 35,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Uterus',
+            'description' => 'Uterus adalah organ tempat fetus berkembang. Uterus merupakan tempat telur yang sudah terfertilisasi berkembang hingga siap dilahirkan.',
+            'image_path' => '',
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Eutheria',
+            'description' => 'Eutheria adalah mamalia yang mengandung anakannya di dalam uterus dan dibungkus dengan plasenta. Hal ini menyebabkan kehamilan yang lebih panjang, manusia adalah eutheria.',
+            'image_path' => '',
+            'prerequisite_id' => 37,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Otak mamalia',
+            'description' => 'Dengan berkembangnya sistem limbik di otak mamalia, mamalia mempunyai kemampuan untuk merasakan emosi yang lebih kompleks dari reptil. Evolusi ini juga meningkatkan memori mamalia sehingga dapat belajar dari kejadian-kejadian.',
+            'image_path' => '',
+            'prerequisite_id' => 38,
+            'price' => 1,
+        ]);
+        
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Plasenta',
+            'description' => 'Plasenta adalah organ sementara yang menghubungkan embrio dengan uterus. Melalui organ ini, induk menyediakan nutrisi serta oksigen dan membuang hasil metabolisme dari fetus.',
+            'image_path' => '',
+            'prerequisite_id' => 38,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Primata',
+            'description' => 'Evolusi dari mamalia pemanjat pohon, primata adalah binatang dengan otak besar serta tangan yang lincah. Mereka berevolusi dengan diversitas yang kompleks, makhluk seperti gorila hingga lemur bahkan manusia adalah primata.',
+            'image_path' => '',
+            'prerequisite_id' => 38,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Lobus penciuman',
+            'description' => 'Mamalia mempunyai lobus penciuman yang banyak dan besar, bagian ini merupakan bagian dari otak yang mengatur indra penciuman. Hal ini ikut berkontribusi terhadap besarnya otak mamalia secara keseluruhan.',
+            'image_path' => '',
+            'prerequisite_id' => 39,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Kehamilan panjang',
+            'description' => 'Eutherian mengandung anakan mereka hingga mereka lebih berkembang daripada mamalia lainnya. Hal ini memungkinkan beberapa anakan dapat berjalan atau bahkan berlari dalam hitungan jam setelah lahir.',
+            'image_path' => '',
+            'prerequisite_id' => 40,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 6,
+            'name' => 'Estrus',
+            'description' => 'Pada kebanyakan mamalia (terkecuali mamalia tingkat tinggi), sang betina akan mengalami siklus estrus. Siklus estrus adalah sebuah periode dimana betina lebih aktif secara seksual dan lebih subur. Karena siklus ini, kebanyakan mamalia hanya dapat bereproduksi dalam kurun waktu tertentu selama setahun.',
+            'image_path' => '',
+            'prerequisite_id' => 42,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Tengkorak berkubah',
+            'description' => 'Primata memiliki otak yang lebih besar daripada kebanyakan binatang lainnya. Tengkorak mereka yang unik menyediakan lebih banyak ruang untuk otak mereka yang besar. Tengkorak mereka juga melindungi otak mereka dari cedera eksternal.',
+            'image_path' => '',
+            'prerequisite_id' => 39,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Tangan berjari 5',
+            'description' => 'Tangan primata memiliki 5 jari, termasuk ibu jari yang berlawanan. Tangan primata berevolusi secara spesifik untuk dapat mencengkeram dan mempunyai kemampuan motorik yang baik yang memungkinkan primata untuk menggunakan alat.',
+            'image_path' => '',
+            'prerequisite_id' => 41,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Otak kera',
+            'description' => 'Otak mamalia berkembang lebih besar dan lebih kompleks daripada otak kebanyakan mamalia. Hal ini memberikan primata kelebihan dibandingkan makhluk lain.',
+            'image_path' => '',
+            'prerequisite_id' => 39,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Neocortex',
+            'description' => 'Neocortex adalah bagian dari otak yang mengendalikan penglihatan dan pendengaran pada mamalia, memberikan mereka kelebihan evolusi dibandingkan makhluk lain.',
+            'image_path' => '',
+            'prerequisite_id' => 47,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Bipedal',
+            'description' => 'Kemampuan untuk berjalan diatas 2 kaki dibandingkan 4 kaki. Hal ini memungkinkan tangan untuk digunakan untuk fungsi lain selain berjalan.',
+            'image_path' => '',
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Organ Vestigial',
+            'description' => 'Karena primata menjadi bipedal, mereka tidak lagi memerlukan ekor untuk menjaga keseimbangan. Hal ini mengakibatkan ekor pada tulang belakang mereka lama-kelamaan mengecil dan akhirnya menghilang. Sisa dari evolusi organ ini merupakan tulang ekor yang berada pada ujung tulang belakang manusia.',
+            'image_path' => '',
+            'prerequisite_id' => 49,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Ibu jari yang berlawanan',
+            'description' => 'Perkembangan ibu jari mengakibatkan meningkatnya akurasi dalam mencengkeram, memungkinkan primata untuk mengambil dan menggunakan objek-objek.',
+            'image_path' => '',
+            'prerequisite_id' => 49,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Australopithecus',
+            'description' => 'Australopithecus dipercaya merupakan evolusi pertama primata yang mengarah kepada evolusi manusia. Sisa-sisa tengkorak australopithecus yang diberi nama Lucy, ditemukan pertama kali pada tahun 1974 di Ethiopia.',
+            'image_path' => '',
+            'prerequisite_id' => 47,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Homo Habilis',
+            'description' => 'Homo habilis merupakan spesies primata pertama dengan genus Homo, diketahui untuk menggunakan alat batu primitif.',
+            'image_path' => '',
+            'prerequisite_id' => 52,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Sendi pergelangan tangan',
+            'description' => 'Sendi pergelangan tangan yang lebih fleksibel memungkinkan penggunaan tangan yang lebih kompleks, memudahkan untuk menciptakan alat-alat dan menggunakannya. Pergelangan tangan manusia merupakan sendi kondiloid, yang memungkinkan gerakan sirkular, fleksi dan ekstensi.',
+            'image_path' => '',
+            'prerequisite_id' => 53,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Homo Erectus',
+            'description' => 'Homo Erectus adalah spesies dari Genus Homo yang sepenuhnya bipedal, merupakan leluhur langsung dari manusia modern.',
+            'image_path' => '',
+            'prerequisite_id' => 53,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 7,
+            'name' => 'Ketahanan berburu',
+            'description' => 'Beberapa predator berburu dengan menyelinap, yang lain racun, dan ada juga yang menggunakan jebakan. Tetapi Homo Erectus lebih memilih untuk mengejar terus buruan mereka hingga buruan mereka kelelahan dan tidak dapat lagi berlari.',
+            'image_path' => '',
+            'prerequisite_id' => 55,
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 8,
+            'name' => 'Menstruasi',
+            'description' => 'Pada kebanyakan mamalia, lapisan rahim akan diserap kembali pada akhir siklus reproduksi. Namun pada beberapa primata seperti manusia, lapisan tersebut akan mengelupas dan dikeluarkan dari tubuh dalam bentuk darah. Makhluk yang mengalami menstruasi dapat hamil kapanpun tanpa harus menunggu siklus reproduksi seperti estrus.',
+            'image_path' => '',
+            'price' => 1,
+        ]);
+
+        Evolution::create([
+            'species_id' => 8,
+            'name' => 'Otak manusia',
+            'description' => 'Primata memiliki otak yang lebih besar daripada kebanyakan binatang lainnya. Tengkorak mereka yang unik menyediakan lebih banyak ruang untuk otak mereka yang besar. Tengkorak mereka juga melindungi otak mereka dari cedera eksternal.',
+            'image_path' => '',
+            'prerequisite_id' => 57,
+            'price' => 1,
+        ]);
     }
 }
