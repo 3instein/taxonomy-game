@@ -27,7 +27,7 @@
                             </p>
                         </div>
                         <span wire:click="$emit('unlockCreature', {{ $creature }})" class="btn btn-buy-creature">
-                            {{ $creature->price }} Evo</span>
+                            {{ number_format($creature->price) }} Evo</span>
                     </div>
                 </div>
             @empty
@@ -52,7 +52,7 @@
                             </p>
                         </div>
                         <span wire:click="$emit('unlockEvolution', {{ $evolution }})"
-                            class="btn btn-buy-evolution">{{ $evolution->price }} Evo</span>
+                            class="btn btn-buy-evolution">{{ number_format($evolution->price) }} Evo</span>
                     </div>
                 </div>
             @empty
