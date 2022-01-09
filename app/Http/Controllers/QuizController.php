@@ -2,23 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use App\Models\Quiz;
 use App\Models\UserStat;
 use Illuminate\Http\Request;
 
-class QuizController extends Controller {
+class QuizController extends Controller
+{
 
     /**
      * Update user point
      * @param Illuminate\Http\Request
      */
 
-    public function updatePoint(Request $request) {
+    public function updatePoint(Request $request)
+    {
         $userStat = UserStat::where('student_id', auth()->user()->id)->first();
         $gainedPoint = $request->input('user-point');
         if ($userStat->point < $gainedPoint) {
             $userStat->update([
                 'point' => $gainedPoint
+            ]);
+        }
+
+        if ($gainedPoint != 0) {
+            Log::create([
+                'table' => app(UserStat::class)->getTable(),
+                'student_id' => $request->user()->id,
+                'description' => 'User id:' . $request->user()->id . ' UserStat.point added by ' . $gainedPoint,
+                'ip' => request()->ip()
             ]);
         }
 
@@ -30,7 +42,8 @@ class QuizController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
         //
     }
 
@@ -39,7 +52,8 @@ class QuizController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         //
     }
 
@@ -49,7 +63,8 @@ class QuizController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         //
     }
 
@@ -59,7 +74,8 @@ class QuizController extends Controller {
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function show(Quiz $quiz) {
+    public function show(Quiz $quiz)
+    {
         //
     }
 
@@ -69,7 +85,8 @@ class QuizController extends Controller {
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function edit(Quiz $quiz) {
+    public function edit(Quiz $quiz)
+    {
         //
     }
 
@@ -80,7 +97,8 @@ class QuizController extends Controller {
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Quiz $quiz) {
+    public function update(Request $request, Quiz $quiz)
+    {
         //
     }
 
@@ -90,7 +108,8 @@ class QuizController extends Controller {
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Quiz $quiz) {
+    public function destroy(Quiz $quiz)
+    {
         //
     }
 }
