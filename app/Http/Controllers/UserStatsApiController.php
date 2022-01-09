@@ -15,8 +15,8 @@ class UserStatsApiController extends Controller {
         $userStat = UserStat::where('student_id', auth()->user()->id)->first();
         if ($userStat->evo > $userStat->power) {
             $userStat->update([
-                'power' => $userStat->power + 1,
-                'evo' => $userStat->evo - $userStat->power
+                'power' => $userStat->power,
+                'evo' => $userStat->evo
             ]);
         }
 

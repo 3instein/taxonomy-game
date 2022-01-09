@@ -19,7 +19,7 @@ class AuthenticationApiController extends Controller {
 
         if ($validator->fails()) {
             return response()->json([
-                'status_message' => 'User not found!',
+                'status_message' => 'User tidak ditemukan!',
                 'status_code' => 404
             ], 404);
         }
@@ -31,7 +31,7 @@ class AuthenticationApiController extends Controller {
 
         if (!Auth::attempt($user)) {
             return response()->json([
-                'status_message' => 'Invalid Credentials',
+                'status_message' => 'Kredensial tidak valid!',
                 'status_code' => 401
             ], 401);
         }
@@ -49,10 +49,10 @@ class AuthenticationApiController extends Controller {
 
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'unique:students', 'max:40'],
             'email' => ['required', 'email:dns', 'unique:students', 'max:255'],
             'password' => ['required', Password::defaults()],
+            'username' => ['required', 'unique:students', 'max:40'],
+            'name' => ['required', 'string', 'max:255'],
             'school' => ['required'],
             'city' => ['required'],
             'birthyear' => ['required']
@@ -60,16 +60,16 @@ class AuthenticationApiController extends Controller {
 
         if ($validator->fails()) {
             return response()->json(([
-                'status_message' => 'Username or Email already taken!',
+                'status_message' => 'Username atau Email telah diambil!',
                 'status_code' => 422
             ]), 422);
         }
 
         $user = User::create([
-            'name' => $request->name,
-            'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'username' => $request->username,
+            'name' => $request->name,
             'school' => $request->school,
             'city' => $request->city,
             'birthyear' => $request->birthyear
