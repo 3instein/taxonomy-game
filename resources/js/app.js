@@ -36,7 +36,7 @@
   //   jellyfish.style.top = positionY + 'px';
   // }, refreshRate);
 
-  let isOpen = true;
+  let isOpen = false;
   const opener = document.querySelector('.open-sidebar');
   const sideBar = document.querySelector('.sidebar');
   const canvas = document.querySelector('.canvas');
@@ -47,16 +47,19 @@
       opener.style.left = 'calc(400px - 64px)';
       canvas.style.marginLeft = '400px';
       score.style.marginLeft = '400px';
+      canvas.setAttribute('wire:click:prevent', 'click()');
+      canvas.removeAttribute('wire:click');
       isOpen = true;
     } else {
       sideBar.style.width = '0';
       opener.style.left = 'calc(0% - 64px)';
       canvas.style.marginLeft = '0';
       score.style.marginLeft = '0';
+      canvas.removeAttribute('wire:click:prevent');
+      canvas.setAttribute('wire:click', '$emit("addEvo")');
       isOpen = false;
     }
   });
-
 
   // channging environemnt button
   let quizModal = new bootstrap.Modal(document.getElementById('biome-modal'));

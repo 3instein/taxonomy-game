@@ -1,5 +1,5 @@
-<div class="sidebar" style="width: 400px">
-    <div class="wrapper overflow-auto" style="max-width: 400px;">
+<div class="sidebar" style="width: 0px">
+    <div class="wrapper overflow-auto">
         {{-- upgrade --}}
         <div class="upgrades-wrapper">
             <h5 class="card-header text-cream fw-bold">Upgrades</h5>
@@ -56,13 +56,13 @@
                     </div>
                 </div>
             @empty
-            <div class="card border-0 rounded-0">
-                <div class="card-body d-flex justify-content-between card-creature">
-                    <div class="d-flex align-items-center">
-                        <p>Tidak ada evolusi</p>
+                <div class="card border-0 rounded-0">
+                    <div class="card-body d-flex justify-content-between card-creature">
+                        <div class="d-flex align-items-center">
+                            <p>Tidak ada evolusi</p>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforelse
         </div>
     </div>
