@@ -82,7 +82,7 @@ class EvolutionSeeder extends Seeder
             'prerequisite_id' => 5
         ]);
 
-        //Creature Evolutions
+        //1st biome
 
         Evolution::create([
             'species_id' => 1,
@@ -263,10 +263,12 @@ class EvolutionSeeder extends Seeder
             'percentage' => 1.25
         ]);
 
+        //2nd biome
+
         Evolution::create([
             'species_id' => 5,
             'name' => 'Kaki',
-            'description' => 'Prototipe kaki dan tangan. Sirip merupakan dasar evolusi dari kaki belakang mamalia, reptil, dan burung serta amfibi yang ada di daratan.',
+            'description' => 'Kaki berevolusi dari sirip untuk menahan beban badan demi bermigrasi ke daratan',
             'image_path' => $image_path.'kaki.png',
             'prerequisite_id' => 15,
             'price' => 500000,
