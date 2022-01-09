@@ -77,9 +77,9 @@
   const seaBiome = document.querySelector('.sea-biome');
   const evolutionTree = document.querySelector('.evolution-trees');
   landBtn.addEventListener('click', function () {
-    if (userPoint.value < 40) {
+    if (userPoint.value < 200) {
       quizModal.toggle();
-      document.querySelector('.biome-prerequisite').innerHTML = `Saat ini point kamu ${userPoint.value}, untuk akses biome selanjutnya kamu butuh 40 point!`;
+      document.querySelector('.biome-prerequisite').innerHTML = `Saat ini point kamu ${userPoint.value}, untuk akses biome selanjutnya kamu butuh 200 point!`;
     } else {
       canvas.style.backgroundImage = "url('../assets/land.jpg')";
       canvas.style.backgroundRepeat = 'no-repeat';
@@ -91,9 +91,9 @@
   });
 
   seaBtn.addEventListener('click', function () {
-    if (userPoint.value < 20) {
+    if (userPoint.value < 100) {
       quizModal.toggle();
-      document.querySelector('.biome-prerequisite').innerHTML = `Saat ini point kamu ${userPoint.value}, untuk akses biome selanjutnya kamu butuh 20 point!`;
+      document.querySelector('.biome-prerequisite').innerHTML = `Saat ini point kamu ${userPoint.value}, untuk akses biome selanjutnya kamu butuh 100 point!`;
     } else {
       canvas.style.backgroundImage = "url('../assets/ocean-floor-1.jpg')";
       canvas.style.backgroundRepeat = 'no-repeat';
@@ -184,12 +184,14 @@
   const point = document.querySelectorAll('#point');
   let feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'));
   let wrongAnswer = [];
+  let correctCounter = 0;
   for (let i = 0; i < question.length; i++) {
     nextBtn[i].addEventListener('click', function (e) {
       let value = question[i].value;
       if (value.toLowerCase() === answer[i].value.toLowerCase()) {
-        let gainedPoint = parseInt(userPoint.value) + parseInt(point[i].value)
-        userPoint.value = gainedPoint;
+        correctCounter++;
+        // let gainedPoint = parseInt(userPoint.value) + parseInt(point[i].value)
+        // userPoint.value = gainedPoint;
       } else {
         let foo = {
           "question": questionText[i].innerHTML,
@@ -206,7 +208,11 @@
         hiddenInput.value = JSON.stringify(wrongAnswer);
         document.querySelector('#quiz-form').append(userPoint);
         document.querySelector('#quiz-form').appendChild(hiddenInput);
-        document.querySelector('#quiz-form').submit();
+        if (correctCounter == question.length) {
+          let gainedPoint = parseInt(userPoint.value) + 100
+          userPoint.value = gainedPoint;
+          document.querySelector('#quiz-form').submit();
+        }
       }
     });
   }
