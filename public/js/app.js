@@ -43,7 +43,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   //   jellyfish.style.left = positionX + 'px';
   //   jellyfish.style.top = positionY + 'px';
   // }, refreshRate);
-  var isOpen = true;
+  var isOpen = false;
   var opener = document.querySelector('.open-sidebar');
   var sideBar = document.querySelector('.sidebar');
   var canvas = document.querySelector('.canvas');
@@ -54,12 +54,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       opener.style.left = 'calc(400px - 64px)';
       canvas.style.marginLeft = '400px';
       score.style.marginLeft = '400px';
+      canvas.setAttribute('wire:click:prevent', 'click()');
+      canvas.removeAttribute('wire:click');
       isOpen = true;
     } else {
       sideBar.style.width = '0';
       opener.style.left = 'calc(0% - 64px)';
       canvas.style.marginLeft = '0';
       score.style.marginLeft = '0';
+      canvas.removeAttribute('wire:click:prevent');
+      canvas.setAttribute('wire:click', '$emit("addEvo")');
       isOpen = false;
     }
   }); // channging environemnt button
