@@ -6,9 +6,6 @@
 
     {{-- sea biome --}}
     <div class="sea-biome d-none">
-        <audio controls loop autoplay>
-            <source src="{{ asset('assets/audio/bgsound.wav') }}">
-        </audio>
         {{-- @forelse ($userCreatures as $userCreature)
             <img class="{{ $userCreature->species->name }}" src="{{ $userCreature->species->image_path }}" />
         @empty

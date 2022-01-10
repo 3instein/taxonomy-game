@@ -57,6 +57,16 @@
   //   }
   // });
 
+  // bg music
+  let audio = document.getElementById('bg-music');
+  function responseMouse() {
+    audio.play();
+  }
+
+  document.addEventListener('click', function () {
+    responseMouse();
+  });
+
   // leaderboard modal
   let leaderboardModal = new bootstrap.Modal(document.getElementById('leaderboardModal'));
   let leaderboardBtn = document.querySelector('.leaderboard-btn');
@@ -75,7 +85,34 @@
   const earthBtn = document.querySelector('.earth-btn')
   const tree = document.querySelector('.tree-btn');
   const seaBiome = document.querySelector('.sea-biome');
+  const finishBtn = document.querySelector('.finish-btn');
   const evolutionTree = document.querySelector('.evolution-trees');
+  if (userPoint.value == 200) {
+    const creatureLength = document.getElementById('creature-length').value;
+    const userCreatureLength = document.getElementById('creature-length').getAttribute('data-user-creature');
+    const evolutionLength = document.getElementById('evolution-length').value;
+    const userEvolutionLength = document.getElementById('evolution-length').getAttribute('data-user-evolution');
+    document.querySelector('.biome-btn').style.height = '300px';
+    finishBtn.addEventListener('click', function () {
+      if (userCreatureLength == creatureLength && userEvolutionLength == evolutionLength) {
+        quizModal.toggle();
+        document.querySelector('.biome-prerequisite').innerHTML = `Saat ini point kamu ${userPoint.value}, untuk menyelesaikan game point kamu butuh 300 point dan membuka semua spesies beserta evolusinya!`;
+      } else {
+        quizModal.toggle();
+        document.querySelector('.prerequisite-modal-title').innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger me-2"></i>Permainan belum berakhir';
+        document.querySelector('.biome-prerequisite').innerHTML = `Saat ini kamu belum bisa menyelesaikan game karena kamu belum membuka semua spesies dan evolusinya!`;
+        document.querySelector('.accept-quiz-btn').classList.add('d-none')
+      }
+    });
+  } else if (userPoint.value == 300) {
+    finishBtn.addEventListener('click', function () {
+      quizModal.toggle();
+      document.querySelector('.prerequisite-modal-title').innerHTML = '🎉 Permainan sudah berakhir';
+      document.querySelector('.biome-prerequisite').innerHTML = `Selamat kamu telah menyelesaikan permainan! Tetap terus belajar ya`;
+      document.querySelector('.accept-quiz-btn').classList.add('d-none')
+    });
+  }
+
   landBtn.addEventListener('click', function () {
     if (userPoint.value < 200) {
       quizModal.toggle();
@@ -89,6 +126,7 @@
       evolutionTree.classList.add('d-none');
     }
   });
+
 
   seaBtn.addEventListener('click', function () {
     if (userPoint.value < 100) {
@@ -225,7 +263,7 @@
   if (document.getElementById('feedback-toggle')) {
     let wrongAnswerResponses = JSON.parse(document.getElementById('feedback-toggle').value);
     let feedbackModalTitle = document.querySelector('.feedback-title');
-    if (userPoint.value >= 20) {
+    if (userPoint.value == 100) {
       feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma laut 🌊';
       if (wrongAnswerResponses.length > 0) {
         feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma laut 🌊, tapi masih ada yang salah nih. Coba di baca lagi';
@@ -242,7 +280,7 @@
     </tr>`;
         document.getElementById('wrong-answer-table').innerHTML = foo;
       }
-    } else if (userPoint.value >= 40) {
+    } else if (userPoint.value == 200) {
       feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma darat 🪨';
       if (wrongAnswerResponses.length > 0) {
         feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma darat 🪨, tapi masih ada yang salah nih. Coba di baca lagi';
@@ -259,6 +297,8 @@
     </tr>`;
         document.getElementById('wrong-answer-table').innerHTML = foo;
       }
+    } else if (userPoint.value == 300) {
+      feedbackModalTitle.innerHTML = 'Selamat anda telah menyelesaikan permainan 🪨';
     } else {
       feedbackModalTitle.innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger me-2"></i>Ada yang salah, coba di baca lagi';
       let foo = '';

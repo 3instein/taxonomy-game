@@ -63,7 +63,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   //     isOpen = false;
   //   }
   // });
-  // leaderboard modal
+  // bg music
+  var audio = document.getElementById('bg-music');
+
+  function responseMouse() {
+    audio.play();
+  }
+
+  document.addEventListener('click', function () {
+    responseMouse();
+  }); // leaderboard modal
+
   var leaderboardModal = new bootstrap.Modal(document.getElementById('leaderboardModal'));
   var leaderboardBtn = document.querySelector('.leaderboard-btn');
   leaderboardBtn.addEventListener('click', function () {
@@ -80,7 +90,35 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   var earthBtn = document.querySelector('.earth-btn');
   var tree = document.querySelector('.tree-btn');
   var seaBiome = document.querySelector('.sea-biome');
+  var finishBtn = document.querySelector('.finish-btn');
   var evolutionTree = document.querySelector('.evolution-trees');
+
+  if (userPoint.value == 200) {
+    var creatureLength = document.getElementById('creature-length').value;
+    var userCreatureLength = document.getElementById('creature-length').getAttribute('data-user-creature');
+    var evolutionLength = document.getElementById('evolution-length').value;
+    var userEvolutionLength = document.getElementById('evolution-length').getAttribute('data-user-evolution');
+    document.querySelector('.biome-btn').style.height = '300px';
+    finishBtn.addEventListener('click', function () {
+      if (userCreatureLength == creatureLength && userEvolutionLength == evolutionLength) {
+        quizModal.toggle();
+        document.querySelector('.biome-prerequisite').innerHTML = "Saat ini point kamu ".concat(userPoint.value, ", untuk menyelesaikan game point kamu butuh 300 point dan membuka semua spesies beserta evolusinya!");
+      } else {
+        quizModal.toggle();
+        document.querySelector('.prerequisite-modal-title').innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger me-2"></i>Permainan belum berakhir';
+        document.querySelector('.biome-prerequisite').innerHTML = "Saat ini kamu belum bisa menyelesaikan game karena kamu belum membuka semua spesies dan evolusinya!";
+        document.querySelector('.accept-quiz-btn').classList.add('d-none');
+      }
+    });
+  } else if (userPoint.value == 300) {
+    finishBtn.addEventListener('click', function () {
+      quizModal.toggle();
+      document.querySelector('.prerequisite-modal-title').innerHTML = '🎉 Permainan sudah berakhir';
+      document.querySelector('.biome-prerequisite').innerHTML = "Selamat kamu telah menyelesaikan permainan! Tetap terus belajar ya";
+      document.querySelector('.accept-quiz-btn').classList.add('d-none');
+    });
+  }
+
   landBtn.addEventListener('click', function () {
     if (userPoint.value < 200) {
       quizModal.toggle();
@@ -187,6 +225,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   var question = document.querySelectorAll('#question');
   var answer = document.querySelectorAll('#answer');
   var nextBtn = document.querySelectorAll('.btn-next');
+  var backBtn = document.querySelectorAll('.btn-back');
   var point = document.querySelectorAll('#point');
   var feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'));
   var wrongAnswer = [];
@@ -222,6 +261,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         }
       }
     });
+
+    backBtn[_i].addEventListener('click', function () {
+      correctCounter--;
+    });
   };
 
   for (var _i = 0; _i < question.length; _i++) {
@@ -232,7 +275,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     var wrongAnswerResponses = JSON.parse(document.getElementById('feedback-toggle').value);
     var feedbackModalTitle = document.querySelector('.feedback-title');
 
-    if (userPoint.value >= 20) {
+    if (userPoint.value == 100) {
       feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma laut 🌊';
 
       if (wrongAnswerResponses.length > 0) {
@@ -259,7 +302,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         document.getElementById('wrong-answer-header').innerHTML = "<tr>\n        <th scope=\"col\">Pertanyaan</th>\n        <th scope=\"col\">Jawaban kamu</th>\n    </tr>";
         document.getElementById('wrong-answer-table').innerHTML = foo;
       }
-    } else if (userPoint.value >= 40) {
+    } else if (userPoint.value == 200) {
       feedbackModalTitle.innerHTML = 'Selamat anda telah membuka bioma darat 🪨';
 
       if (wrongAnswerResponses.length > 0) {
@@ -286,6 +329,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         document.getElementById('wrong-answer-header').innerHTML = "<tr>\n        <th scope=\"col\">Pertanyaan</th>\n        <th scope=\"col\">Jawaban kamu</th>\n    </tr>";
         document.getElementById('wrong-answer-table').innerHTML = _foo;
       }
+    } else if (userPoint.value == 300) {
+      feedbackModalTitle.innerHTML = 'Selamat anda telah menyelesaikan permainan 🪨';
     } else {
       feedbackModalTitle.innerHTML = '<i class="bi bi-exclamation-circle-fill text-danger me-2"></i>Ada yang salah, coba di baca lagi';
       var _foo2 = '';
