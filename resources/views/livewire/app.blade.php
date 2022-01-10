@@ -1,4 +1,8 @@
 <div>
+    {{-- <iframe class="d-none" src="{{ asset('assets/audio/bgsound.wav') }}" allow="autoplay"></iframe> --}}
+    <audio class="position-fixed top-50 start-50 translate-middle d-none" id="bg-music" controls loop autoplay>
+        <source src="{{ asset('assets/audio/bgsound.wav') }}" type="audio/wav">
+    </audio>
     @if (session()->has('success'))
         <input type="hidden" id="feedback-toggle" value="{{ session('success') }}">
     @endif
@@ -37,7 +41,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header border-0">
-                    <h5 class="modal-title fs-4" id="staticBackdropLabel">
+                    <h5 class="modal-title fs-4 prerequisite-modal-title" id="staticBackdropLabel">
                         <i class="bi bi-exclamation-circle-fill text-danger me-2"></i>Point kamu tidak cukup
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -47,7 +51,7 @@
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                    <button type="button" class="btn btn-primary" data-bs-target="#quiz-modal-1"
+                    <button type="button" class="btn btn-primary accept-quiz-btn" data-bs-target="#quiz-modal-1"
                         data-bs-toggle="modal">Ambil Kuis</button>
                 </div>
             </div>
@@ -55,7 +59,7 @@
     </div>
 
     {{-- quiz modal --}}
-    @foreach ($quizzes as $quiz)
+    @forelse ($this->quizzes as $quiz)
         <div class="modal fade" id="quiz-modal-{{ $loop->iteration }}" data-bs-backdrop="static"
             data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -78,7 +82,8 @@
                             </div>
                         </div>
                         <div class="modal-footer border-0">
-                            <button type="button" class="btn btn-secondary btn-back {{ $loop->index == 0 ? 'd-none' : '' }}"
+                            <button type="button"
+                                class="btn btn-secondary btn-back {{ $loop->index == 0 ? 'd-none' : '' }}"
                                 data-bs-target="#quiz-modal-{{ $loop->iteration - 1 }}"
                                 data-bs-toggle="modal">Kembali</button>
                             <button type="button" class="btn btn-secondary {{ $loop->index == 0 ? '' : 'd-none' }}"
@@ -91,7 +96,9 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @empty
+    a
+    @endforelse
 
     {{-- tree modal --}}
     <div class="modal fade" id="tree-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -221,9 +228,19 @@
     <livewire:click />
     <livewire:sidebar :power="$power" />
 
+    <input type="hidden" id="creature-length" value="{{ count($creatures) }}"
+        data-user-creature="{{ count($userCreatures) }}">
+    <input type="hidden" id="evolution-length" value="{{ count($evolutions) }}"
+        data-user-evolution="{{ count($userEvolutions) }}">
     <input type="hidden" id="user-point" value="{{ $userStat->point }}" name="user-point" />
     {{-- biome button --}}
-    <div class="biome-btn d-flex flex-column align-items-center justify-content-evenly">
+    <div class="biome-btn d-flex flex-column align-items-center justify-content-evenly"
+        style="{{ $userStat->point >= 200 ? 'height: 300px' : '' }}">
+        @if ($userStat->point >= 200)
+            <div class="finish-btn">
+                <img class="finish-icon" src="{{ asset('assets/icons/last.png') }}" />
+            </div>
+        @endif
         <div class="land-btn">
             <img class="land-icon" src="{{ asset('assets/icons/land.png') }}" />
         </div>
