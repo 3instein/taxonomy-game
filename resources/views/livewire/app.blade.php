@@ -220,10 +220,6 @@
     </div>
     <livewire:click />
     <livewire:sidebar :power="$power" />
-    {{-- <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit">Logout</button>
-    </form> --}}
 
     <input type="hidden" id="user-point" value="{{ $userStat->point }}" name="user-point" />
     {{-- biome button --}}
