@@ -5,6 +5,7 @@ use App\Http\Livewire\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminQuizController;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\CreatureController;
 
@@ -27,6 +28,7 @@ Route::get('/dashboard', function () {
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', App::class)->middleware(['role:user']);
     Route::resource('admin', AdminController::class)->middleware(['role:admin']);
+    Route::resource('admin/quiz', AdminQuizController::class)->middleware(['role:admin']);
 });
 
 Route::resource('domains', DomainController::class);

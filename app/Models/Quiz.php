@@ -10,4 +10,6 @@ class Quiz extends Model
     use HasFactory;
 
     protected $table = 'bio10_quizzes';
+
+    protected $guarded = ['id'];
 }
