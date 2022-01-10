@@ -1,8 +1,4 @@
 <div>
-    <audio autoplay>
-        <source
-            src="https://soundcloud.com/naturesoundsfm/sets/relaxing-nature-sounds?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
-    </audio>
     @if (session()->has('success'))
         <input type="hidden" id="feedback-toggle" value="{{ session('success') }}">
     @endif
