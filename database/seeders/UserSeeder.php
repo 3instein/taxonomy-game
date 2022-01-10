@@ -16,7 +16,7 @@ class UserSeeder extends Seeder {
     public function run() {
 
         //Admin Account
-        User::create([
+        $admin = User::create([
             'name' => 'admin',
             'username' => 'admin',
             'email' => 'admin@taxon.com',
@@ -30,5 +30,24 @@ class UserSeeder extends Seeder {
         UserStat::create([
             'student_id' => 1
         ]);
+
+        $admin->assignRole('admin');
+
+        $user = User::create([
+            'name' => 'username',
+            'username' => 'user',
+            'email' => 'user@taxon.com',
+            'email_verified_at' => now(),
+            'school' => 'taxon',
+            'city' => 'taxon',
+            'birthyear' => '2002',
+            'password' => bcrypt('password'),
+        ]);
+
+        UserStat::create([
+            'student_id' => 2
+        ]);
+
+        $user->assignRole('user');
     }
 }

@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\CreatureController;
-use App\Http\Controllers\DomainController;
-use App\Http\Controllers\QuizController;
-use App\Http\Livewire\App;
 use App\Models\Domain;
+use App\Http\Livewire\App;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DomainController;
+use App\Http\Controllers\CreatureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +19,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', App::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::prefix('admin')->group(function () {
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/', App::class)->middleware(['role:user']);
+    
 });
+
+Route::resource('admin', AdminController::class)->middleware(['role:admin']);
+Route::post('/admin/create/evolution', [AdminController::class, 'createEvolution'])->name('createEvolution');
+
 Route::resource('domains', DomainController::class);
 Route::resource('creatures', CreatureController::class);
 Route::post('/update-point', [QuizController::class, 'updatePoint'])->name('update.point');
