@@ -7,7 +7,7 @@
         <input type="hidden" id="feedback-toggle" value="{{ session('success') }}">
     @endif
     @if (session()->has('evo-error'))
-        <div class="alert alert-danger w-50" role="alert">
+        <div class="alert alert-danger position-fixed evo-error-feedback" role="alert">
             {{ session('evo-error') }}
         </div>
     @endif

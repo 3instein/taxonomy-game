@@ -61,6 +61,13 @@
   background-color: var(--cream);
 }
 
+/* evo error feedback */
+
+.evo-error-feedback {
+  right: 35%;
+  top: 15%;
+}
+
 /* sidebar width 400px*/
 
 .sidebar {
