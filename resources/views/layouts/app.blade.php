@@ -13,6 +13,8 @@
 
     <!-- Styles -->
     @livewireStyles
+    @stack('prepend-style')
+    @stack('addon-style')
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -32,6 +34,8 @@
         </main>
     </div>
     @livewireScripts
+    @stack('prepend-script')
+    @stack('addon-script')
 </body>
 
 </html>

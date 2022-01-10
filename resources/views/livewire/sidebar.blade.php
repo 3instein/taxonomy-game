@@ -1,4 +1,9 @@
 <div class="sidebar" style="width: 400px">
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
+
     <div class="wrapper overflow-auto" style="width: 400px">
         {{-- upgrade --}}
         <div class="upgrades-wrapper">
@@ -10,7 +15,8 @@
                         <p class="card-text fw-normal">+0.02 evo every click
                         </p>
                     </div>
-                    <span wire:click="$emit('upgradePower')" class="btn btn-click-upgrade">Upgrade {{ $this->power * 100 }}</span>
+                    <span wire:click="$emit('upgradePower')" class="btn btn-click-upgrade">Upgrade
+                        {{ $this->power * 100 }}</span>
                 </div>
             </div>
             <h5 class="card-header text-cream fw-bold">Creatures</h5>

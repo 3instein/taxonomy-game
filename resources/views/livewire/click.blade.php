@@ -3,12 +3,7 @@
     {{-- <div id="dna">
         <img src="{{ asset('assets/dna.png') }}">
     </div> --}}
-    <div class="circle">
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit">Logout</button>
-        </form>
-    </div>
+    <div class="circle"></div>
 
     {{-- sea biome --}}
     <div class="sea-biome d-none">

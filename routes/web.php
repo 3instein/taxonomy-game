@@ -26,14 +26,11 @@ Route::get('/dashboard', function () {
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/', App::class)->middleware(['role:user']);
-    
+    Route::resource('admin', AdminController::class)->middleware(['role:admin']);
 });
-
-Route::resource('admin', AdminController::class)->middleware(['role:admin']);
-Route::post('/admin/create/evolution', [AdminController::class, 'createEvolution'])->name('createEvolution');
 
 Route::resource('domains', DomainController::class);
 Route::resource('creatures', CreatureController::class);
 Route::post('/update-point', [QuizController::class, 'updatePoint'])->name('update.point');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

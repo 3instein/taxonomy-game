@@ -38,6 +38,10 @@ class AuthenticatedSessionController extends Controller {
             'ip' => request()->ip()
         ]);
 
+        if (auth()->user()->hasRole('admin')) {
+            return redirect()->route('admin.index');
+        }
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -54,7 +58,7 @@ class AuthenticatedSessionController extends Controller {
             'description' => 'User id:' . $request->user()->id . ' logged out',
             'ip' => request()->ip()
         ]);
-        
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
