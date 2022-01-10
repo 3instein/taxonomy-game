@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('user-evolutions', UserEvolutionApiController::class);
     Route::resource('creatures', CreatureApiController::class);
     Route::resource('creatures-evolutions', CreaturesEvolutionsApiController::class);
-    Route::resource('quiz', QuizApiController::class);
+    // Route::resource('quiz', QuizApiController::class);
     Route::resource('log', LogApiController::class);
     Route::get('leaderboard', [UserStatsApiController::class, 'leaderboard']);
     Route::get('/upgrade-power', [UserStatsApiController::class, 'upgradePower']);
