@@ -72,13 +72,13 @@
                             <h6 class="question-text">{{ $quiz->question }}</h6>
                             <div class="mt-3">
                                 <input type="text" class="form-control shadow-none" id="question"
-                                    aria-describedby="emailHelp" autocomplete="false">
+                                    aria-describedby="emailHelp" autocomplete="false" autofocus>
                                 <input type="hidden" id="answer" value="{{ $quiz->answer }}">
                                 <input type="hidden" id="point" value="{{ $quiz->point }}">
                             </div>
                         </div>
                         <div class="modal-footer border-0">
-                            <button type="button" class="btn btn-secondary {{ $loop->index == 0 ? 'd-none' : '' }}"
+                            <button type="button" class="btn btn-secondary btn-back {{ $loop->index == 0 ? 'd-none' : '' }}"
                                 data-bs-target="#quiz-modal-{{ $loop->iteration - 1 }}"
                                 data-bs-toggle="modal">Kembali</button>
                             <button type="button" class="btn btn-secondary {{ $loop->index == 0 ? '' : 'd-none' }}"

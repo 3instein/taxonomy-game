@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Builder;
 class App extends Component {
 
     public $evo = 0, $power, $userStat, $user, $leaderboard, $creaturePower, $totalCreaturePower = 0, $userCreatures;
-    public $upgradeCost;
+    public $upgradeCost, $quizzes;
 
     protected $listeners = [
         'addEvo' => 'click',
@@ -155,8 +155,15 @@ class App extends Component {
             })
             ->get();
         $this->upgradeCost = $this->power * 100;
+        if ($this->user->stat->point < 100) {
+            $this->quizzes = Quiz::take(10)->get();
+        } else if ($this->user->stat->point >= 100) {
+            $this->quizzes = Quiz::skip(10)->take(10)->get();
+        } else if ($this->user->stat->point >= 200) {
+            $this->quizzes = Quiz::skip(20)->take(10)->get();
+        }
         return view('livewire.app', [
-            'quizzes' => Quiz::inRandomOrder()->get()
+            'quizzes' => $this->quizzes
         ]);
     }
 }
