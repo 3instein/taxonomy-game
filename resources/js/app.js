@@ -181,6 +181,7 @@
   const question = document.querySelectorAll('#question');
   const answer = document.querySelectorAll('#answer');
   const nextBtn = document.querySelectorAll('.btn-next');
+  const backBtn = document.querySelectorAll('.btn-back');
   const point = document.querySelectorAll('#point');
   let feedbackModal = new bootstrap.Modal(document.getElementById('feedback-modal'));
   let wrongAnswer = [];
@@ -214,6 +215,10 @@
           document.querySelector('#quiz-form').submit();
         }
       }
+    });
+
+    backBtn[i].addEventListener('click', function () {
+      correctCounter--;
     });
   }
 
