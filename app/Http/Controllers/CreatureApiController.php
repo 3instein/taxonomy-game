@@ -96,7 +96,8 @@ class CreatureApiController extends Controller {
     public function unlockCreature(Request $request) {
         UserCreature::create([
             'student_id' => auth()->user()->id,
-            'species_id' => $request->input('species_id')
+            'species_id' => $request->input('species_id'),
+            'power' => UserCreature::count() == 0 ? 10 : (UserCreature::count() + 1) * 10
         ]);
     }
 }

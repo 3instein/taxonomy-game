@@ -1,6 +1,15 @@
 <div>
+    <audio autoplay>
+        <source
+            src="https://soundcloud.com/naturesoundsfm/sets/relaxing-nature-sounds?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
+    </audio>
     @if (session()->has('success'))
         <input type="hidden" id="feedback-toggle" value="{{ session('success') }}">
+    @endif
+    @if (session()->has('evo-error'))
+        <div class="alert alert-danger w-50" role="alert">
+            {{ session('evo-error') }}
+        </div>
     @endif
     {{-- feedback quiz modal --}}
     <div class="modal fade" id="feedback-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

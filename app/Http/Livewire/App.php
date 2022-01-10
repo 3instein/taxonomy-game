@@ -11,6 +11,7 @@ use Livewire\Component;
 use App\Models\UserStat;
 use App\Models\UserCreature;
 use App\Models\UserEvolution;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Database\Eloquent\Builder;
 
 class App extends Component
@@ -133,6 +134,8 @@ class App extends Component
                 'ip' => request()->ip()
             ]);
             $this->emit('refreshSidebar');
+        } else {
+            session()->flash('evo-error', 'Evomu tidak cukup!');
         }
     }
 
