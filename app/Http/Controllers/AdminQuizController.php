@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 
-class AdminQuizController extends Controller
-{
+class AdminQuizController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('admin.quiz.index');
+    public function index() {
+        return view('admin.quiz.index', [
+            'quizzes' => Quiz::all()
+        ]);
     }
 
     /**
@@ -22,8 +22,7 @@ class AdminQuizController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         return view('admin.quiz.create');
     }
 
@@ -33,8 +32,7 @@ class AdminQuizController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $validatedData = $request->validate([
             'question' => ['string', 'required'],
             'answer' => ['string', 'required'],
@@ -43,7 +41,7 @@ class AdminQuizController extends Controller
 
         Quiz::create($validatedData);
 
-        return redirect()->route('admin.index')->with('success', 'Quiz berhasil dibuat!');
+        return redirect()->route('quiz.index')->with('success', 'Quiz berhasil dibuat!');
     }
 
     /**
@@ -52,8 +50,7 @@ class AdminQuizController extends Controller
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function show(Quiz $quiz)
-    {
+    public function show(Quiz $quiz) {
         return view('admin.quiz.show', [
             'quiz' => $quiz
         ]);
@@ -65,8 +62,7 @@ class AdminQuizController extends Controller
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function edit(Quiz $quiz)
-    {
+    public function edit(Quiz $quiz) {
         return view('admin.quiz.edit', [
             'quiz' => $quiz
         ]);
@@ -79,8 +75,7 @@ class AdminQuizController extends Controller
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Quiz $quiz)
-    {
+    public function update(Request $request, Quiz $quiz) {
         $validatedData = $request->validate([
             'question' => ['string', 'required'],
             'answer' => ['string', 'required'],
@@ -89,7 +84,7 @@ class AdminQuizController extends Controller
 
         $quiz->update($validatedData);
 
-        return redirect()->route('admin.index')->with('success', 'Quiz berhasil diubah!');
+        return redirect()->route('quiz.index')->with('success', 'Quiz berhasil diubah!');
     }
 
     /**
@@ -98,10 +93,9 @@ class AdminQuizController extends Controller
      * @param  \App\Models\Quiz  $quiz
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Quiz $quiz)
-    {
+    public function destroy(Quiz $quiz) {
         $quiz->delete();
 
-        return redirect()->route('admin.index')->with('success', 'Quiz berhasil dihapus!');
+        return redirect()->route('quiz.index')->with('success', 'Quiz berhasil dihapus!');
     }
 }
