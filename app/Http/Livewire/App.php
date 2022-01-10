@@ -14,8 +14,7 @@ use App\Models\UserEvolution;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Database\Eloquent\Builder;
 
-class App extends Component
-{
+class App extends Component {
 
     public $evo = 0, $power, $userStat, $user, $leaderboard, $creaturePower, $totalCreaturePower = 0, $userCreatures;
     public $upgradeCost;
@@ -27,8 +26,7 @@ class App extends Component
         'unlockEvolution' => 'unlockEvolution'
     ];
 
-    public function click()
-    {
+    public function click() {
         if ($this->creaturePower == 0) {
             $this->userStat->update([
                 'evo' => $this->evo + $this->power
@@ -40,9 +38,8 @@ class App extends Component
         }
     }
 
-    public function upgradePower()
-    {
-        if ($this->userStat->evo > $this->userStat->power) {
+    public function upgradePower() {
+        if ($this->userStat->evo >= $this->userStat->power) {
             $this->userStat->update([
                 'power' => $this->userStat->power + 0.02,
                 'evo' => $this->evo - $this->upgradeCost
@@ -62,11 +59,12 @@ class App extends Component
                 'ip' => request()->ip()
             ]);
             $this->emit('refreshSidebar');
+        } else {
+            session()->flash('evo-error', 'Evomu tidak cukup!');
         }
     }
 
-    public function unlockCreature($species)
-    {
+    public function unlockCreature($species) {
         if ($this->user->stat->evo >= $species['price']) {
             $this->creaturePower = UserCreature::count() == 0 ? 10 : (UserCreature::count() + 1) * 10;
 
@@ -93,11 +91,12 @@ class App extends Component
                 'ip' => request()->ip()
             ]);
             $this->emit('refreshSidebar');
+        } else {
+            session()->flash('evo-error', 'Evomu tidak cukup!');
         }
     }
 
-    public function unlockEvolution($evolution)
-    {
+    public function unlockEvolution($evolution) {
         if ($this->user->stat->evo >= $evolution['price']) {
             UserEvolution::create([
                 'student_id' => $this->user->id,
@@ -139,8 +138,7 @@ class App extends Component
         }
     }
 
-    public function render()
-    {
+    public function render() {
         $this->leaderboard = UserStat::orderByDesc('evo')->orderByDesc('point')->orderByDesc('power')->get();
         $this->user = User::whereId(auth()->user()->id)->first();
         $this->userStat = UserStat::where('student_id', $this->user->id)->first();
