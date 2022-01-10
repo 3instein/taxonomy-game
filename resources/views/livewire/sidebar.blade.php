@@ -1,7 +1,7 @@
 <div class="sidebar" style="width: 400px">
-    <form action="{{ route('logout') }}" method="POST">
+    <form action="{{ route('logout') }}" method="POST" wid>
         @csrf
-        <button type="submit">Logout</button>
+        <button class="btn btn-danger" type="submit" style="width: 100%">Logout</button>
     </form>
 
     <div class="wrapper overflow-auto" style="width: 400px">
