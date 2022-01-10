@@ -5,6 +5,7 @@ use App\Http\Livewire\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminQuizController;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\CreatureController;
 
@@ -30,7 +31,8 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::resource('admin', AdminController::class)->middleware(['role:admin']);
-Route::post('/admin/create/evolution', [AdminController::class, 'createEvolution'])->name('createEvolution');
+
+Route::resource('admin/quiz', AdminQuizController::class)->middleware(['role:admin']);
 
 Route::resource('domains', DomainController::class);
 Route::resource('creatures', CreatureController::class);
