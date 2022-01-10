@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,14 @@ class AdminQuizController extends Controller {
             'point' => ['integer', 'required']
         ]);
 
-        Quiz::create($validatedData);
+        $quiz = Quiz::create($validatedData);
+
+        Log::create([
+            'table' => app(Quiz::class)->getTable(),
+            'student_id' => request()->user()->id,
+            'description' => 'User id:' . request()->user()->id . ' created quiz id:' . $quiz->id,
+            'ip' => request()->ip()
+        ]);
 
         return redirect()->route('quiz.index')->with('success', 'Quiz berhasil dibuat!');
     }
@@ -84,6 +92,13 @@ class AdminQuizController extends Controller {
 
         $quiz->update($validatedData);
 
+        Log::create([
+            'table' => app(Quiz::class)->getTable(),
+            'student_id' => request()->user()->id,
+            'description' => 'User id:' . request()->user()->id . ' updated quiz id:' . $quiz->id,
+            'ip' => request()->ip()
+        ]);
+
         return redirect()->route('quiz.index')->with('success', 'Quiz berhasil diubah!');
     }
 
@@ -95,6 +110,13 @@ class AdminQuizController extends Controller {
      */
     public function destroy(Quiz $quiz) {
         $quiz->delete();
+
+        Log::create([
+            'table' => app(Quiz::class)->getTable(),
+            'student_id' => request()->user()->id,
+            'description' => 'User id:' . request()->user()->id . ' deleted quiz id:' . $quiz->id,
+            'ip' => request()->ip()
+        ]);
 
         return redirect()->route('quiz.index')->with('success', 'Quiz berhasil dihapus!');
     }
