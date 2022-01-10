@@ -39,7 +39,7 @@ class App extends Component {
     }
 
     public function upgradePower() {
-        if ($this->userStat->evo >= $this->userStat->power) {
+        if ($this->user->stat->evo >= $this->upgradeCost) {
             $this->userStat->update([
                 'power' => $this->userStat->power + 0.02,
                 'evo' => $this->evo - $this->upgradeCost
